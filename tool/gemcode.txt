@@ -1,0 +1,122 @@
+        SecsMessage gemStart(PrimaryMessageWrapper e)
+
+        {
+            textBox2.Text = e.Message.S.ToString();
+            int S = e.Message.S;
+            int F = e.Message.F;
+            SecsMessage reply = null;
+
+            switch (S)
+            {
+                case 1:
+
+                    switch (F)
+                    {
+                        case 3:
+                            textBox2.Text = "Receive S1F3";
+                            e.ReplyAsync(
+                                new SecsMessage(
+                                    1,
+                                    4,
+                                    name: "S1F4",
+                                    item: Item.L(
+                                        Item.A("test")
+                                    )
+                                )
+                            );
+
+                            break;
+
+                        case 13:
+                            textBox2.Text = "Receive S1F13";
+                            e.ReplyAsync(
+                                new SecsMessage(
+                                    stream: 1,
+                                    function: 14,
+                                    name: "S1F14",
+                                    item: Item.L(
+                                        Item.A("ARMS"),
+                                        Item.A("0.1.0")
+                                    )
+                                )
+                            );
+                            break;
+                    }
+                    break;
+
+                case 2:
+                    switch (F)
+                    {
+                        case 41:
+                            String clusterRecipe = e.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>();
+                            Item items = e.Message.SecsItem.Items[1].Items[0].Items[3];
+                            foreach(Item item in items.Items)
+                            {
+                                if (item.Items[0].GetValue<String>() == "Frontside/RecipeName")
+                                {
+                                    textBox3.Text = item.Items[1].Items[0].GetValue<String>();
+                                }
+                                if (item.Items[0].GetValue<String>() == "Frontside/RowNumber")
+                                {
+                                    textBox4.Text = item.Items[1].Items[0].GetValue<String>();
+                                }
+                                if (item.Items[0].GetValue<String>() == "Frontside/ColumnNumber")
+                                {
+                                    textBox5.Text = item.Items[1].Items[0].GetValue<String>();
+                                }
+                                if (item.Items[0].GetValue<String>() == "Frontside/TestableDies")
+                                {
+                                    textBox6.Text = item.Items[1].Items[0].GetValue<String>();
+                                }
+
+                            }
+
+                            String frontsideRecipe = e.Message.SecsItem.Items[1].Items[0].Items[3].Items[0].Items[1].Items[0].GetValue<String>();
+                            textBox2.Text = "Receive S2F41";
+                            textBox1.Text = clusterRecipe;
+
+
+                            e.ReplyAsync(
+                                 new SecsMessage(
+                                    stream: 2,
+                                    function: 42,
+                                    name: "S2F42",
+                                    item: Item.L(
+                                            Item.U4(
+                                                    0
+                                            )
+                                    )
+                                )
+                            );
+
+                            driver.SendAsync(
+                                new SecsMessage(
+                                    stream: 6,
+                                    function: 11,
+                                    name: "S6F11",
+                                    item: Item.L(
+                                            Item.U4(1),
+                                            Item.U4(1000),
+                                            Item.L(
+                                                Item.L(
+                                                    Item.U4(1),
+                                                    Item.L(
+                                                        Item.L(
+                                                            Item.A("RECIPEID"),
+                                                            Item.A("test")
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                    )
+                                )
+                            );
+                            
+
+                            break;
+                    }
+                    break;
+            }
+            return reply;
+
+        }

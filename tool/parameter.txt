@@ -1,0 +1,19 @@
+필요한 parameter 목록
+ 
+1. <A [31] 'SX897FYTTF05\FINAL_MERGE\75X-BF'> (PPID)
+
+
+2. <A [22] 'Frontside\ColumnNumber'>    
+        <L    
+          <A [2] '84'>    
+        >
+
+3. <A [19] 'Frontside\RowNumber'>
+        <L
+          <A [3] '104'>
+        >
+
+4. <A [20] 'Frontside\RecipeName'>
+      <L
+          <A [42] 'TC-CSP_SX897FYTTF05_ADC\FINAL\75X BF_SOBEL'>
+        >
