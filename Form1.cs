@@ -59,5 +59,10 @@ namespace ARMS
         {
             tb_columnDies.Text = text;
         }
+
+        public void setDBConnectionText(String text)
+        {
+            lb_DBConnection.Text = text;
+        }
     }
 }

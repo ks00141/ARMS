@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Secs4Net;
+using MySql.Data.MySqlClient;
 
 namespace ARMS
 {
@@ -49,6 +50,30 @@ namespace ARMS
                     switch (F)
                     {
                         case 41:
+                            StringBuilder _strArg = new StringBuilder();
+                            _strArg.Append("Server=");
+                            _strArg.Append("127.0.0.1");
+                            _strArg.Append(";Port=");
+                            _strArg.Append("3306");
+                            _strArg.Append(";Database = ");
+                            _strArg.Append("recipe");          // 데이터베이스
+                            _strArg.Append(";Uid = ");
+                            _strArg.Append("root");                     // ID
+                            _strArg.Append(";Pwd = ");
+                            _strArg.Append("K8s,Docker");                 // PWD
+                            _strArg.Append(";");
+                            MySqlConnection conn = new MySqlConnection(_strArg.ToString());
+                            try
+                            {
+                                conn.Open();
+                                form.setDBConnectionText("Connected!");
+                            }
+                            catch (Exception)
+                            {
+                                conn.Close();
+                                form.setDBConnectionText("Not Connected!");
+                            }
+
                             String clusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>();
                             Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[3];
                             foreach(Item item in items.Items)
