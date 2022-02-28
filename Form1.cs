@@ -13,12 +13,12 @@ namespace ARMS
     public partial class Form1 : Form
     {
         bool statusFlag;
-        SecsService service;
+        serviceInterface service;
         public Form1()
         {
             InitializeComponent();
             statusFlag = false;
-            service = new SecsService(this);
+            service = new ServiceFactory(this).getService();
         }
 
         private void button1_Click(object sender, EventArgs e)

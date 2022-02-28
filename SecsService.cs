@@ -8,16 +8,16 @@ using Secs4Net;
 
 namespace ARMS
 {
-    class SecsService
+    class SecsService:serviceInterface
     {
-        SecsGem driver;
-        SecsMsgController msgAdmin;
+        SecsGem driver; //driver factory
+        SecsMsgController msgAdmin; // msgController factory
 
-        public SecsService(Form1 form)
+        public SecsService(dynamic form)
         {
-            driver = new SecsGem(false, IPAddress.Any, 5717);
-            driver.PrimaryMessageReceived += msgReceived;
-            msgAdmin = new SecsMsgController(driver, form);
+            driver = new SecsGem(false, IPAddress.Any, 5717); // driver factory.getDriver
+            msgAdmin = new SecsMsgController(driver, form); // msgController facotry.getController
+            driver.PrimaryMessageReceived += msgReceived;   // driver.PrimaryMessageReceived += msgContoller factory.getReceive
         }
 
         public void start()
@@ -25,7 +25,7 @@ namespace ARMS
             driver.Start();
         }
 
-        void msgReceived(object sender, PrimaryMessageWrapper pMsg)
+        public void msgReceived(object sender, PrimaryMessageWrapper pMsg)
         {
             msgAdmin.msgReceive(pMsg);
         }

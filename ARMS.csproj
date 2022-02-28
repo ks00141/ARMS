@@ -111,6 +111,8 @@
     <Compile Include="S6F11InterFace.cs" />
     <Compile Include="SecsMsgController.cs" />
     <Compile Include="SecsService.cs" />
+    <Compile Include="ServiceFactory.cs" />
+    <Compile Include="serviceInterface.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
