@@ -99,19 +99,24 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MsgCtrFactory.cs" />
+    <Compile Include="MsgCtrFactoryInterface.cs" />
+    <Compile Include="MsgCtrInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiverFactory.cs" />
     <Compile Include="S1F14.cs" />
     <Compile Include="S1F14Interface.cs" />
     <Compile Include="S1F4.cs" />
     <Compile Include="S1F4Interface.cs" />
+    <Compile Include="S2F41Receiver.cs" />
+    <Compile Include="S2F41ReceiverInterface.cs" />
     <Compile Include="S2F42.cs" />
     <Compile Include="S2F42Interface.cs" />
     <Compile Include="S6F11.cs" />
     <Compile Include="S6F11InterFace.cs" />
     <Compile Include="SecsMsgController.cs" />
     <Compile Include="SecsService.cs" />
-    <Compile Include="ServiceFactory.cs" />
     <Compile Include="serviceInterface.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
