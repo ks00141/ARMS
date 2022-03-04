@@ -8,9 +8,10 @@ using MySql.Data.MySqlClient;
 
 namespace ARMS
 {
-    class SecsMsgController
+    class SecsMsgController:MsgCtrInterface
     {
         SecsGem driver;
+        ReceiverFactory receiverFactory;
         dynamic form;
         int S;
         int F;
@@ -19,6 +20,7 @@ namespace ARMS
         {
             this.driver = driver;
             this.form = form;
+            receiverFactory = new ReceiverFactory();
         }
 
         public SecsMessage msgReceive(PrimaryMessageWrapper pMsg)
@@ -50,9 +52,20 @@ namespace ARMS
                     switch (F)
                     {
                         case 41:
-                            String RCMD = pMsg.Message.SecsItem.Items[0].GetValue<String>();
-                            if (RCMD == "RECIPE_CHECK")
+                            S2F41ReceiverInterface receiver = receiverFactory.getS2F41Receiver(pMsg);
+                            List<String> recipeParams;
+                            List<String> specParams;
+                            if (receiver.checkRCMD())
                             {
+                                // RCMD validation 통과하면 할일
+                                // 1. S2F42 HACK 0 Return (Receiver)
+                                // 2. PARAMETER 뽑기  (Receiver)
+                                // 3. SPEC DB 접속해서 SPEC PARAMETER 가져오기 (DB connector가 필요함, 싱글톤으로, Receiver가 DB Connector에서 요청해서 받아오자)
+                                // 4. 비교하기 (Receiver)
+                                // 5. S6F11 Send (Receiver)
+                                receiver.replyS2F42(true);  // 1. S2F42 HACK 0 Return (Receiver)
+                                recipeParams = receiver.getParams();  //PARAMETER 뽑기  (Receiver)
+
                                 StringBuilder _strArg = new StringBuilder();
                                 _strArg.Append("Server=");
                                 _strArg.Append("127.0.0.1");
