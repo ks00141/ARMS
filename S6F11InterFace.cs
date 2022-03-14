@@ -9,7 +9,7 @@ namespace ARMS
 {
     interface S6F11InterFace
     {
-        SecsMessage sendSuc();
-        SecsMessage sendFail();
+        SecsMessage sendSuc(String text);
+        SecsMessage sendFail(String text);
     }
 }

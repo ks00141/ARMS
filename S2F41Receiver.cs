@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Secs4Net;
+using System.Data;
 
 namespace ARMS
 {
@@ -63,37 +64,31 @@ namespace ARMS
             }
         }
 
-        public List<String> getParams()
+        public DataTable getParams()
         {
             // items = [cluster recipe, frontside recipe, inspection dies, row dies, column dies]
-            List<String> recipeParams = new List<String>();
-
-            recipeParams.Append<String>(pMsg.Message.SecsItem.Items[1].Items[0].Items[1].GetValue<String>()); // Cluster Recipe
-
+            DataTable recipeParmas = new DataTable();
+            
             Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[3];
-            foreach (Item item in items.Items)
+
+            recipeParmas.Columns.Add("cluster_recipe", typeof(string));
+            recipeParmas.Columns.Add("frontside_recipe", typeof(string));
+            recipeParmas.Columns.Add("inspection_dies", typeof(string));
+            recipeParmas.Columns.Add("inspection_columns", typeof(string));
+            recipeParmas.Columns.Add("inspection_rows", typeof(string));
+
+            DataRow row = recipeParmas.NewRow();
+            row["cluster_recipe"] = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>();
+            foreach(Item item in items.Items)
             {
-                if (item.Items[0].GetValue<String>() == "Frontside/RecipeName")
-                {
-                    recipeParams.Append<String>(item.Items[0].GetValue<String>());
-                
-                }
-                if (item.Items[0].GetValue<String>() == "Frontside/TestableDies")
-                {
-                    recipeParams.Append<String>(item.Items[0].GetValue<String>());
-                }
-
-                if (item.Items[0].GetValue<String>() == "Frontside/RowNumber")
-                {
-                    recipeParams.Append<String>(item.Items[0].GetValue<String>());
-                }
-
-                if (item.Items[0].GetValue<String>() == "Frontside/ColumnNumber")
-                {
-                    recipeParams.Append<String>(item.Items[0].GetValue<String>());
-                }
+                if (item.Items[0] == "Frontside/RecipeName") row["frontside_recipe"] = item.Items[1].Items[0].GetValue<String>();
+                if (item.Items[0] == "Frontside/TestableDies") row["inspection_dies"] = item.Items[1].Items[0].GetValue<String>();
+                if (item.Items[0] == "Frontside/ColumnNumber") row["inspection_columns"] = item.Items[1].Items[0].GetValue<String>();
+                if (item.Items[0] == "Frontside/RowNumber") row["inspection_rows"] = item.Items[1].Items[0].GetValue<String>();
             }
-            return recipeParams;
+
+            recipeParmas.Rows.Add(row);
+            return recipeParmas;
 
         }
 
