@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using ARMS.Controller;
 using Secs4Net;
 using System.Net;
+using log4net;
+using System.Reflection;
 
 namespace ARMS.View
 {
@@ -13,24 +15,43 @@ namespace ARMS.View
     {
         SecsGem driver;
         dynamic form;
+        private static readonly ILog log = LogManager.GetLogger("ARMS/Finction View");
 
         public FunctionView(dynamic form)
         {
             this.form = form;
-            driver = new SecsGem(false, IPAddress.Any, 5717);
+            try
+            {
+                driver = new SecsGem(false, IPAddress.Any, 5717);
+                log.Info("SECS/GEM Driver is initialized at 5717 port");
+                form.StatusColor(true);
+            }
+            catch(Exception e)
+            {
+                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
+            }
             driver.PrimaryMessageReceived += msgReceived;
+            
         }
 
         public void start()
         {
-            driver.Start();
+            try
+            {
+                driver.Start();
+                log.Info("SECS/GEM Driver Start");
+            }catch(Exception e)
+            {
+                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
+            }
+            
         }
 
         public void msgReceived(object sender, PrimaryMessageWrapper pMsg)
         {
             int F = pMsg.Message.F;
             int S = pMsg.Message.S;
-
+            log.Info($"SECS/GEM Message received, S{S} F{F}");
             switch (S)
             {
 

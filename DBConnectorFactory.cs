@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using log4net;
+using System.Reflection;
 
 namespace ARMS
 {
     class DBConnectorFactory
     {
-        
+        private static readonly ILog log = LogManager.GetLogger("ARMS/DBConnection Factory");
+
 
         public MySqlConnection getConnection()
         {
@@ -31,6 +34,11 @@ namespace ARMS
             _strArg.Append(";Pwd = ");
             _strArg.Append("abc123**");                 // PWD
             _strArg.Append(";");
+            log.Info($"DB Connection info - Server=10.21.11.210");
+            log.Info($"DB Connection info - Port=3306");
+            log.Info($"DB Connection info - Database=recipe");
+            log.Info($"DB Connection info - Uid=aoi");
+            log.Info($"DB Connection info - Pwd=***********");
             return _strArg.ToString();
         }
     }
