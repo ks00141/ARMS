@@ -40,6 +40,7 @@ namespace ARMS.Controller
             recipeParams[1] = new SpecDAO().selectQuery(recipeParams[0].GetClusterRecipe());
 
             byte FLAG = new EntityCompare(recipeParams[0], recipeParams[1]).compare();
+            //byte FLAG = 0;
 
             if (FLAG == 0)
             {
@@ -57,6 +58,10 @@ namespace ARMS.Controller
                                     Item.L(
                                         Item.U4(1),
                                         Item.L(
+                                            Item.L(
+                                                Item.A("PORTID"),
+                                                Item.A("LOTID")
+                                            ),
                                             Item.L(
                                                 Item.A("RECIPEID"),
                                                 Item.A(recipeParams[0].GetClusterRecipe())

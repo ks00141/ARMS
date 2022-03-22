@@ -47,22 +47,22 @@ namespace ARMS.DAO
             log.Info($"cluster_recipe column insert data : {row["cluster_recipe"]}");
             foreach (Item item in items.Items)
             {
-                if (item.Items[0] == "Frontside/RecipeName")
+                if (item.Items[0] == "Frontside\\RecipeName")
                 {
                     row["frontside_recipe"] = item.Items[1].Items[0].GetValue<String>();
                     log.Info($"frontside_recipe column insert data : {row["frontside_recipe"]}");
                 }
-                if (item.Items[0] == "Frontside/TestableDies")
+                if (item.Items[0] == "Frontside\\TestableDies")
                 {
                     row["inspection_dies"] = item.Items[1].Items[0].GetValue<String>();
                     log.Info($"inspection_dies column insert data : {row["inspection_dies"]}");
                 }
-                if (item.Items[0] == "Frontside/ColumnNumber")
+                if (item.Items[0] == "Frontside\\ColumnNumber")
                 {
                     row["inspection_columns"] = item.Items[1].Items[0].GetValue<String>();
                     log.Info($"inspection_columns column insert data : {row["inspection_columns"]}");
                 }
-                if (item.Items[0] == "Frontside/RowNumber")
+                if (item.Items[0] == "Frontside\\RowNumber")
                 {
                     row["inspection_rows"] = item.Items[1].Items[0].GetValue<String>();
                     log.Info($"inspection_rows column insert data : {row["inspection_rows"]}");

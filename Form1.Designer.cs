@@ -29,39 +29,11 @@ namespace ARMS
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
             this.STATUS_RB = new MetroSet_UI.Controls.MetroSetRadioButton();
             this.metroSetButton1 = new MetroSet_UI.Controls.MetroSetButton();
             this.STATUS_LB = new MetroSet_UI.Controls.MetroSetLabel();
             this.SuspendLayout();
-            // 
-            // metroSetControlBox1
-            // 
-            this.metroSetControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroSetControlBox1.CloseHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.metroSetControlBox1.CloseHoverForeColor = System.Drawing.Color.White;
-            this.metroSetControlBox1.CloseNormalForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
-            this.metroSetControlBox1.IsDerivedStyle = true;
-            this.metroSetControlBox1.Location = new System.Drawing.Point(218, 2);
-            this.metroSetControlBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.metroSetControlBox1.MaximizeBox = true;
-            this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.MaximizeNormalForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.MinimizeBox = true;
-            this.metroSetControlBox1.MinimizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.metroSetControlBox1.MinimizeHoverForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.MinimizeNormalForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.Name = "metroSetControlBox1";
-            this.metroSetControlBox1.Size = new System.Drawing.Size(100, 25);
-            this.metroSetControlBox1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetControlBox1.StyleManager = null;
-            this.metroSetControlBox1.TabIndex = 17;
-            this.metroSetControlBox1.Text = "metroSetControlBox1";
-            this.metroSetControlBox1.ThemeAuthor = "Narwin";
-            this.metroSetControlBox1.ThemeName = "MetroLite";
             // 
             // metroSetLabel1
             // 
@@ -145,7 +117,6 @@ namespace ARMS
             this.ClientSize = new System.Drawing.Size(290, 295);
             this.Controls.Add(this.STATUS_LB);
             this.Controls.Add(this.metroSetButton1);
-            this.Controls.Add(this.metroSetControlBox1);
             this.Controls.Add(this.STATUS_RB);
             this.Controls.Add(this.metroSetLabel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -158,7 +129,6 @@ namespace ARMS
         }
 
         #endregion
-        private MetroSet_UI.Controls.MetroSetControlBox metroSetControlBox1;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
         private MetroSet_UI.Controls.MetroSetRadioButton STATUS_RB;
         private MetroSet_UI.Controls.MetroSetButton metroSetButton1;

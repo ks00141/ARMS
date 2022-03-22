@@ -60,15 +60,24 @@ namespace ARMS.DAO
                 log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
             }
 
-            entity = new Entity(
-                specParams.Rows[0][0].ToString(),
-                specParams.Rows[0][1].ToString(),
-                specParams.Rows[0][2].ToString(),
-                specParams.Rows[0][3].ToString(),
-                specParams.Rows[0][4].ToString()
-                );
+            if (specParams.Rows.Count == 0)
+            {
 
-            return entity;
+                return new Entity();
+            }
+            else
+            {
+
+                entity = new Entity(
+                    specParams.Rows[0][0].ToString(),
+                    specParams.Rows[0][1].ToString(),
+                    specParams.Rows[0][2].ToString(),
+                    specParams.Rows[0][3].ToString(),
+                    specParams.Rows[0][4].ToString()
+                    );
+
+                return entity;
+            }
         }
     }
 }

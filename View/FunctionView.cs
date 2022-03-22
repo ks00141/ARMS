@@ -23,7 +23,7 @@ namespace ARMS.View
             try
             {
                 driver = new SecsGem(false, IPAddress.Any, 5717);
-                log.Info("SECS/GEM Driver is initialized at 5717 port");
+                log.Info("SECS/GEM Driver is initialized");
                 form.StatusColor(true);
             }
             catch(Exception e)

@@ -14,7 +14,7 @@ using System.Reflection;
 
 namespace ARMS
 {
-    public partial class Form1 : MetroSetForm
+    public partial class Form1 : Form
     {
         bool flag;
         FunctionView functionView;
