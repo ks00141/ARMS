@@ -17,6 +17,11 @@ namespace ARMS.Model
         private String inspectionDies;
         private String inspectionColumns;
         private String inspectionRows;
+
+        public Entity()
+        {
+
+        }
         public Entity(String clusterRecipe, String frontsideRecipe, String inspectionDies, String inspectionColumns, String inspectionRows)
         {
             log.Info("Entity Instance create");
