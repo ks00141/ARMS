@@ -19,8 +19,6 @@ namespace ARMS.DAO
 
         public JobDAO()
         {
-
-
             recipeParams = new DataTable();
             log.Info("DataTable Instance created");
 
@@ -39,11 +37,11 @@ namespace ARMS.DAO
 
         public Entity parseMsg(PrimaryMessageWrapper pMsg)
         {
-            Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[3];
+            Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[5];
             log.Info($"Count of Primary Msg Items : {items.Count}");
 
             DataRow row = recipeParams.NewRow();
-            row["cluster_recipe"] = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>();
+            row["cluster_recipe"] = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>();
             log.Info($"cluster_recipe column insert data : {row["cluster_recipe"]}");
             foreach (Item item in items.Items)
             {
@@ -71,17 +69,23 @@ namespace ARMS.DAO
             }
 
             recipeParams.Rows.Add(row);
+            if (recipeParams.Rows.Count == 0)
+            {
+                log.Debug("SECS/GEM Message parsing failed");
+                return new Entity();
+            }
+            else
+            {
+                entity = new Entity(
+                    recipeParams.Rows[0][0].ToString(),
+                    recipeParams.Rows[0][1].ToString(),
+                    recipeParams.Rows[0][2].ToString(),
+                    recipeParams.Rows[0][3].ToString(),
+                    recipeParams.Rows[0][4].ToString()
+                    );
 
-            entity = new Entity(
-                recipeParams.Rows[0][0].ToString(),
-                recipeParams.Rows[0][1].ToString(),
-                recipeParams.Rows[0][2].ToString(),
-                recipeParams.Rows[0][3].ToString(),
-                recipeParams.Rows[0][4].ToString()
-                );
-
-
-            return entity;
+                return entity;
+            }
         }
         
     }

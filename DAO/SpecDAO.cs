@@ -20,25 +20,18 @@ namespace ARMS.DAO
         private static readonly ILog log = LogManager.GetLogger("ARMS/S2F41 DB Finder");
         public SpecDAO()
         {
-            try
-            {
-                conn = new DBConnectorFactory().getConnection();
-                this.queryForm =
-                            @"SELECT
-	                            a.cluster_recipe
-	                            , a.frontside_recipe
-	                            , a.inspection_dies
-	                            , a.inspection_columns
-	                            , a.inspection_rows
-                            FROM 
-	                            recipe.spec a
-                            WHERE 1 = 1
-                                AND a.cluster_recipe ='{0}';";
-
-            }catch(Exception e)
-            {
-                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
-            }
+            conn = new DBConnectorFactory().getConnection();
+            this.queryForm =
+                        @"SELECT
+	                        a.cluster_recipe
+	                        , a.frontside_recipe
+	                        , a.inspection_dies
+	                        , a.inspection_columns
+	                        , a.inspection_rows
+                        FROM 
+	                        recipe.spec a
+                        WHERE 1 = 1
+                            AND a.cluster_recipe ='{0}';";
         }
 
         public Entity selectQuery(String clusterRecipe)
@@ -48,26 +41,17 @@ namespace ARMS.DAO
             log.Info($"SELECT query : \n\t\t {query}");
             DataTable specParams = new DataTable();
 
-            try
-            {
-                MySqlDataAdapter adt = new MySqlDataAdapter(query, conn);
-                log.Info("SELECT query SUCC");
-                adt.Fill(specParams);
-
-            }
-            catch(Exception e)
-            {
-                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
-            }
+            MySqlDataAdapter adt = new MySqlDataAdapter(query, conn);
+            log.Info("SELECT query SUCC");
+            adt.Fill(specParams);
 
             if (specParams.Rows.Count == 0)
             {
-
+                log.Debug("query result none");
                 return new Entity();
             }
             else
             {
-
                 entity = new Entity(
                     specParams.Rows[0][0].ToString(),
                     specParams.Rows[0][1].ToString(),
