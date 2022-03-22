@@ -74,7 +74,7 @@ namespace ARMS.View
                     switch (F)
                     {
                         case 41:
-                            new Controller.S2F41Controller().req(pMsg, driver);
+                            new Controller.S2F41Controller(driver).req(pMsg);
                             break;
                     }
                     break;

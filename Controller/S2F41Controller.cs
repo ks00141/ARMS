@@ -14,39 +14,57 @@ namespace ARMS.Controller
     class S2F41Controller
     {
         Entity[] recipeParams;
+        SecsGem driver;
+        String clusterRecipe;
+        String portId;
+        String lotId;
         private static readonly ILog log = LogManager.GetLogger("ARMS/S2F41 Controller");
 
-        public S2F41Controller()
+        public S2F41Controller(SecsGem driver)
         {
+            this.driver = driver;
             recipeParams = new Entity[2];
             log.Info("Recipe Parameter Array allocate Succ");
         }
-        public void req(PrimaryMessageWrapper pMsg, SecsGem driver)
+        public void req(PrimaryMessageWrapper pMsg)
         {
-            pMsg.ReplyAsync(
-                new SecsMessage(
-                    2,
-                    42,
-                    "S2F42",
-                    Item.L(
-                        Item.U4(0)
-                    )
-                )
-            );
+            
+            replyS2F42(pMsg);
             log.Info("SECS/GEM Message reply, S2 F42");
-
-            recipeParams[0] = new JobDAO().parseMsg(pMsg);
-            log.Info("SECS/GEM Message parse SUCC");
-            recipeParams[1] = new SpecDAO().selectQuery(recipeParams[0].GetClusterRecipe());
-
-            byte FLAG = new EntityCompare(recipeParams[0], recipeParams[1]).compare();
-            //byte FLAG = 0;
-
-            if (FLAG == 0)
+            
+            try
             {
-                try
+                this.portId = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>();
+                this.lotId = pMsg.Message.SecsItem.Items[1].Items[0].Items[1].GetValue<String>();
+                this.clusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>();
+                recipeParams[0] = new JobDAO().parseMsg(pMsg);
+                log.Info("SECS/GEM Message parse SUCC");
+
+                recipeParams[1] = new SpecDAO().selectQuery(recipeParams[0].GetClusterRecipe());
+
+                byte FLAG = new EntityCompare(recipeParams[0], recipeParams[1]).compare();
+
+                if (FLAG == 0)
                 {
-                    driver.SendAsync(
+                    sendPass();
+                    log.Info("S6 F11 Message Send SUCC - PASS");
+                }
+                else
+                {
+                    sendNg();
+                    log.Info("S6 F11 Message Send SUCC - NG");
+                }
+            }
+            catch(Exception e)
+            {
+                sendNg();
+                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
+            }
+
+        }
+        public void sendPass()
+        {
+            driver.SendAsync(
                         new SecsMessage(
                             6,
                             11,
@@ -59,12 +77,12 @@ namespace ARMS.Controller
                                         Item.U4(1),
                                         Item.L(
                                             Item.L(
-                                                Item.A("PORTID"),
-                                                Item.A("LOTID")
+                                                Item.A(portId),
+                                                Item.A(lotId)
                                             ),
                                             Item.L(
                                                 Item.A("RECIPEID"),
-                                                Item.A(recipeParams[0].GetClusterRecipe())
+                                                Item.A(clusterRecipe)
                                             )
                                         )
                                     )
@@ -72,19 +90,11 @@ namespace ARMS.Controller
                             )
                         )
                     );
-                    log.Info("S6 F11 Message Send SUCC - PASS");
-                }
-                catch(Exception e)
-                {
-                    log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
-                }
-            }
-            else
-            {
-                try
-                {
-
-                    driver.SendAsync(
+            
+        }
+        public void sendNg()
+        {
+            driver.SendAsync(
                         new SecsMessage(
                             6,
                             11,
@@ -97,8 +107,12 @@ namespace ARMS.Controller
                                         Item.U4(1),
                                         Item.L(
                                             Item.L(
+                                                Item.A(portId),
+                                                Item.A(lotId)
+                                            ),
+                                            Item.L(
                                                 Item.A("RECIPEID"),
-                                                Item.A(recipeParams[0].GetClusterRecipe())
+                                                Item.A(clusterRecipe)
                                             )
                                         )
                                     )
@@ -106,14 +120,19 @@ namespace ARMS.Controller
                             )
                         )
                     );
-
-                    log.Info("S6 F11 Message Send SUCC - NG");
-                }
-                catch(Exception e)
-                {
-                    log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
-                }
-            }
+        }
+        public void replyS2F42(PrimaryMessageWrapper pMsg)
+        {
+            pMsg.ReplyAsync(
+                new SecsMessage(
+                    2,
+                    42,
+                    "S2F42",
+                    Item.L(
+                        Item.U4(0)
+                    )
+                )
+            );
         }
     }
 }
