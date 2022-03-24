@@ -45,7 +45,7 @@ namespace ARMS.DAO
             log.Info("SELECT query SUCC");
             adt.Fill(specParams);
 
-            if (specParams.Rows.Count == 0)
+            if (specParams == null || specParams.Rows.Count == 0)
             {
                 log.Debug("query result none");
                 return new Entity();

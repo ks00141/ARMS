@@ -41,13 +41,15 @@ namespace ARMS.DAO
             log.Info($"Count of Primary Msg Items : {items.Count}");
 
             DataRow row = recipeParams.NewRow();
+
             row["cluster_recipe"] = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>();
+            row["cluster_recipe"] = row["cluster_recipe"].ToString().Replace('\\', '/');
             log.Info($"cluster_recipe column insert data : {row["cluster_recipe"]}");
             foreach (Item item in items.Items)
             {
                 if (item.Items[0] == "Frontside\\RecipeName")
                 {
-                    row["frontside_recipe"] = item.Items[1].Items[0].GetValue<String>();
+                    row["frontside_recipe"] = item.Items[1].Items[0].GetValue<String>().Replace('\\','/');
                     log.Info($"frontside_recipe column insert data : {row["frontside_recipe"]}");
                 }
                 if (item.Items[0] == "Frontside\\TestableDies")
@@ -69,10 +71,12 @@ namespace ARMS.DAO
             }
 
             recipeParams.Rows.Add(row);
-            if (recipeParams.Rows.Count == 0)
+            if (recipeParams == null || recipeParams.Rows.Count == 0)
             {
                 log.Debug("SECS/GEM Message parsing failed");
                 return new Entity();
+                
+
             }
             else
             {
