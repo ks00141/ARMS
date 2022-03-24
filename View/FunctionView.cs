@@ -22,7 +22,7 @@ namespace ARMS.View
             this.form = form;
             try
             {
-                driver = new SecsGem(false, IPAddress.Any, 5717);
+                driver = new SecsGem(false, IPAddress.Any, 5000);
                 log.Info("SECS/GEM Driver is initialized");
                 form.StatusColor(true);
             }
