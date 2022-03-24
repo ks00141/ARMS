@@ -17,8 +17,11 @@ namespace ARMS.Controller
                     14,
                     "S1F14",
                     Item.L(
-                        Item.A("ARMS"),
-                        Item.A("V 0.1.0")
+                        Item.B(0),
+                        Item.L(    
+                            Item.A("ARMS"),
+                            Item.A("0.1.0")
+                        )
                     )
                 )
             );
