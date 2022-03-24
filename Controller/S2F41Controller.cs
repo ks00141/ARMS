@@ -9,6 +9,7 @@ using ARMS.Model;
 using log4net;
 using System.Reflection;
 
+
 namespace ARMS.Controller
 {
     class S2F41Controller
@@ -18,49 +19,67 @@ namespace ARMS.Controller
         String clusterRecipe;
         String portId;
         String lotId;
+        bool flag;
         private static readonly ILog log = LogManager.GetLogger("ARMS/S2F41 Controller");
-
+        
         public S2F41Controller(SecsGem driver)
         {
             this.driver = driver;
             recipeParams = new Entity[2];
             log.Info("Recipe Parameter Array allocate Succ");
+            flag = false;
         }
         public void req(PrimaryMessageWrapper pMsg)
         {
-            
-            replyS2F42(pMsg);
-            log.Info("SECS/GEM Message reply, S2 F42");
-            
             try
             {
-                this.portId = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>();
-                this.lotId = pMsg.Message.SecsItem.Items[1].Items[0].Items[1].GetValue<String>();
-                this.clusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>();
-                recipeParams[0] = new JobDAO().parseMsg(pMsg);
-                log.Info("SECS/GEM Message parse SUCC");
-
-                recipeParams[1] = new SpecDAO().selectQuery(recipeParams[0].GetClusterRecipe());
-
-                byte FLAG = new EntityCompare(recipeParams[0], recipeParams[1]).compare();
-
-                if (FLAG == 0)
-                {
-                    sendPass();
-                    log.Info("S6 F11 Message Send SUCC - PASS");
-                }
-                else
-                {
-                    sendNg();
-                    log.Info("S6 F11 Message Send SUCC - NG");
-                }
+                replyS2F42(pMsg);
+                log.Info("SECS/GEM Message reply, S2 F42");
             }
             catch(Exception e)
             {
-                sendNg();
+                pMsg.ReplyAsync(
+                   new SecsMessage(
+                       2,
+                       42,
+                       "S2F42",
+                       Item.L(
+                           Item.U4(3)
+                       )
+                   )
+               );
                 log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
             }
+            if (flag) { 
 
+                try
+                {
+                
+                
+                    recipeParams[0] = new JobDAO().parseMsg(pMsg);
+                    log.Info("SECS/GEM Message parse SUCC");
+
+                    recipeParams[1] = new SpecDAO().selectQuery(recipeParams[0].GetClusterRecipe());
+
+                    byte FLAG = new EntityCompare(recipeParams[0], recipeParams[1]).compare();
+
+                    if (FLAG == 0)
+                    {
+                        sendPass();
+                        log.Info("S6 F11 Message Send SUCC - PASS");
+                    }
+                    else
+                    {
+                        sendNg();
+                        log.Info("S6 F11 Message Send SUCC - NG");
+                    }
+                }
+                catch(Exception e)
+                {
+                    sendNg();
+                    log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
+                }
+            }
         }
         public void sendPass()
         {
@@ -123,6 +142,11 @@ namespace ARMS.Controller
         }
         public void replyS2F42(PrimaryMessageWrapper pMsg)
         {
+            this.portId = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>();
+            this.lotId = pMsg.Message.SecsItem.Items[1].Items[0].Items[1].GetValue<String>();
+            this.clusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>();
+            this.clusterRecipe = this.clusterRecipe.Replace('\\', '/');
+            this.flag = true;
             pMsg.ReplyAsync(
                 new SecsMessage(
                     2,
