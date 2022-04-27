@@ -113,12 +113,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\PpidSerachController.cs" />
     <Compile Include="Controller\S1F13Controller.cs" />
     <Compile Include="Controller\S1F3Controller.cs" />
     <Compile Include="Controller\S2F41Controller.cs" />
-    <Compile Include="DAO\JobDAO.cs" />
-    <Compile Include="DAO\SpecDAO.cs" />
-    <Compile Include="Model\Entity.cs" />
+    <Compile Include="Controller\SearchController.cs" />
+    <Compile Include="Controller\SecsGemController.cs" />
+    <Compile Include="Dao\JobDAO.cs" />
+    <Compile Include="Dao\SecsGemDao.cs" />
+    <Compile Include="Dao\SpecDAO.cs" />
+    <Compile Include="Dao\SpecDbDao.cs" />
+    <Compile Include="Model\RecipeParam.cs" />
     <Compile Include="EntityCompare.cs" />
     <Compile Include="View\FunctionView.cs" />
     <Compile Include="DBConnectorFactory.cs" />

@@ -14,17 +14,16 @@ namespace ARMS.View
     class FunctionView
     {
         SecsGem driver;
-        dynamic form;
+        Form1 form;
         private static readonly ILog log = LogManager.GetLogger("ARMS/Finction View");
 
-        public FunctionView(dynamic form)
+        public FunctionView(Form1 form)
         {
             this.form = form;
             try
             {
                 driver = new SecsGem(false, IPAddress.Any, 5000);
                 log.Info("SECS/GEM Driver is initialized");
-                form.StatusColor(true);
             }
             catch(Exception e)
             {
@@ -74,11 +73,70 @@ namespace ARMS.View
                     switch (F)
                     {
                         case 41:
-                            new Controller.S2F41Controller(driver).req(pMsg);
+                            String RCMD = pMsg.Message.SecsItem.Items[0].GetValue<String>();
+                            log.Info($"RMCD : {RCMD}");
+                            
+                            if (RCMD == "RECIPE_PARA_CHECK")
+                            {
+                                new S2F41Controller(driver).req(pMsg, form.checkboxStat());
+                                
+                            }
+                            else if (RCMD == "RECIPE_PARA_UPLOAD")
+                            {
+                                Model.RecipeParam recipeParam = new Controller.SecsGemController(driver).req(pMsg);
+                                form.setToolClusterRecipe(recipeParam.getClusterRecipe());
+                                log.Info($"Set Form Cluster Recipe : {recipeParam.getClusterRecipe()}");
+                                form.setToolFrontsideRecipe(recipeParam.getFrontsideRecipe());
+                                log.Info($"Set Form Frontside Recipe : {recipeParam.getFrontsideRecipe()}");
+                                form.setToolInspectionDies(recipeParam.getInspectionDies());
+                                log.Info($"Set Form Inspection Dies : {recipeParam.getInspectionDies()}");
+                                form.setToolInspectionColumns(recipeParam.getInspectionColumns());
+                                log.Info($"Set Form Inspection Columns : {recipeParam.getInspectionColumns()}");
+                                form.setToolInspectionRows(recipeParam.getInspectionRows());
+                                log.Info($"Set Form Inspection Rows : {recipeParam.getInspectionRows()}");
+                            }
                             break;
                     }
                     break;
             }
+        }
+
+        public void reqRecipe(String ppid)
+        {
+            
+            driver.SendAsync(new SecsMessage(
+                            6,
+                            11,
+                            "S6F11",
+                            Item.L(
+                                Item.U4(0),
+                                Item.U4(3000),
+                                Item.L(
+                                    Item.L(
+                                        Item.U4(1),
+                                        Item.L(
+                                            Item.L(
+                                                Item.A("RECIPEID"),
+                                                Item.A(ppid.Replace('/', '\\'))
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    );
+            Console.WriteLine("send S6F11");
+        }
+
+        public void specSearch(String ppid)
+        {
+            Model.RecipeParam recipeParam = new SearchController().getRecipe(ppid);
+            Console.WriteLine(recipeParam.getClusterRecipe());
+            form.setSpecClusterRecipe(recipeParam.getClusterRecipe());
+            form.setSpecFrontsideRecipe(recipeParam.getFrontsideRecipe());
+            form.setSpecInspectionDies(recipeParam.getInspectionDies());
+            form.setSpecInspectionColumns(recipeParam.getInspectionColumns());
+            form.setSpecInspectionRows(recipeParam.getInspectionRows());
         }
 
     }

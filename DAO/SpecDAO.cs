@@ -15,7 +15,7 @@ namespace ARMS.DAO
     class SpecDAO
     {
         MySqlConnection conn;
-        Entity entity;
+        RecipeParam entity;
         String queryForm;
         private static readonly ILog log = LogManager.GetLogger("ARMS/S2F41 DB Finder");
         public SpecDAO()
@@ -34,10 +34,10 @@ namespace ARMS.DAO
                             AND a.cluster_recipe ='{0}';";
         }
 
-        public Entity selectQuery(String clusterRecipe)
+        public RecipeParam selectQuery(String clusterRecipe)
         {
 
-            String query = String.Format(this.queryForm, clusterRecipe);
+            /*String query = String.Format(this.queryForm, clusterRecipe);
             log.Info($"SELECT query : \n\t\t {query}");
             DataTable specParams = new DataTable();
 
@@ -48,11 +48,11 @@ namespace ARMS.DAO
             if (specParams == null || specParams.Rows.Count == 0)
             {
                 log.Debug("query result none");
-                return new Entity();
+                return new RecipeParam();
             }
             else
             {
-                entity = new Entity(
+                entity = new RecipeParam(
                     specParams.Rows[0][0].ToString(),
                     specParams.Rows[0][1].ToString(),
                     specParams.Rows[0][2].ToString(),
@@ -60,6 +60,47 @@ namespace ARMS.DAO
                     specParams.Rows[0][4].ToString()
                     );
 
+                return entity;
+            }*/
+
+            this.entity = new RecipeParam();
+            if (clusterRecipe != "")
+            {
+                String query = String.Format(this.queryForm, clusterRecipe);
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    conn.Open();
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        entity.setClusterRecipe(rdr["cluster_recipe"].ToString());
+                        log.Info($"SPEC Cluster : {rdr["cluster_recipe"].ToString()}");
+                        entity.setFrontsideRecipe(rdr["frontside_recipe"].ToString());
+                        log.Info($"SPEC Frontside : {rdr["frontside_recipe"].ToString()}");
+                        entity.setInspectionDies(rdr["inspection_dies"].ToString());
+                        log.Info($"SPEC Inspection Dies : {rdr["inspection_dies"].ToString()}");
+                        entity.setInsepctionColumns(rdr["inspection_columns"].ToString());
+                        log.Info($"SPEC Inspection Columns : {rdr["inspection_columns"].ToString()}");
+                        entity.setInspectionRows(rdr["inspection_rows"].ToString());
+                        log.Info($"SPEC Inspection Rows : {rdr["inspection_rows"].ToString()}");
+                        return entity;
+                    }
+                    else
+                    {
+                        return entity;
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return entity;
+                }
+            }
+            else
+            {
                 return entity;
             }
         }

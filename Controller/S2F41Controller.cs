@@ -14,22 +14,20 @@ namespace ARMS.Controller
 {
     class S2F41Controller
     {
-        Entity[] recipeParams;
+        RecipeParam[] recipeParams;
         SecsGem driver;
         String clusterRecipe;
         String portId;
         String lotId;
-        bool flag;
         private static readonly ILog log = LogManager.GetLogger("ARMS/S2F41 Controller");
         
         public S2F41Controller(SecsGem driver)
         {
             this.driver = driver;
-            recipeParams = new Entity[2];
+            recipeParams = new RecipeParam[2];
             log.Info("Recipe Parameter Array allocate Succ");
-            flag = false;
         }
-        public void req(PrimaryMessageWrapper pMsg)
+        public void req(PrimaryMessageWrapper pMsg, bool flag)
         {
             try
             {
@@ -50,16 +48,16 @@ namespace ARMS.Controller
                );
                 log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
             }
-            if (flag) { 
+            if (!flag) {
+                
+                log.Info("Compare mode");
 
                 try
                 {
-                
-                
                     recipeParams[0] = new JobDAO().parseMsg(pMsg);
                     log.Info("SECS/GEM Message parse SUCC");
 
-                    recipeParams[1] = new SpecDAO().selectQuery(recipeParams[0].GetClusterRecipe());
+                    recipeParams[1] = new SpecDAO().selectQuery(recipeParams[0].getClusterRecipe());
 
                     byte FLAG = new EntityCompare(recipeParams[0], recipeParams[1]).compare();
 
@@ -79,6 +77,11 @@ namespace ARMS.Controller
                     sendNg();
                     log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
                 }
+            }
+            else
+            {
+                log.Info("All pass mode");
+                sendPass();
             }
         }
         public void sendPass()
@@ -146,7 +149,6 @@ namespace ARMS.Controller
             this.lotId = pMsg.Message.SecsItem.Items[1].Items[0].Items[1].GetValue<String>();
             this.clusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>();
             this.clusterRecipe = this.clusterRecipe.Replace('\\', '/');
-            this.flag = true;
             pMsg.ReplyAsync(
                 new SecsMessage(
                     2,
