@@ -49,10 +49,8 @@ namespace ARMS.Dao
             try
             {
                 log.Info("Recipe Para Parsing Start");
-                Item items = pMsg.Message.SecsItem.Items[1].Items[3];
-                Console.WriteLine(pMsg.Message);
-                Console.WriteLine(items.Count);
-                String clusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].GetValue<String>().Replace('\\', '/');
+                Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[3];
+                String clusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>().Replace('\\', '/');
                 log.Info($"Cluster Recipe : {clusterRecipe}");
                 String frontsideReicpe = null;
                 String inspectionDies = null;
@@ -81,7 +79,6 @@ namespace ARMS.Dao
                         inspectionRows = item.Items[1].Items[0].GetValue<String>();
                         log.Info($"Inspection Rows : {inspectionRows}");
                     }
-
                 }
 
                 param.setClusterRecipe(clusterRecipe);
@@ -89,7 +86,7 @@ namespace ARMS.Dao
                 param.setInspectionDies(inspectionDies);
                 param.setInsepctionColumns(inspectionColumns);
                 param.setInspectionRows(inspectionRows);
-                log.Info("Recipe Para Parsing Fail");
+                log.Info("Recipe Para Parsing Succ");
                 return param;
             }
             catch
