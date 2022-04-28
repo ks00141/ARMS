@@ -146,8 +146,11 @@ namespace ARMS.Controller
         public void replyS2F42(PrimaryMessageWrapper pMsg)
         {
             this.portId = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>();
+            log.Info($"SECS/GEM Message Run Port : {portId}");
             this.lotId = pMsg.Message.SecsItem.Items[1].Items[0].Items[1].GetValue<String>();
+            log.Info($"SECS/GEM Message Run Lot Id : {lotId}");
             this.clusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>();
+            log.Info($"SECS/GEM Message reply Run PPID : {this.clusterRecipe}");
             this.clusterRecipe = this.clusterRecipe.Replace('\\', '/');
             pMsg.ReplyAsync(
                 new SecsMessage(
