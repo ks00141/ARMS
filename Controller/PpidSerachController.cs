@@ -13,6 +13,8 @@ namespace ARMS.Controller
         MySqlConnection conn;
         String queryForm;
 
+        public event EventHandler<DataTable> GetPpid;
+
 
         public PpidSearchController()
         {
@@ -48,12 +50,11 @@ namespace ARMS.Controller
             }
         }
 
-        public DataTable getPPID(String clusterRecipe)
+        public void getPPID(String clusterRecipe)
         {
             DataTable resultTable = new DataTable();
             if (clusterRecipe != "")
             {
-
                 String query = String.Format(this.queryForm, clusterRecipe);
                 try
                 {
@@ -63,18 +64,24 @@ namespace ARMS.Controller
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     adp.Fill(resultTable);
                     conn.Close();
-                    return resultTable;
                 }
                 catch (Exception e)
                 {
                     conn.Close();
                     Console.WriteLine(e);
-                    return new DataTable();
+                }
+                finally
+                {
+                    if (GetPpid != null)
+                    {
+                        GetPpid(this, resultTable);
+                    }
+                    conn.Close();
                 }
             }
             else
             {
-                return new DataTable();
+                // return new DataTable();
             }
         }
 
