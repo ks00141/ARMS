@@ -20,7 +20,6 @@ namespace ARMS.DAO
         private static readonly ILog log = LogManager.GetLogger("ARMS/S2F41 DB Finder");
         public SpecDAO()
         {
-            conn = new DBConnectorFactory().getConnection();
             this.queryForm =
                         @"SELECT
 	                        a.cluster_recipe
@@ -62,10 +61,10 @@ namespace ARMS.DAO
 
                 return entity;
             }*/
-
             this.entity = new RecipeParam();
             if (clusterRecipe != "")
             {
+                conn = new DBConnectorFactory().getConnection();
                 String query = String.Format(this.queryForm, clusterRecipe);
                 try
                 {
@@ -85,10 +84,14 @@ namespace ARMS.DAO
                         log.Info($"SPEC Inspection Columns : {rdr["inspection_columns"].ToString()}");
                         entity.setInspectionRows(rdr["inspection_rows"].ToString());
                         log.Info($"SPEC Inspection Rows : {rdr["inspection_rows"].ToString()}");
+                        rdr.Close();
+                        conn.Close();
                         return entity;
                     }
                     else
                     {
+                        rdr.Close();
+                        conn.Close();
                         return entity;
                     }
 
@@ -96,6 +99,7 @@ namespace ARMS.DAO
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
+                    conn.Close();
                     return entity;
                 }
             }
