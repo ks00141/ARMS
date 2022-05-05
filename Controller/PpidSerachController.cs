@@ -63,27 +63,20 @@ namespace ARMS.Controller
 
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     adp.Fill(resultTable);
-                    conn.Close();
                 }
                 catch (Exception e)
                 {
-                    conn.Close();
                     Console.WriteLine(e);
                 }
                 finally
                 {
-                    if (GetPpid != null)
-                    {
-                        GetPpid(this, resultTable);
-                    }
                     conn.Close();
                 }
             }
-            else
+            if (GetPpid != null)
             {
-                // return new DataTable();
+                GetPpid(this, resultTable);
             }
         }
-
     }
 }

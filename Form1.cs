@@ -96,6 +96,7 @@ namespace ARMS
                 CB_PPID.DataSource = dt;
                 CB_PPID.DisplayMember = "ppid";
             };
+            psc.getPPID(TB_DEVICE.Text);
         }
 
         private void label1_Click(object sender, EventArgs e)
