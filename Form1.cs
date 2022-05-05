@@ -36,6 +36,8 @@ namespace ARMS
             try
             {
                 functionView = new FunctionView(this);
+                functionView.SetToolValue += FunctionView_SetToolValue;
+                functionView.SetSpecValue += FunctionView_SetSpecValue;
                 STATUS_LB.Text = "SECS/GEM Driver init";
                 functionView.start();
 
@@ -46,6 +48,24 @@ namespace ARMS
             }
 
 
+        }
+
+        private void FunctionView_SetSpecValue(object sender, Model.RecipeParam e)
+        {
+            this.TB_CLUSTERRECIPE.Text = e.getClusterRecipe();
+            this.TB_FRONTSIDERECIPE.Text = e.getFrontsideRecipe();
+            this.TB_INSPECTIONDIES.Text = e.getInspectionDies();
+            this.TB_INSPECTIONCOLUMNS.Text = e.getInspectionColumns();
+            this.TB_INSPECTIONROWS.Text = e.getInspectionRows();
+        }        
+
+        private void FunctionView_SetToolValue(object sender, Model.RecipeParam e)
+        {
+            this.TB_CLUSTERRECIPE_SG.Text = e.getClusterRecipe();
+            this.TB_FRONTSIDERECIPE_SG.Text = e.getFrontsideRecipe();
+            this.TB_INSPECTIONDIES_SG.Text = e.getInspectionDies();
+            this.TB_INSPECTIONCOLUMNS_SG.Text = e.getInspectionColumns();
+            this.TB_INSPECTIONROWS_SG.Text = e.getInspectionRows();
         }
 
         public bool checkboxStat()
@@ -69,56 +89,13 @@ namespace ARMS
 
         private void BTN_PPIDSERACH_Click(object sender, EventArgs e)
         {
-            CB_PPID.DataSource = null;
-            CB_PPID.DataSource = new Controller.PpidSearchController().getPPID(TB_DEVICE.Text);
-            CB_PPID.DisplayMember = "ppid";
-        }
-
-        public void setToolClusterRecipe(String cluster_recipe)
-        {
-            TB_CLUSTERRECIPE_SG.Text = cluster_recipe;
-        }
-        public void setToolFrontsideRecipe(String frontside_recipe)
-        {
-            TB_FRONTSIDERECIPE_SG.Text = frontside_recipe;
-        }
-
-        public void setToolInspectionDies(String inspection_dies)
-        {
-            TB_INSPECTIONDIES_SG.Text = inspection_dies;
-        }
-
-        public void setToolInspectionColumns(String inspection_columns)
-        {
-            TB_INSPECTIONCOLUMNS_SG.Text = inspection_columns;
-        }
-
-        public void setToolInspectionRows(String inspection_rows)
-        {
-            TB_INSPECTIONROWS_SG.Text = inspection_rows;
-        }
-        public void setSpecClusterRecipe(String cluster_recipe)
-        {
-            TB_CLUSTERRECIPE.Text = cluster_recipe;
-        }
-
-        public void setSpecFrontsideRecipe(String frontside_recipe)
-        {
-            TB_FRONTSIDERECIPE.Text = frontside_recipe;
-        }
-
-        public void setSpecInspectionDies(String inspection_dies)
-        {
-            TB_INSPECTIONDIES.Text = inspection_dies;
-        }
-        public void setSpecInspectionColumns(String inspection_columns)
-        {
-            TB_INSPECTIONCOLUMNS.Text = inspection_columns;
-        }
-
-        public void setSpecInspectionRows(String inspection_rows)
-        {
-            TB_INSPECTIONROWS.Text = inspection_rows;
+            Controller.PpidSearchController psc = new Controller.PpidSearchController();
+            psc.GetPpid += delegate (object s, DataTable dt)
+            {
+                CB_PPID.DataSource = null;
+                CB_PPID.DataSource = dt;
+                CB_PPID.DisplayMember = "ppid";
+            };
         }
 
         private void label1_Click(object sender, EventArgs e)

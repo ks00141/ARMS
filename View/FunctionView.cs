@@ -15,6 +15,10 @@ namespace ARMS.View
     {
         SecsGem driver;
         Form1 form;
+
+        public event EventHandler<Model.RecipeParam> SetToolValue;
+        public event EventHandler<Model.RecipeParam> SetSpecValue;
+
         private static readonly ILog log = LogManager.GetLogger("ARMS/Finction View");
 
         public FunctionView(Form1 form)
@@ -29,8 +33,7 @@ namespace ARMS.View
             {
                 log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
             }
-            driver.PrimaryMessageReceived += msgReceived;
-            
+            driver.PrimaryMessageReceived += msgReceived; 
         }
 
         public void start()
@@ -53,7 +56,6 @@ namespace ARMS.View
             log.Info($"SECS/GEM Message received, S{S} F{F}");
             switch (S)
             {
-
                 case 1:
 
                     switch (F)
@@ -79,21 +81,19 @@ namespace ARMS.View
                             if (RCMD == "RECIPE_PARA_CHECK")
                             {
                                 new S2F41Controller(driver).req(pMsg, form.checkboxStat());
-                                
                             }
                             else if (RCMD == "RECIPE_PARA_UPLOAD")
                             {
                                 Model.RecipeParam recipeParam = new Controller.SecsGemController(driver).req(pMsg);
-                                form.setToolClusterRecipe(recipeParam.getClusterRecipe());
-                                log.Info($"Set Form Cluster Recipe : {recipeParam.getClusterRecipe()}");
-                                form.setToolFrontsideRecipe(recipeParam.getFrontsideRecipe());
-                                log.Info($"Set Form Frontside Recipe : {recipeParam.getFrontsideRecipe()}");
-                                form.setToolInspectionDies(recipeParam.getInspectionDies());
-                                log.Info($"Set Form Inspection Dies : {recipeParam.getInspectionDies()}");
-                                form.setToolInspectionColumns(recipeParam.getInspectionColumns());
-                                log.Info($"Set Form Inspection Columns : {recipeParam.getInspectionColumns()}");
-                                form.setToolInspectionRows(recipeParam.getInspectionRows());
-                                log.Info($"Set Form Inspection Rows : {recipeParam.getInspectionRows()}");
+                                if(SetToolValue != null)
+                                {
+                                    SetToolValue(this, recipeParam);
+                                }
+                                log.Info($"set form cluster recipe : {recipeParam.getClusterRecipe()}");
+                                log.Info($"set form frontside recipe : {recipeParam.getClusterRecipe()}");
+                                log.Info($"set form inspection dies : {recipeParam.getClusterRecipe()}");
+                                log.Info($"set form inspection columns : {recipeParam.getClusterRecipe()}");
+                                log.Info($"set form inspection rows : {recipeParam.getClusterRecipe()}");
                             }
                             break;
                     }
@@ -131,12 +131,10 @@ namespace ARMS.View
         public void specSearch(String ppid)
         {
             Model.RecipeParam recipeParam = new SearchController().getRecipe(ppid);
-            Console.WriteLine(recipeParam.getClusterRecipe());
-            form.setSpecClusterRecipe(recipeParam.getClusterRecipe());
-            form.setSpecFrontsideRecipe(recipeParam.getFrontsideRecipe());
-            form.setSpecInspectionDies(recipeParam.getInspectionDies());
-            form.setSpecInspectionColumns(recipeParam.getInspectionColumns());
-            form.setSpecInspectionRows(recipeParam.getInspectionRows());
+            if(SetSpecValue != null)
+            {
+                SetSpecValue(this, recipeParam);
+            }
         }
 
     }
