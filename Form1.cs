@@ -36,8 +36,9 @@ namespace ARMS
             try
             {
                 functionView = new FunctionView(this);
-                functionView.SetToolValue += FunctionView_SetToolValue;
-                functionView.SetSpecValue += FunctionView_SetSpecValue;
+                functionView.ReceivedSpecValue += setSpecValue;
+                functionView.ReceivedToolValue += setToolValue;
+                functionView.ReceivedToolValue += compareValue;
                 STATUS_LB.Text = "SECS/GEM Driver init";
                 functionView.start();
 
@@ -50,7 +51,16 @@ namespace ARMS
 
         }
 
-        private void FunctionView_SetSpecValue(object sender, Model.RecipeParam e)
+        private void compareValue(object sender, Model.RecipeParam e)
+        {
+            compare(TB_CLUSTERRECIPE, TB_CLUSTERRECIPE_SG);
+            compare(TB_FRONTSIDERECIPE, TB_FRONTSIDERECIPE_SG);
+            compare(TB_INSPECTIONCOLUMNS, TB_INSPECTIONCOLUMNS_SG);
+            compare(TB_INSPECTIONDIES, TB_INSPECTIONDIES_SG);
+            compare(TB_INSPECTIONROWS, TB_INSPECTIONROWS_SG);
+        }
+
+        private void setSpecValue(object sender, Model.RecipeParam e)
         {
             this.TB_CLUSTERRECIPE.Text = e.getClusterRecipe();
             this.TB_FRONTSIDERECIPE.Text = e.getFrontsideRecipe();
@@ -59,7 +69,7 @@ namespace ARMS
             this.TB_INSPECTIONROWS.Text = e.getInspectionRows();
         }        
 
-        private void FunctionView_SetToolValue(object sender, Model.RecipeParam e)
+        private void setToolValue(object sender, Model.RecipeParam e)
         {
             this.TB_CLUSTERRECIPE_SG.Text = e.getClusterRecipe();
             this.TB_FRONTSIDERECIPE_SG.Text = e.getFrontsideRecipe();
@@ -120,12 +130,6 @@ namespace ARMS
                 {
                     MessageBox.Show("Tool Recipe Search Fail");
                 }
-
-                compare(TB_CLUSTERRECIPE, TB_CLUSTERRECIPE_SG);
-                compare(TB_FRONTSIDERECIPE, TB_FRONTSIDERECIPE_SG);
-                compare(TB_INSPECTIONCOLUMNS, TB_INSPECTIONCOLUMNS_SG);
-                compare(TB_INSPECTIONDIES, TB_INSPECTIONDIES_SG);
-                compare(TB_INSPECTIONROWS, TB_INSPECTIONROWS_SG);
             }
         }
     }

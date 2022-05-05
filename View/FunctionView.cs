@@ -16,8 +16,8 @@ namespace ARMS.View
         SecsGem driver;
         Form1 form;
 
-        public event EventHandler<Model.RecipeParam> SetToolValue;
-        public event EventHandler<Model.RecipeParam> SetSpecValue;
+        public event EventHandler<Model.RecipeParam> ReceivedToolValue;
+        public event EventHandler<Model.RecipeParam> ReceivedSpecValue;
 
         private static readonly ILog log = LogManager.GetLogger("ARMS/Finction View");
 
@@ -85,9 +85,9 @@ namespace ARMS.View
                             else if (RCMD == "RECIPE_PARA_UPLOAD")
                             {
                                 Model.RecipeParam recipeParam = new Controller.SecsGemController(driver).req(pMsg);
-                                if(SetToolValue != null)
+                                if(ReceivedToolValue != null)
                                 {
-                                    SetToolValue(this, recipeParam);
+                                    ReceivedToolValue(this, recipeParam);
                                 }
                                 log.Info($"set form cluster recipe : {recipeParam.getClusterRecipe()}");
                                 log.Info($"set form frontside recipe : {recipeParam.getClusterRecipe()}");
@@ -131,9 +131,9 @@ namespace ARMS.View
         public void specSearch(String ppid)
         {
             Model.RecipeParam recipeParam = new SearchController().getRecipe(ppid);
-            if(SetSpecValue != null)
+            if(ReceivedSpecValue != null)
             {
-                SetSpecValue(this, recipeParam);
+                ReceivedSpecValue(this, recipeParam);
             }
         }
 
