@@ -26,7 +26,7 @@ namespace ARMS.Controller
         {
             log.Info("Response Recipe Para");
             Model.RecipeParam secsGemParam = secsGemDao.req(pMsg);
-            if (secsGemParam.getClusterRecipe() == null)
+            if (secsGemParam.ClusterRecipe == null)
             {
                 log.Error("Invalid Recipe Para");
             }            

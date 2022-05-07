@@ -62,20 +62,20 @@ namespace ARMS
 
         private void setSpecValue(object sender, Model.RecipeParam e)
         {
-            this.TB_CLUSTERRECIPE.Text = e.getClusterRecipe();
-            this.TB_FRONTSIDERECIPE.Text = e.getFrontsideRecipe();
-            this.TB_INSPECTIONDIES.Text = e.getInspectionDies();
-            this.TB_INSPECTIONCOLUMNS.Text = e.getInspectionColumns();
-            this.TB_INSPECTIONROWS.Text = e.getInspectionRows();
+            this.TB_CLUSTERRECIPE.Text = e.ClusterRecipe;
+            this.TB_FRONTSIDERECIPE.Text = e.FrontsideRecipe;
+            this.TB_INSPECTIONDIES.Text = e.InspectionDies;
+            this.TB_INSPECTIONCOLUMNS.Text = e.InspectionColumns;
+            this.TB_INSPECTIONROWS.Text = e.InspectionRows;
         }        
 
         private void setToolValue(object sender, Model.RecipeParam e)
         {
-            this.TB_CLUSTERRECIPE_SG.Text = e.getClusterRecipe();
-            this.TB_FRONTSIDERECIPE_SG.Text = e.getFrontsideRecipe();
-            this.TB_INSPECTIONDIES_SG.Text = e.getInspectionDies();
-            this.TB_INSPECTIONCOLUMNS_SG.Text = e.getInspectionColumns();
-            this.TB_INSPECTIONROWS_SG.Text = e.getInspectionRows();
+            this.TB_CLUSTERRECIPE_SG.Text = e.ClusterRecipe;
+            this.TB_FRONTSIDERECIPE_SG.Text = e.FrontsideRecipe;
+            this.TB_INSPECTIONDIES_SG.Text = e.InspectionDies;
+            this.TB_INSPECTIONCOLUMNS_SG.Text = e.InspectionColumns;
+            this.TB_INSPECTIONROWS_SG.Text = e.InspectionRows;
         }
 
         public bool checkboxStat()

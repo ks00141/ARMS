@@ -13,57 +13,31 @@ namespace ARMS.Model
         private static readonly ILog log = LogManager.GetLogger("ARMS/Parameter Entity");
 
         private String clusterRecipe;
+        public string ClusterRecipe
+        {
+            get
+            {
+                return this.clusterRecipe;
+            }
+            set
+            {
+                this.clusterRecipe = value.Replace('\\', '/');
+            }
+        }
         private String frontsideRecipe;
-        private String inspectionDies;
-        private String inspectionColumns;
-        private String inspectionRows;
-
-        public String getClusterRecipe()
+        public string FrontsideRecipe
         {
-            return this.clusterRecipe;
+            get
+            {
+                return this.frontsideRecipe;
+            }
+            set
+            {
+                this.frontsideRecipe = value.Replace('\\', '/');
+            }
         }
-
-        public String getFrontsideRecipe()
-        {
-            return this.frontsideRecipe;
-        }
-
-        public String getInspectionDies()
-        {
-            return this.inspectionDies;
-        }
-
-        public String getInspectionColumns()
-        {
-            return this.inspectionColumns;
-        }
-
-        public String getInspectionRows()
-        {
-            return this.inspectionRows;
-        }
-        public void setClusterRecipe(String clusterRecipe)
-        {
-            this.clusterRecipe = clusterRecipe;
-        }
-
-        public void setFrontsideRecipe(String frontsideRecipe)
-        {
-            this.frontsideRecipe = frontsideRecipe;
-        }
-
-        public void setInspectionDies(String inspectionDies)
-        {
-            this.inspectionDies = inspectionDies;
-        }
-        public void setInsepctionColumns(String inspectionColumns)
-        {
-            this.inspectionColumns = inspectionColumns;
-        }
-        public void setInspectionRows(String inspectionRows)
-        {
-            this.inspectionRows = inspectionRows;
-        }
-
+        public string InspectionDies { get; set; }
+        public string InspectionColumns { get; set; }
+        public string InspectionRows { get; set; }
     }
 }

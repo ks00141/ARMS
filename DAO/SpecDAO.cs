@@ -48,15 +48,15 @@ namespace ARMS.DAO
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     if (rdr.Read())
                     {
-                        entity.setClusterRecipe(rdr["cluster_recipe"].ToString());
+                        entity.ClusterRecipe = rdr["cluster_recipe"].ToString();
                         log.Info($"SPEC Cluster : {rdr["cluster_recipe"].ToString()}");
-                        entity.setFrontsideRecipe(rdr["frontside_recipe"].ToString());
+                        entity.FrontsideRecipe = rdr["frontside_recipe"].ToString();
                         log.Info($"SPEC Frontside : {rdr["frontside_recipe"].ToString()}");
-                        entity.setInspectionDies(rdr["inspection_dies"].ToString());
+                        entity.InspectionDies = rdr["inspection_dies"].ToString();
                         log.Info($"SPEC Inspection Dies : {rdr["inspection_dies"].ToString()}");
-                        entity.setInsepctionColumns(rdr["inspection_columns"].ToString());
+                        entity.InspectionColumns = rdr["inspection_columns"].ToString();
                         log.Info($"SPEC Inspection Columns : {rdr["inspection_columns"].ToString()}");
-                        entity.setInspectionRows(rdr["inspection_rows"].ToString());
+                        entity.InspectionRows = rdr["inspection_rows"].ToString();
                         log.Info($"SPEC Inspection Rows : {rdr["inspection_rows"].ToString()}");
                         rdr.Close();
                         conn.Close();
@@ -72,7 +72,7 @@ namespace ARMS.DAO
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    log.Error(e.Message);
                     conn.Close();
                     return entity;
                 }

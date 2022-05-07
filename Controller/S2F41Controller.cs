@@ -57,7 +57,7 @@ namespace ARMS.Controller
                     recipeParams[0] = new JobDAO().parseMsg(pMsg);
                     log.Info("SECS/GEM Message parse SUCC");
 
-                    recipeParams[1] = new SpecDAO().selectQuery(recipeParams[0].getClusterRecipe());
+                    recipeParams[1] = new SpecDAO().selectQuery(recipeParams[0].ClusterRecipe);
 
                     byte FLAG = new EntityCompare(recipeParams[0], recipeParams[1]).compare();
 

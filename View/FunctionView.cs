@@ -89,11 +89,11 @@ namespace ARMS.View
                                 {
                                     ReceivedToolValue(this, recipeParam);
                                 }
-                                log.Info($"set form cluster recipe : {recipeParam.getClusterRecipe()}");
-                                log.Info($"set form frontside recipe : {recipeParam.getClusterRecipe()}");
-                                log.Info($"set form inspection dies : {recipeParam.getClusterRecipe()}");
-                                log.Info($"set form inspection columns : {recipeParam.getClusterRecipe()}");
-                                log.Info($"set form inspection rows : {recipeParam.getClusterRecipe()}");
+                                log.Info($"set form cluster recipe : {recipeParam.ClusterRecipe}");
+                                log.Info($"set form frontside recipe : {recipeParam.ClusterRecipe}");
+                                log.Info($"set form inspection dies : {recipeParam.ClusterRecipe}");
+                                log.Info($"set form inspection columns : {recipeParam.ClusterRecipe}");
+                                log.Info($"set form inspection rows : {recipeParam.ClusterRecipe}");
                             }
                             break;
                     }

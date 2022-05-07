@@ -50,11 +50,11 @@ namespace ARMS.Dao
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     if (rdr.Read())
                     {
-                        param.setClusterRecipe(rdr["cluster_recipe"].ToString());
-                        param.setFrontsideRecipe(rdr["frontside_recipe"].ToString());
-                        param.setInspectionDies(rdr["inspection_dies"].ToString());
-                        param.setInsepctionColumns(rdr["inspection_columns"].ToString());
-                        param.setInspectionRows(rdr["inspection_rows"].ToString());
+                        param.ClusterRecipe = rdr["cluster_recipe"].ToString();
+                        param.FrontsideRecipe = rdr["frontside_recipe"].ToString();
+                        param.InspectionDies = rdr["inspection_dies"].ToString();
+                        param.InspectionColumns = rdr["inspection_columns"].ToString();
+                        param.InspectionRows = rdr["inspection_rows"].ToString();
                         conn.Close();
                         return param;
                     }

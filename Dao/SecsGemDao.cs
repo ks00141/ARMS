@@ -81,11 +81,12 @@ namespace ARMS.Dao
                     }
                 }
 
-                param.setClusterRecipe(clusterRecipe);
-                param.setFrontsideRecipe(frontsideReicpe);
-                param.setInspectionDies(inspectionDies);
-                param.setInsepctionColumns(inspectionColumns);
-                param.setInspectionRows(inspectionRows);
+                param.ClusterRecipe = clusterRecipe;
+                param.FrontsideRecipe = frontsideReicpe;
+                param.InspectionDies = inspectionDies;
+                param.InspectionColumns = inspectionColumns;
+                param.InspectionRows = inspectionRows;
+
                 log.Info("Recipe Para Parsing Succ");
                 return param;
             }
