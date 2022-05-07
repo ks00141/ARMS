@@ -18,23 +18,9 @@ namespace ARMS.Controller
 
         public PpidSearchController()
         {
-
-            StringBuilder _strArg = new StringBuilder();
-            _strArg.Append("Server=");
-            _strArg.Append("10.21.11.210");
-            _strArg.Append(";Port=");
-            _strArg.Append("3306");
-            _strArg.Append(";Database = ");
-            _strArg.Append("recipe");          // 데이터베이스
-            _strArg.Append(";Uid = ");
-            _strArg.Append("aoi");                     // ID
-            _strArg.Append(";Pwd = ");
-            _strArg.Append("abc123**");                 // PWD
-            _strArg.Append(";");
-
             try
             {
-                conn = new MySqlConnection(_strArg.ToString());
+                conn = new DBConnectorFactory().getConnection();
                 this.queryForm =
                             @"SELECT
 	                            p.ppid

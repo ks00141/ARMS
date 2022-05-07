@@ -35,32 +35,6 @@ namespace ARMS.DAO
 
         public RecipeParam selectQuery(String clusterRecipe)
         {
-
-            /*String query = String.Format(this.queryForm, clusterRecipe);
-            log.Info($"SELECT query : \n\t\t {query}");
-            DataTable specParams = new DataTable();
-
-            MySqlDataAdapter adt = new MySqlDataAdapter(query, conn);
-            log.Info("SELECT query SUCC");
-            adt.Fill(specParams);
-
-            if (specParams == null || specParams.Rows.Count == 0)
-            {
-                log.Debug("query result none");
-                return new RecipeParam();
-            }
-            else
-            {
-                entity = new RecipeParam(
-                    specParams.Rows[0][0].ToString(),
-                    specParams.Rows[0][1].ToString(),
-                    specParams.Rows[0][2].ToString(),
-                    specParams.Rows[0][3].ToString(),
-                    specParams.Rows[0][4].ToString()
-                    );
-
-                return entity;
-            }*/
             this.entity = new RecipeParam();
             if (clusterRecipe != "")
             {

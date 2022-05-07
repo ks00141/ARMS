@@ -1,0 +1,7 @@
+{
+  "ip": "localhost",
+  "pw": "wisol123",
+  "id": "root",
+  "port": "3306",
+  "database": "recipe"
+}
