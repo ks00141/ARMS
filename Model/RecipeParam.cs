@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using log4net;
-using System.Reflection;
 
 namespace ARMS.Model
 {
     class RecipeParam
     {
-        private static readonly ILog log = LogManager.GetLogger("ARMS/Parameter Entity");
-
         private String clusterRecipe;
         public string ClusterRecipe
         {

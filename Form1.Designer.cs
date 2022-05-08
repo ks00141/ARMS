@@ -31,9 +31,6 @@ namespace ARMS
         {
             this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
             this.STATUS_LB = new MetroSet_UI.Controls.MetroSetLabel();
-            this.CB_PPID = new System.Windows.Forms.ComboBox();
-            this.TB_DEVICE = new System.Windows.Forms.TextBox();
-            this.BTN_PPIDSERACH = new System.Windows.Forms.Button();
             this.TB_CLUSTERRECIPE_SG = new System.Windows.Forms.TextBox();
             this.TB_FRONTSIDERECIPE_SG = new System.Windows.Forms.TextBox();
             this.TB_INSPECTIONDIES_SG = new System.Windows.Forms.TextBox();
@@ -59,9 +56,6 @@ namespace ARMS
             this.label13 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CHB_AP = new System.Windows.Forms.CheckBox();
-            this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel3 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel4 = new MetroSet_UI.Controls.MetroSetLabel();
             this.lb_logView = new System.Windows.Forms.ListBox();
             this.lv_PpidList = new System.Windows.Forms.ListView();
             this.Device = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -99,32 +93,6 @@ namespace ARMS
             this.STATUS_LB.TabIndex = 18;
             this.STATUS_LB.ThemeAuthor = "Narwin";
             this.STATUS_LB.ThemeName = "MetroLite";
-            // 
-            // CB_PPID
-            // 
-            this.CB_PPID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_PPID.FormattingEnabled = true;
-            this.CB_PPID.Location = new System.Drawing.Point(567, 128);
-            this.CB_PPID.Name = "CB_PPID";
-            this.CB_PPID.Size = new System.Drawing.Size(577, 38);
-            this.CB_PPID.TabIndex = 20;
-            // 
-            // TB_DEVICE
-            // 
-            this.TB_DEVICE.Location = new System.Drawing.Point(567, 91);
-            this.TB_DEVICE.Name = "TB_DEVICE";
-            this.TB_DEVICE.Size = new System.Drawing.Size(577, 37);
-            this.TB_DEVICE.TabIndex = 21;
-            // 
-            // BTN_PPIDSERACH
-            // 
-            this.BTN_PPIDSERACH.Location = new System.Drawing.Point(1153, 91);
-            this.BTN_PPIDSERACH.Name = "BTN_PPIDSERACH";
-            this.BTN_PPIDSERACH.Size = new System.Drawing.Size(121, 70);
-            this.BTN_PPIDSERACH.TabIndex = 22;
-            this.BTN_PPIDSERACH.Text = "Serach";
-            this.BTN_PPIDSERACH.UseVisualStyleBackColor = true;
-            this.BTN_PPIDSERACH.Click += new System.EventHandler(this.BTN_PPIDSERACH_Click);
             // 
             // TB_CLUSTERRECIPE_SG
             // 
@@ -252,7 +220,6 @@ namespace ARMS
             this.label1.Size = new System.Drawing.Size(201, 39);
             this.label1.TabIndex = 34;
             this.label1.Text = "Recipe Info";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -427,48 +394,6 @@ namespace ARMS
             this.CHB_AP.Text = "ALL PASS";
             this.CHB_AP.UseVisualStyleBackColor = true;
             // 
-            // metroSetLabel2
-            // 
-            this.metroSetLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel2.IsDerivedStyle = true;
-            this.metroSetLabel2.Location = new System.Drawing.Point(498, 19);
-            this.metroSetLabel2.Name = "metroSetLabel2";
-            this.metroSetLabel2.Size = new System.Drawing.Size(238, 42);
-            this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel2.StyleManager = null;
-            this.metroSetLabel2.TabIndex = 49;
-            this.metroSetLabel2.Text = "PPID Search";
-            this.metroSetLabel2.ThemeAuthor = "Narwin";
-            this.metroSetLabel2.ThemeName = "MetroLite";
-            // 
-            // metroSetLabel3
-            // 
-            this.metroSetLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel3.IsDerivedStyle = true;
-            this.metroSetLabel3.Location = new System.Drawing.Point(498, 96);
-            this.metroSetLabel3.Name = "metroSetLabel3";
-            this.metroSetLabel3.Size = new System.Drawing.Size(66, 24);
-            this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel3.StyleManager = null;
-            this.metroSetLabel3.TabIndex = 50;
-            this.metroSetLabel3.Text = "Device";
-            this.metroSetLabel3.ThemeAuthor = "Narwin";
-            this.metroSetLabel3.ThemeName = "MetroLite";
-            // 
-            // metroSetLabel4
-            // 
-            this.metroSetLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel4.IsDerivedStyle = true;
-            this.metroSetLabel4.Location = new System.Drawing.Point(500, 133);
-            this.metroSetLabel4.Name = "metroSetLabel4";
-            this.metroSetLabel4.Size = new System.Drawing.Size(66, 24);
-            this.metroSetLabel4.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel4.StyleManager = null;
-            this.metroSetLabel4.TabIndex = 51;
-            this.metroSetLabel4.Text = "PPID";
-            this.metroSetLabel4.ThemeAuthor = "Narwin";
-            this.metroSetLabel4.ThemeName = "MetroLite";
-            // 
             // lb_logView
             // 
             this.lb_logView.FormattingEnabled = true;
@@ -529,7 +454,7 @@ namespace ARMS
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 30);
             this.button1.TabIndex = 56;
-            this.button1.Text = "button1";
+            this.button1.Text = "Check";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -543,9 +468,6 @@ namespace ARMS
             this.Controls.Add(this.btn_ppidAllCheck);
             this.Controls.Add(this.lv_PpidList);
             this.Controls.Add(this.lb_logView);
-            this.Controls.Add(this.metroSetLabel4);
-            this.Controls.Add(this.metroSetLabel3);
-            this.Controls.Add(this.metroSetLabel2);
             this.Controls.Add(this.CHB_AP);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -559,9 +481,6 @@ namespace ARMS
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.BTN_PPIDSERACH);
-            this.Controls.Add(this.TB_DEVICE);
-            this.Controls.Add(this.CB_PPID);
             this.Controls.Add(this.STATUS_LB);
             this.Controls.Add(this.metroSetLabel1);
             this.Controls.Add(this.panel1);
@@ -581,9 +500,6 @@ namespace ARMS
         #endregion
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
         private MetroSet_UI.Controls.MetroSetLabel STATUS_LB;
-        private System.Windows.Forms.ComboBox CB_PPID;
-        private System.Windows.Forms.TextBox TB_DEVICE;
-        private System.Windows.Forms.Button BTN_PPIDSERACH;
         private System.Windows.Forms.TextBox TB_CLUSTERRECIPE_SG;
         private System.Windows.Forms.TextBox TB_FRONTSIDERECIPE_SG;
         private System.Windows.Forms.TextBox TB_INSPECTIONDIES_SG;
@@ -609,9 +525,6 @@ namespace ARMS
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox CHB_AP;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel4;
         private System.Windows.Forms.ListBox lb_logView;
         private System.Windows.Forms.ListView lv_PpidList;
         private System.Windows.Forms.ColumnHeader Device;

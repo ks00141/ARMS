@@ -114,42 +114,6 @@ namespace ARMS
             }
         }
 
-        private void BTN_PPIDSERACH_Click(object sender, EventArgs e)
-        {
-            Controller.PpidSearchController psc = new Controller.PpidSearchController();
-            psc.GetPpid += delegate (object s, DataTable dt)
-            {
-                CB_PPID.DataSource = null;
-                CB_PPID.DataSource = dt;
-                CB_PPID.DisplayMember = "ppid";
-            };
-            psc.getPPID(TB_DEVICE.Text);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            if (CB_PPID.Text != "")
-            {
-                try
-                {
-                    functionView.specSearch(CB_PPID.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Spec Recipe Search Fail");
-                }
-
-                try
-                {
-                    functionView.reqRecipe(CB_PPID.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Tool Recipe Search Fail");
-                }
-            }
-        }
-
         private void logPrint(object sender, string log)
         {
             lb_logView.Items.Add(log);

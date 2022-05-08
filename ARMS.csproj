@@ -131,7 +131,10 @@
     <Compile Include="EntityCompare.cs" />
     <Compile Include="Presenter\PpidPresenter.cs" />
     <Compile Include="Repository\PpidRepository.cs" />
+    <Compile Include="Repository\SecsGemMessageRepository.cs" />
+    <Compile Include="Repository\SecsGemRepository.cs" />
     <Compile Include="Service\PpidService.cs" />
+    <Compile Include="Service\SecsGemService.cs" />
     <Compile Include="View\FunctionView.cs" />
     <Compile Include="DBConnectorFactory.cs" />
     <Compile Include="Form1.cs">
