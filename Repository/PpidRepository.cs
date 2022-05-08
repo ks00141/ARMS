@@ -24,7 +24,7 @@ namespace ARMS.Repository
             conn.Open();
 
             MySqlDataReader rdr = cmd.ExecuteReader();
-            if (rdr.Read())
+            while (rdr.Read())
             {
                 RecipePpid ppid = new RecipePpid()
                 {
@@ -48,7 +48,7 @@ namespace ARMS.Repository
 
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
-            if (rdr.Read())
+            while (rdr.Read())
             {
                 RecipePpid ppid = new RecipePpid()
                 {
