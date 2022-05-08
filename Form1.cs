@@ -11,28 +11,45 @@ using MetroSet_UI.Forms;
 using ARMS.View;
 using log4net;
 using System.Reflection;
+using ARMS.Presenter;
 
 namespace ARMS
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form,IPpidListView
     {
         FunctionView functionView;
         private static readonly ILog log = LogManager.GetLogger("ARMS/GUI");
-        
+
+        public string[] Ppid
+        {
+            get
+            {
+                ListViewItem selectedItem = lv_PpidList.SelectedItems[0];
+                return new string[]
+                { 
+                    selectedItem.SubItems[0].Text,
+                    selectedItem.SubItems[1].Text
+                };
+            }
+            set
+            {
+                lv_PpidList.Items.Add(new ListViewItem(value));
+            }
+        }
+
         private void Form1_Load(object sender,EventArgs e)
         {
             CHB_AP.Checked = false;
+            
         }
         public Form1()
         {
-            
+            InitializeComponent();
             log.Info("");
             log.Info("ARMS Start");
             log.Info("Version - 0.1.0");
             log.Info("");
             log.Info("GUI INIT");
-            InitializeComponent();
-            
             try
             {
                 functionView = new FunctionView(this);
@@ -131,6 +148,23 @@ namespace ARMS
                     MessageBox.Show("Tool Recipe Search Fail");
                 }
             }
+        }
+
+        private void logPrint(object sender, string log)
+        {
+            lb_logView.Items.Add(log);
+        }
+
+        private void btn_ppidAllCheck_Click(object sender, EventArgs e)
+        {
+            lv_PpidList.Items.Clear();
+            new PpidPresenter(this).PrintAllPpid();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lv_PpidList.Items.Clear();
+            new PpidPresenter(this).PrintPpidByDevice(TB_DEVICE2.Text);
         }
     }
 }

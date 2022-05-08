@@ -62,6 +62,13 @@ namespace ARMS
             this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel3 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel4 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.lb_logView = new System.Windows.Forms.ListBox();
+            this.lv_PpidList = new System.Windows.Forms.ListView();
+            this.Device = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PPID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btn_ppidAllCheck = new System.Windows.Forms.Button();
+            this.TB_DEVICE2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,9 +76,9 @@ namespace ARMS
             // 
             this.metroSetLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.metroSetLabel1.IsDerivedStyle = true;
-            this.metroSetLabel1.Location = new System.Drawing.Point(16, 27);
+            this.metroSetLabel1.Location = new System.Drawing.Point(16, 19);
             this.metroSetLabel1.Name = "metroSetLabel1";
-            this.metroSetLabel1.Size = new System.Drawing.Size(238, 24);
+            this.metroSetLabel1.Size = new System.Drawing.Size(238, 32);
             this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetLabel1.StyleManager = null;
             this.metroSetLabel1.TabIndex = 0;
@@ -84,9 +91,9 @@ namespace ARMS
             this.STATUS_LB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.STATUS_LB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.STATUS_LB.IsDerivedStyle = true;
-            this.STATUS_LB.Location = new System.Drawing.Point(17, 63);
+            this.STATUS_LB.Location = new System.Drawing.Point(7, 63);
             this.STATUS_LB.Name = "STATUS_LB";
-            this.STATUS_LB.Size = new System.Drawing.Size(335, 98);
+            this.STATUS_LB.Size = new System.Drawing.Size(345, 98);
             this.STATUS_LB.Style = MetroSet_UI.Enums.Style.Light;
             this.STATUS_LB.StyleManager = null;
             this.STATUS_LB.TabIndex = 18;
@@ -99,14 +106,14 @@ namespace ARMS
             this.CB_PPID.FormattingEnabled = true;
             this.CB_PPID.Location = new System.Drawing.Point(567, 128);
             this.CB_PPID.Name = "CB_PPID";
-            this.CB_PPID.Size = new System.Drawing.Size(577, 33);
+            this.CB_PPID.Size = new System.Drawing.Size(577, 38);
             this.CB_PPID.TabIndex = 20;
             // 
             // TB_DEVICE
             // 
             this.TB_DEVICE.Location = new System.Drawing.Point(567, 91);
             this.TB_DEVICE.Name = "TB_DEVICE";
-            this.TB_DEVICE.Size = new System.Drawing.Size(577, 31);
+            this.TB_DEVICE.Size = new System.Drawing.Size(577, 37);
             this.TB_DEVICE.TabIndex = 21;
             // 
             // BTN_PPIDSERACH
@@ -127,7 +134,7 @@ namespace ARMS
             this.TB_CLUSTERRECIPE_SG.ForeColor = System.Drawing.SystemColors.Window;
             this.TB_CLUSTERRECIPE_SG.Location = new System.Drawing.Point(214, 119);
             this.TB_CLUSTERRECIPE_SG.Name = "TB_CLUSTERRECIPE_SG";
-            this.TB_CLUSTERRECIPE_SG.Size = new System.Drawing.Size(406, 19);
+            this.TB_CLUSTERRECIPE_SG.Size = new System.Drawing.Size(406, 23);
             this.TB_CLUSTERRECIPE_SG.TabIndex = 23;
             // 
             // TB_FRONTSIDERECIPE_SG
@@ -138,7 +145,7 @@ namespace ARMS
             this.TB_FRONTSIDERECIPE_SG.ForeColor = System.Drawing.SystemColors.Window;
             this.TB_FRONTSIDERECIPE_SG.Location = new System.Drawing.Point(214, 166);
             this.TB_FRONTSIDERECIPE_SG.Name = "TB_FRONTSIDERECIPE_SG";
-            this.TB_FRONTSIDERECIPE_SG.Size = new System.Drawing.Size(404, 19);
+            this.TB_FRONTSIDERECIPE_SG.Size = new System.Drawing.Size(404, 23);
             this.TB_FRONTSIDERECIPE_SG.TabIndex = 24;
             // 
             // TB_INSPECTIONDIES_SG
@@ -149,7 +156,7 @@ namespace ARMS
             this.TB_INSPECTIONDIES_SG.ForeColor = System.Drawing.SystemColors.Window;
             this.TB_INSPECTIONDIES_SG.Location = new System.Drawing.Point(61, 255);
             this.TB_INSPECTIONDIES_SG.Name = "TB_INSPECTIONDIES_SG";
-            this.TB_INSPECTIONDIES_SG.Size = new System.Drawing.Size(51, 19);
+            this.TB_INSPECTIONDIES_SG.Size = new System.Drawing.Size(51, 23);
             this.TB_INSPECTIONDIES_SG.TabIndex = 25;
             // 
             // TB_INSPECTIONCOLUMNS_SG
@@ -160,7 +167,7 @@ namespace ARMS
             this.TB_INSPECTIONCOLUMNS_SG.ForeColor = System.Drawing.SystemColors.Window;
             this.TB_INSPECTIONCOLUMNS_SG.Location = new System.Drawing.Point(245, 255);
             this.TB_INSPECTIONCOLUMNS_SG.Name = "TB_INSPECTIONCOLUMNS_SG";
-            this.TB_INSPECTIONCOLUMNS_SG.Size = new System.Drawing.Size(51, 19);
+            this.TB_INSPECTIONCOLUMNS_SG.Size = new System.Drawing.Size(51, 23);
             this.TB_INSPECTIONCOLUMNS_SG.TabIndex = 26;
             // 
             // TB_INSPECTIONROWS_SG
@@ -171,7 +178,7 @@ namespace ARMS
             this.TB_INSPECTIONROWS_SG.ForeColor = System.Drawing.SystemColors.Window;
             this.TB_INSPECTIONROWS_SG.Location = new System.Drawing.Point(438, 255);
             this.TB_INSPECTIONROWS_SG.Name = "TB_INSPECTIONROWS_SG";
-            this.TB_INSPECTIONROWS_SG.Size = new System.Drawing.Size(51, 19);
+            this.TB_INSPECTIONROWS_SG.Size = new System.Drawing.Size(51, 23);
             this.TB_INSPECTIONROWS_SG.TabIndex = 27;
             // 
             // TB_INSPECTIONROWS
@@ -182,7 +189,7 @@ namespace ARMS
             this.TB_INSPECTIONROWS.ForeColor = System.Drawing.SystemColors.Window;
             this.TB_INSPECTIONROWS.Location = new System.Drawing.Point(1093, 252);
             this.TB_INSPECTIONROWS.Name = "TB_INSPECTIONROWS";
-            this.TB_INSPECTIONROWS.Size = new System.Drawing.Size(51, 19);
+            this.TB_INSPECTIONROWS.Size = new System.Drawing.Size(51, 23);
             this.TB_INSPECTIONROWS.TabIndex = 32;
             this.TB_INSPECTIONROWS.TabStop = false;
             // 
@@ -194,7 +201,7 @@ namespace ARMS
             this.TB_INSPECTIONCOLUMNS.ForeColor = System.Drawing.SystemColors.Window;
             this.TB_INSPECTIONCOLUMNS.Location = new System.Drawing.Point(900, 252);
             this.TB_INSPECTIONCOLUMNS.Name = "TB_INSPECTIONCOLUMNS";
-            this.TB_INSPECTIONCOLUMNS.Size = new System.Drawing.Size(51, 19);
+            this.TB_INSPECTIONCOLUMNS.Size = new System.Drawing.Size(51, 23);
             this.TB_INSPECTIONCOLUMNS.TabIndex = 31;
             this.TB_INSPECTIONCOLUMNS.TabStop = false;
             // 
@@ -206,7 +213,7 @@ namespace ARMS
             this.TB_INSPECTIONDIES.ForeColor = System.Drawing.SystemColors.Window;
             this.TB_INSPECTIONDIES.Location = new System.Drawing.Point(716, 252);
             this.TB_INSPECTIONDIES.Name = "TB_INSPECTIONDIES";
-            this.TB_INSPECTIONDIES.Size = new System.Drawing.Size(51, 19);
+            this.TB_INSPECTIONDIES.Size = new System.Drawing.Size(51, 23);
             this.TB_INSPECTIONDIES.TabIndex = 30;
             this.TB_INSPECTIONDIES.TabStop = false;
             // 
@@ -218,7 +225,7 @@ namespace ARMS
             this.TB_FRONTSIDERECIPE.ForeColor = System.Drawing.SystemColors.Window;
             this.TB_FRONTSIDERECIPE.Location = new System.Drawing.Point(880, 166);
             this.TB_FRONTSIDERECIPE.Name = "TB_FRONTSIDERECIPE";
-            this.TB_FRONTSIDERECIPE.Size = new System.Drawing.Size(406, 19);
+            this.TB_FRONTSIDERECIPE.Size = new System.Drawing.Size(406, 23);
             this.TB_FRONTSIDERECIPE.TabIndex = 29;
             this.TB_FRONTSIDERECIPE.TabStop = false;
             // 
@@ -230,7 +237,7 @@ namespace ARMS
             this.TB_CLUSTERRECIPE.ForeColor = System.Drawing.SystemColors.Window;
             this.TB_CLUSTERRECIPE.Location = new System.Drawing.Point(880, 119);
             this.TB_CLUSTERRECIPE.Name = "TB_CLUSTERRECIPE";
-            this.TB_CLUSTERRECIPE.Size = new System.Drawing.Size(404, 19);
+            this.TB_CLUSTERRECIPE.Size = new System.Drawing.Size(404, 23);
             this.TB_CLUSTERRECIPE.TabIndex = 28;
             this.TB_CLUSTERRECIPE.TabStop = false;
             // 
@@ -242,7 +249,7 @@ namespace ARMS
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(10, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 31);
+            this.label1.Size = new System.Drawing.Size(201, 39);
             this.label1.TabIndex = 34;
             this.label1.Text = "Recipe Info";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -255,7 +262,7 @@ namespace ARMS
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(27, 289);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 24);
+            this.label2.Size = new System.Drawing.Size(157, 29);
             this.label2.TabIndex = 35;
             this.label2.Text = "Tool Recipe";
             // 
@@ -267,7 +274,7 @@ namespace ARMS
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Location = new System.Drawing.Point(679, 289);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 24);
+            this.label3.Size = new System.Drawing.Size(163, 29);
             this.label3.TabIndex = 36;
             this.label3.Text = "Spec Recipe";
             // 
@@ -279,7 +286,7 @@ namespace ARMS
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(57, 336);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 20);
+            this.label4.Size = new System.Drawing.Size(153, 25);
             this.label4.TabIndex = 37;
             this.label4.Text = "Cluster Recipe";
             // 
@@ -291,7 +298,7 @@ namespace ARMS
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(57, 386);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(146, 20);
+            this.label5.Size = new System.Drawing.Size(174, 25);
             this.label5.TabIndex = 38;
             this.label5.Text = "Frontside Recipe";
             // 
@@ -303,7 +310,7 @@ namespace ARMS
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label6.Location = new System.Drawing.Point(57, 443);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(146, 20);
+            this.label6.Size = new System.Drawing.Size(175, 25);
             this.label6.TabIndex = 39;
             this.label6.Text = "Inspection Count";
             // 
@@ -315,7 +322,7 @@ namespace ARMS
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Location = new System.Drawing.Point(241, 443);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(167, 20);
+            this.label7.Size = new System.Drawing.Size(202, 25);
             this.label7.TabIndex = 40;
             this.label7.Text = "Inspection Columns";
             // 
@@ -327,7 +334,7 @@ namespace ARMS
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label8.Location = new System.Drawing.Point(434, 443);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(142, 20);
+            this.label8.Size = new System.Drawing.Size(169, 25);
             this.label8.TabIndex = 41;
             this.label8.Text = "Inspection Rows";
             // 
@@ -339,7 +346,7 @@ namespace ARMS
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label9.Location = new System.Drawing.Point(1089, 443);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(142, 20);
+            this.label9.Size = new System.Drawing.Size(169, 25);
             this.label9.TabIndex = 46;
             this.label9.Text = "Inspection Rows";
             // 
@@ -351,7 +358,7 @@ namespace ARMS
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label10.Location = new System.Drawing.Point(896, 443);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(167, 20);
+            this.label10.Size = new System.Drawing.Size(202, 25);
             this.label10.TabIndex = 45;
             this.label10.Text = "Inspection Columns";
             // 
@@ -363,7 +370,7 @@ namespace ARMS
             this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label11.Location = new System.Drawing.Point(712, 443);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(146, 20);
+            this.label11.Size = new System.Drawing.Size(175, 25);
             this.label11.TabIndex = 44;
             this.label11.Text = "Inspection Count";
             // 
@@ -375,7 +382,7 @@ namespace ARMS
             this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label12.Location = new System.Drawing.Point(712, 386);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(146, 20);
+            this.label12.Size = new System.Drawing.Size(174, 25);
             this.label12.TabIndex = 43;
             this.label12.Text = "Frontside Recipe";
             // 
@@ -387,7 +394,7 @@ namespace ARMS
             this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label13.Location = new System.Drawing.Point(712, 336);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(127, 20);
+            this.label13.Size = new System.Drawing.Size(153, 25);
             this.label13.TabIndex = 42;
             this.label13.Text = "Cluster Recipe";
             // 
@@ -407,7 +414,7 @@ namespace ARMS
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 218);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1305, 293);
+            this.panel1.Size = new System.Drawing.Size(1302, 291);
             this.panel1.TabIndex = 47;
             // 
             // CHB_AP
@@ -415,7 +422,7 @@ namespace ARMS
             this.CHB_AP.AutoSize = true;
             this.CHB_AP.Location = new System.Drawing.Point(17, 171);
             this.CHB_AP.Name = "CHB_AP";
-            this.CHB_AP.Size = new System.Drawing.Size(131, 29);
+            this.CHB_AP.Size = new System.Drawing.Size(163, 35);
             this.CHB_AP.TabIndex = 48;
             this.CHB_AP.Text = "ALL PASS";
             this.CHB_AP.UseVisualStyleBackColor = true;
@@ -424,9 +431,9 @@ namespace ARMS
             // 
             this.metroSetLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.metroSetLabel2.IsDerivedStyle = true;
-            this.metroSetLabel2.Location = new System.Drawing.Point(498, 27);
+            this.metroSetLabel2.Location = new System.Drawing.Point(498, 19);
             this.metroSetLabel2.Name = "metroSetLabel2";
-            this.metroSetLabel2.Size = new System.Drawing.Size(238, 24);
+            this.metroSetLabel2.Size = new System.Drawing.Size(238, 42);
             this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetLabel2.StyleManager = null;
             this.metroSetLabel2.TabIndex = 49;
@@ -462,12 +469,80 @@ namespace ARMS
             this.metroSetLabel4.ThemeAuthor = "Narwin";
             this.metroSetLabel4.ThemeName = "MetroLite";
             // 
+            // lb_logView
+            // 
+            this.lb_logView.FormattingEnabled = true;
+            this.lb_logView.ItemHeight = 30;
+            this.lb_logView.Location = new System.Drawing.Point(7, 516);
+            this.lb_logView.Name = "lb_logView";
+            this.lb_logView.Size = new System.Drawing.Size(1283, 94);
+            this.lb_logView.TabIndex = 52;
+            // 
+            // lv_PpidList
+            // 
+            this.lv_PpidList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Device,
+            this.PPID});
+            this.lv_PpidList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lv_PpidList.HideSelection = false;
+            this.lv_PpidList.Location = new System.Drawing.Point(7, 681);
+            this.lv_PpidList.Name = "lv_PpidList";
+            this.lv_PpidList.Size = new System.Drawing.Size(1283, 186);
+            this.lv_PpidList.TabIndex = 53;
+            this.lv_PpidList.UseCompatibleStateImageBehavior = false;
+            this.lv_PpidList.View = System.Windows.Forms.View.Details;
+            // 
+            // Device
+            // 
+            this.Device.Text = "DEVICE";
+            this.Device.Width = 268;
+            // 
+            // PPID
+            // 
+            this.PPID.Text = "PPID";
+            this.PPID.Width = 1010;
+            // 
+            // btn_ppidAllCheck
+            // 
+            this.btn_ppidAllCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ppidAllCheck.Location = new System.Drawing.Point(7, 635);
+            this.btn_ppidAllCheck.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_ppidAllCheck.Name = "btn_ppidAllCheck";
+            this.btn_ppidAllCheck.Size = new System.Drawing.Size(138, 30);
+            this.btn_ppidAllCheck.TabIndex = 54;
+            this.btn_ppidAllCheck.Text = "AllCheck";
+            this.btn_ppidAllCheck.UseVisualStyleBackColor = true;
+            this.btn_ppidAllCheck.Click += new System.EventHandler(this.btn_ppidAllCheck_Click);
+            // 
+            // TB_DEVICE2
+            // 
+            this.TB_DEVICE2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_DEVICE2.Location = new System.Drawing.Point(151, 637);
+            this.TB_DEVICE2.Name = "TB_DEVICE2";
+            this.TB_DEVICE2.Size = new System.Drawing.Size(560, 30);
+            this.TB_DEVICE2.TabIndex = 55;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(717, 635);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 30);
+            this.button1.TabIndex = 56;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1300, 505);
+            this.ClientSize = new System.Drawing.Size(1297, 871);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.TB_DEVICE2);
+            this.Controls.Add(this.btn_ppidAllCheck);
+            this.Controls.Add(this.lv_PpidList);
+            this.Controls.Add(this.lb_logView);
             this.Controls.Add(this.metroSetLabel4);
             this.Controls.Add(this.metroSetLabel3);
             this.Controls.Add(this.metroSetLabel2);
@@ -537,6 +612,13 @@ namespace ARMS
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel4;
+        private System.Windows.Forms.ListBox lb_logView;
+        private System.Windows.Forms.ListView lv_PpidList;
+        private System.Windows.Forms.ColumnHeader Device;
+        private System.Windows.Forms.ColumnHeader PPID;
+        private System.Windows.Forms.Button btn_ppidAllCheck;
+        private System.Windows.Forms.TextBox TB_DEVICE2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
