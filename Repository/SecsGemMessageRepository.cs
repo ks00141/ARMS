@@ -28,23 +28,6 @@ namespace ARMS.Repository
             }
         }
 
-        public SecsMessage S1F4
-        {
-            get
-            {
-                return new SecsMessage(
-                    1,
-                    4,
-                    "S1F4",
-                    Item.L(
-                        Item.A(
-                            "ARMS"
-                        )
-                    )
-                );
-            }
-        }
-
         public SecsMessage S2F42
         {
             get
