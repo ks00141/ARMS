@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ARMS.Model
 {
-    interface IS2F42:ISecsMessage
+    interface IS2F42:ISecsGemMessage
     {
         uint HCACK { get; set; }
     }

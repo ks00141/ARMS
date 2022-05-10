@@ -129,7 +129,7 @@
     <Compile Include="Model\IS1F14.cs" />
     <Compile Include="Model\IS2F42.cs" />
     <Compile Include="Model\IS6F11.cs" />
-    <Compile Include="Model\ISecsMessage.cs" />
+    <Compile Include="Model\ISecsGemMessage.cs" />
     <Compile Include="Model\RecipePpid.cs" />
     <Compile Include="Model\RecipeParam.cs" />
     <Compile Include="EntityCompare.cs" />
@@ -138,7 +138,6 @@
     <Compile Include="Model\S6F11.cs" />
     <Compile Include="Presenter\PpidPresenter.cs" />
     <Compile Include="Repository\PpidRepository.cs" />
-    <Compile Include="Repository\SecsGemMessageRepository.cs" />
     <Compile Include="Repository\SecsGemRepository.cs" />
     <Compile Include="Service\PpidService.cs" />
     <Compile Include="Service\SecsGemService.cs" />

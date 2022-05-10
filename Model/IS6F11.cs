@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ARMS.Model
 {
-    interface IS6F11:ISecsMessage
+    interface IS6F11:ISecsGemMessage
     {
         uint DATAID { get; set; }
         uint CEID { get; set; }

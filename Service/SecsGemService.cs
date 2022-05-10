@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 using Secs4Net;
+using ARMS.Repository;
 
 namespace ARMS.Service
 {
@@ -45,6 +46,7 @@ namespace ARMS.Service
 
         public void MsgReceived(object sender, PrimaryMessageWrapper pMsg)
         {
+            SecsGemRepository secsRepository = new SecsGemRepository();
             int F = pMsg.Message.F;
             int S = pMsg.Message.S;
             log.Info($"SECS/GEM Message received, S{S} F{F}");
@@ -55,7 +57,7 @@ namespace ARMS.Service
                     switch (F)
                     {
                         case 13:
-
+                            secsRepository.S1F14();
                             break;
                     }
                     break;
@@ -79,6 +81,11 @@ namespace ARMS.Service
                     }
                     break;
             }
+        }
+
+        public void MsgReply(object sender, SecsMessage message)
+        {
+
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ARMS.Model
 {
-    interface IS1F14:ISecsMessage
+    interface IS1F14:ISecsGemMessage
     {
         byte COMACK { get; set; }
         string MDLN { get; set; }

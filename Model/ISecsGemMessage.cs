@@ -7,7 +7,7 @@ using Secs4Net;
 
 namespace ARMS.Model
 {
-    interface ISecsMessage
+    interface ISecsGemMessage
     {
         SecsMessage Message { get; }
     }
