@@ -13,7 +13,7 @@ namespace ARMS.Service
 {
     class SecsGemService
     {
-        SecsGem driver;
+        readonly SecsGem driver;
 
         private static readonly ILog log = LogManager.GetLogger("ARMS/SecsGem Service");
 
@@ -46,7 +46,6 @@ namespace ARMS.Service
 
         public void MsgReceived(object sender, PrimaryMessageWrapper pMsg)
         {
-            SecsGemRepository secsRepository = new SecsGemRepository();
             int F = pMsg.Message.F;
             int S = pMsg.Message.S;
             log.Info($"SECS/GEM Message received, S{S} F{F}");
@@ -57,7 +56,7 @@ namespace ARMS.Service
                     switch (F)
                     {
                         case 13:
-                            secsRepository.S1F14();
+                            pMsg.ReplyAsync(new ECRRepository().S1F14());
                             break;
                     }
                     break;
@@ -71,21 +70,25 @@ namespace ARMS.Service
 
                             if(RCMD == "RECIPE_PARA_CHECK")
                             {
+                                pMsg.ReplyAsync(new ParaCheckRepository().S2F42());
+                                Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[3];
+                                string clusterReicpe = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<string>().Replace('\\','/');
+                                new SecsGemParamRepository().GetRecipeParam(clusterReicpe, items);
+                                new SpecParamRepository().GetRecipeParam(clusterReicpe);
+
 
                             }
                             else if (RCMD == "RECIPE_PARA_UPLOAD")
                             {
-
+                                pMsg.ReplyAsync(new ParaCheckRepository().S2F42());
+                                Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[3];
+                                string clusterReicpe = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<string>().Replace('\\', '/');
+                                new SecsGemParamRepository().GetRecipeParam(clusterReicpe, items);
                             }
                             break;
                     }
                     break;
             }
-        }
-
-        public void MsgReply(object sender, SecsMessage message)
-        {
-
         }
     }
 }
