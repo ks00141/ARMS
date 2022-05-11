@@ -27,8 +27,8 @@ namespace ARMS
         public EntityCompare(RecipeParam[] recipeParams)
         {
             log.Info("Compare Instance create");
-            this.spec = recipeParams[0];
-            this.job = recipeParams[1];
+            this.spec = recipeParams[1];
+            this.job = recipeParams[0];
             log.Info("Compare FLAG INIT - 0");
             FLAG = 0b_0000_0000;
         }
