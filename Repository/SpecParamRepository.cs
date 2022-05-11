@@ -30,6 +30,7 @@ namespace ARMS.Repository
         {
             if (clusterRecipe != "")
             {
+                clusterRecipe = clusterRecipe.Replace('\\', '/');
                 String query = String.Format(this.queryForm, clusterRecipe);
                 try
                 {
