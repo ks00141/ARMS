@@ -11,15 +11,18 @@ namespace ARMS.Repository
     class SecsGemParamRepository
     {
         readonly RecipeParam param;
+        readonly PrimaryMessageWrapper pMsg;
 
-        public SecsGemParamRepository()
+        public SecsGemParamRepository(PrimaryMessageWrapper pMsg)
         {
             param = new RecipeParam();
+            this.pMsg = pMsg;
         }
 
-        public RecipeParam GetRecipeParam(string clusterRecipe, Item items)
+        public RecipeParam GetRecipeParam()
         {
-            param.ClusterRecipe = clusterRecipe;
+            Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[5];
+            param.ClusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>();
             foreach (var item in items.Items)
             {
                 if (item.Items[0] == "Frontside\\RecipeName")

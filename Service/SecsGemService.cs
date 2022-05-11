@@ -71,19 +71,25 @@ namespace ARMS.Service
                             if(RCMD == "RECIPE_PARA_CHECK")
                             {
                                 pMsg.ReplyAsync(new ParaCheckRepository().S2F42());
-                                Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[3];
-                                string clusterReicpe = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<string>().Replace('\\','/');
-                                new SecsGemParamRepository().GetRecipeParam(clusterReicpe, items);
-                                new SpecParamRepository().GetRecipeParam(clusterReicpe);
-
+                                string clusterReicpe = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<string>().Replace('\\','/');
+                                byte FLAG = new EntityCompare(
+                                    new SecsGemParamRepository(pMsg).GetRecipeParam(),
+                                    new SpecParamRepository().GetRecipeParam(clusterReicpe)
+                                    )
+                                    .compare();
+                                if (FLAG == 0)
+                                {
+                                    driver.SendAsync(new ParaCheckRepository().S6F11Succ(pMsg));
+                                }
+                                else
+                                {
+                                    driver.SendAsync(new ParaCheckRepository().S6F11Fail(pMsg));
+                                }
 
                             }
                             else if (RCMD == "RECIPE_PARA_UPLOAD")
                             {
-                                pMsg.ReplyAsync(new ParaCheckRepository().S2F42());
-                                Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[3];
-                                string clusterReicpe = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<string>().Replace('\\', '/');
-                                new SecsGemParamRepository().GetRecipeParam(clusterReicpe, items);
+
                             }
                             break;
                     }

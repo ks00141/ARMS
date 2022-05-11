@@ -52,12 +52,13 @@ namespace ARMS
             log.Info("GUI INIT");
             try
             {
-                functionView = new FunctionView(this);
+                /*functionView = new FunctionView(this);
                 functionView.ReceivedSpecValue += setSpecValue;
                 functionView.ReceivedToolValue += setToolValue;
                 functionView.ReceivedToolValue += compareValue;
                 STATUS_LB.Text = "SECS/GEM Driver init";
-                functionView.start();
+                functionView.start();*/
+                new SecsGemPresenter().SecsGemStart();
 
             }
             catch(Exception e)

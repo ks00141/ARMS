@@ -137,6 +137,7 @@
     <Compile Include="Model\S2F42.cs" />
     <Compile Include="Model\S6F11.cs" />
     <Compile Include="Presenter\PpidPresenter.cs" />
+    <Compile Include="Presenter\SecsGemPresenter.cs" />
     <Compile Include="Repository\ParaCheckRepository.cs" />
     <Compile Include="Repository\PpidRepository.cs" />
     <Compile Include="Repository\ECRRepository.cs" />
