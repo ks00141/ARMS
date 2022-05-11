@@ -11,11 +11,9 @@ namespace ARMS.Repository
     class SpecParamRepository
     {
         MySqlConnection conn;
-        String queryForm;
-        RecipeParam param;
+        readonly String queryForm;
         public SpecParamRepository()
         {
-            this.param = new RecipeParam();
             this.queryForm =
                             @"SELECT
 	                            a.cluster_recipe
@@ -35,6 +33,7 @@ namespace ARMS.Repository
                 String query = String.Format(this.queryForm, clusterRecipe);
                 try
                 {
+                    RecipeParam param = new RecipeParam();
                     conn = new DBConnectorFactory().getConnection();
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     conn.Open();

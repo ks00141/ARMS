@@ -70,22 +70,26 @@ namespace ARMS.Service
 
                             if(RCMD == "RECIPE_PARA_CHECK")
                             {
-                                pMsg.ReplyAsync(new ParaCheckRepository().S2F42());
-                                string clusterReicpe = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<string>().Replace('\\','/');
-                                byte FLAG = new EntityCompare(
-                                    new SecsGemParamRepository(pMsg).GetRecipeParam(),
-                                    new SpecParamRepository().GetRecipeParam(clusterReicpe)
-                                    )
+                                ParaCheckRepository paraCheckRepository = new ParaCheckRepository(pMsg);
+                                pMsg.ReplyAsync(paraCheckRepository.S2F42());
+                                try
+                                {
+                                    byte FLAG = new EntityCompare(paraCheckRepository.GetParams())
                                     .compare();
-                                if (FLAG == 0)
-                                {
-                                    driver.SendAsync(new ParaCheckRepository().S6F11Succ(pMsg));
+                                    if (FLAG == 0)
+                                    {
+                                        driver.SendAsync(paraCheckRepository.S6F11Succ());
+                                    }
+                                    else
+                                    {
+                                        driver.SendAsync(paraCheckRepository.S6F11Fail());
+                                    }
                                 }
-                                else
+                                catch
                                 {
-                                    driver.SendAsync(new ParaCheckRepository().S6F11Fail(pMsg));
+                                    driver.SendAsync(paraCheckRepository.S6F11Fail());
                                 }
-
+                                
                             }
                             else if (RCMD == "RECIPE_PARA_UPLOAD")
                             {
