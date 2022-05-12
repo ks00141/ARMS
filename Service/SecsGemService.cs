@@ -12,12 +12,12 @@ using ARMS.Repository;
 
 namespace ARMS.Service
 {
-    class SecsGemService
+    public class SecsGemService
     {
         readonly SecsGem driver;
 
-        private static readonly ILog log = LogManager.GetLogger("ARMS/SecsGem Service");
         public event EventHandler<RecipeParam> RecipeParamUploadEvent;
+        private static readonly ILog log = LogManager.GetLogger("ARMS/SecsGem Service");
 
         public SecsGemService()
         {
@@ -96,12 +96,38 @@ namespace ARMS.Service
                             else if (RCMD == "RECIPE_PARA_UPLOAD")
                             {
                                 ParaUploadRepository paraUploadRepository = new ParaUploadRepository(pMsg);
+                                pMsg.ReplyAsync(paraUploadRepository.S2F42());
                                 RecipeParamUploadEvent?.Invoke(this, paraUploadRepository.GetRecipeParam());
                             }
                             break;
                     }
                     break;
             }
+        }
+
+        public void ParamUploadRequest(string ppid)
+        {
+            driver.SendAsync(new SecsMessage(
+                            6,
+                            11,
+                            "S6F11",
+                            Item.L(
+                                Item.U4(0),
+                                Item.U4(3000),
+                                Item.L(
+                                    Item.L(
+                                        Item.U4(1),
+                                        Item.L(
+                                            Item.L(
+                                                Item.A("RECIPEID"),
+                                                Item.A(ppid.Replace('/', '\\'))
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    );
         }
     }
 }

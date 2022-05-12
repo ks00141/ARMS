@@ -44,5 +44,14 @@ namespace ARMS.Repository
             }
             return param;
         }
+        public SecsMessage S2F42()
+        {
+            S2F42 s2f42 = new S2F42
+            {
+                HCACK = 0
+            };
+
+            return s2f42.Message;
+        }
     }
 }

@@ -8,7 +8,7 @@ using Secs4Net;
 
 namespace ARMS.Repository
 {
-    class ParaCheckRepository
+    public class ParaCheckRepository
     {
         public event EventHandler<string> SecsGemParamParsingHandler;
         PrimaryMessageWrapper pMsg;

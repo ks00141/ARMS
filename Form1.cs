@@ -15,9 +15,10 @@ using ARMS.Presenter;
 
 namespace ARMS
 {
-    public partial class Form1 : Form,IPpidListView
+    public partial class Form1 : Form,IPpidListView,IRecipeParamUPloadView
     {
         FunctionView functionView;
+        SecsGemPresenter secsGemPresenter;
         private static readonly ILog log = LogManager.GetLogger("ARMS/GUI");
 
         public string[] Ppid
@@ -37,6 +38,12 @@ namespace ARMS
             }
         }
 
+        public string ClusterRecipe { get => TB_CLUSTERRECIPE_SG.Text; set=> TB_CLUSTERRECIPE_SG.Text = value; }
+        public string FrontsideRecipe { get => TB_FRONTSIDERECIPE_SG.Text; set => TB_FRONTSIDERECIPE_SG.Text = value; }
+        public string InspectionDies { get => TB_INSPECTIONDIES.Text; set => TB_INSPECTIONDIES_SG.Text = value; }
+        public string InspectionColumns { get => TB_INSPECTIONCOLUMNS_SG.Text; set => TB_INSPECTIONCOLUMNS_SG.Text = value; }
+        public string InspectionRows { get => TB_INSPECTIONROWS_SG.Text; set => TB_INSPECTIONROWS_SG.Text = value; }
+
         private void Form1_Load(object sender,EventArgs e)
         {
             CHB_AP.Checked = false;
@@ -45,6 +52,7 @@ namespace ARMS
         public Form1()
         {
             InitializeComponent();
+            this.secsGemPresenter = new SecsGemPresenter(this);
             log.Info("");
             log.Info("ARMS Start");
             log.Info("Version - 0.1.0");
@@ -52,13 +60,13 @@ namespace ARMS
             log.Info("GUI INIT");
             try
             {
+                secsGemPresenter.SecsGemStart();
                 /*functionView = new FunctionView(this);
                 functionView.ReceivedSpecValue += setSpecValue;
                 functionView.ReceivedToolValue += setToolValue;
                 functionView.ReceivedToolValue += compareValue;
                 STATUS_LB.Text = "SECS/GEM Driver init";
                 functionView.start();*/
-                new SecsGemPresenter().SecsGemStart();
 
             }
             catch(Exception e)
@@ -130,6 +138,20 @@ namespace ARMS
         {
             lv_PpidList.Items.Clear();
             new PpidPresenter(this).PrintPpidByDevice(TB_DEVICE2.Text);
+        }
+
+        private void lv_PpidList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if(lv_PpidList.SelectedItems.Count == 1)
+            {
+                ListView.SelectedListViewItemCollection items = lv_PpidList.SelectedItems;
+                ListViewItem item = items[0];
+                string ppid = item.SubItems[1].Text;
+                if(ppid != "")
+                {
+                    secsGemPresenter.ParamUploadRequest(ppid);
+                }
+            }
         }
     }
 }
