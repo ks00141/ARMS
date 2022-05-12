@@ -136,6 +136,12 @@
     <Compile Include="Model\S1F14.cs" />
     <Compile Include="Model\S2F42.cs" />
     <Compile Include="Model\S6F11.cs" />
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\IRecipeParamUPloadView.cs" />
     <Compile Include="Presenter\PpidPresenter.cs" />
     <Compile Include="Presenter\SecsGemPresenter.cs" />
@@ -174,6 +180,9 @@
     <Content Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="dbConfig.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

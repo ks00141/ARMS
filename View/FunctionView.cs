@@ -80,7 +80,7 @@ namespace ARMS.View
                             
                             if (RCMD == "RECIPE_PARA_CHECK")
                             {
-                                new S2F41Controller(driver).req(pMsg, form.checkboxStat());
+                                //new S2F41Controller(driver).req(pMsg, form.checkboxStat());
                             }
                             else if (RCMD == "RECIPE_PARA_UPLOAD")
                             {
