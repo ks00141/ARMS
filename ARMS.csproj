@@ -136,12 +136,13 @@
     <Compile Include="Model\S1F14.cs" />
     <Compile Include="Model\S2F42.cs" />
     <Compile Include="Model\S6F11.cs" />
+    <Compile Include="View\IRecipeParamUPloadView.cs" />
     <Compile Include="Presenter\PpidPresenter.cs" />
     <Compile Include="Presenter\SecsGemPresenter.cs" />
     <Compile Include="Repository\ParaCheckRepository.cs" />
     <Compile Include="Repository\PpidRepository.cs" />
     <Compile Include="Repository\ECRRepository.cs" />
-    <Compile Include="Repository\SecsGemParamRepository.cs" />
+    <Compile Include="Repository\ParaUploadRepository.cs" />
     <Compile Include="Repository\SpecParamRepository.cs" />
     <Compile Include="Service\PpidService.cs" />
     <Compile Include="Service\SecsGemService.cs" />

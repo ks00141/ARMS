@@ -8,12 +8,12 @@ using Secs4Net;
 
 namespace ARMS.Repository
 {
-    class SecsGemParamRepository
+    class ParaUploadRepository
     {
         readonly RecipeParam param;
         readonly PrimaryMessageWrapper pMsg;
 
-        public SecsGemParamRepository(PrimaryMessageWrapper pMsg)
+        public ParaUploadRepository(PrimaryMessageWrapper pMsg)
         {
             param = new RecipeParam();
             this.pMsg = pMsg;
@@ -21,8 +21,8 @@ namespace ARMS.Repository
 
         public RecipeParam GetRecipeParam()
         {
-            Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[5];
-            param.ClusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>();
+            Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[3];
+            param.ClusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>();
             foreach (var item in items.Items)
             {
                 if (item.Items[0] == "Frontside\\RecipeName")
