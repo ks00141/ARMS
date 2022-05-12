@@ -55,18 +55,6 @@
     <Reference Include="log4net, Version=2.0.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>packages\log4net.2.0.14\lib\net45\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroSet UI, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\MetroSet_UI.2.0.0\lib\net45\MetroSet UI.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data, Version=8.0.28.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.8.0.28\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
@@ -136,12 +124,6 @@
     <Compile Include="Model\S1F14.cs" />
     <Compile Include="Model\S2F42.cs" />
     <Compile Include="Model\S6F11.cs" />
-    <Compile Include="UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\IRecipeParamUPloadView.cs" />
     <Compile Include="Presenter\PpidPresenter.cs" />
     <Compile Include="Presenter\SecsGemPresenter.cs" />
@@ -180,9 +162,6 @@
     <Content Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="dbConfig.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -30,73 +30,49 @@ namespace ARMS
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_recipeList = new System.Windows.Forms.Button();
-            this.btn_config = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.listView1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 381F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(820, 492);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(3, 114);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(814, 375);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.btn_recipeList, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btn_config, 1, 0);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 395);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 33);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(814, 94);
-            this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // btn_recipeList
-            // 
-            this.btn_recipeList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_recipeList.Location = new System.Drawing.Point(3, 3);
-            this.btn_recipeList.Name = "btn_recipeList";
-            this.btn_recipeList.Size = new System.Drawing.Size(94, 88);
-            this.btn_recipeList.TabIndex = 0;
-            this.btn_recipeList.Text = "Recipe List";
-            this.btn_recipeList.UseVisualStyleBackColor = true;
-            // 
-            // btn_config
-            // 
-            this.btn_config.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_config.Location = new System.Drawing.Point(103, 3);
-            this.btn_config.Name = "btn_config";
-            this.btn_config.Size = new System.Drawing.Size(94, 88);
-            this.btn_config.TabIndex = 1;
-            this.btn_config.Text = "Config";
-            this.btn_config.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 33);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(814, 356);
-            this.panel1.TabIndex = 1;
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(814, 75);
+            this.tableLayoutPanel2.TabIndex = 1;
             // 
             // Form1
             // 
@@ -109,9 +85,7 @@ namespace ARMS
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "ARMS";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -119,10 +93,8 @@ namespace ARMS
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button btn_recipeList;
-        private System.Windows.Forms.Button btn_config;
-        private System.Windows.Forms.Panel panel1;
     }
 }
 
