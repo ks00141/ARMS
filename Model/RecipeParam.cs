@@ -2,7 +2,7 @@
 
 namespace ARMS.Model
 {
-    class RecipeParam
+    public class RecipeParam
     {
         private String clusterRecipe;
         public string ClusterRecipe
