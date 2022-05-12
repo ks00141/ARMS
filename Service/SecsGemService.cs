@@ -5,6 +5,7 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using ARMS.Model;
 using log4net;
 using Secs4Net;
 using ARMS.Repository;
@@ -16,6 +17,7 @@ namespace ARMS.Service
         readonly SecsGem driver;
 
         private static readonly ILog log = LogManager.GetLogger("ARMS/SecsGem Service");
+        public event EventHandler<RecipeParam> RecipeParamUploadEvent;
 
         public SecsGemService()
         {
@@ -93,7 +95,8 @@ namespace ARMS.Service
                             }
                             else if (RCMD == "RECIPE_PARA_UPLOAD")
                             {
-
+                                ParaUploadRepository paraUploadRepository = new ParaUploadRepository(pMsg);
+                                RecipeParamUploadEvent?.Invoke(this, paraUploadRepository.GetRecipeParam());
                             }
                             break;
                     }
