@@ -74,5 +74,19 @@ namespace ARMS.Presenter
         {
             this.service.ParamUploadRequest(ppid.Replace('/', '\\'));
         }
+
+        public void DbParamUpload(string[] param)
+        {
+            RecipeParam paramObj = new RecipeParam()
+            {
+                ClusterRecipe = param[0],
+                FrontsideRecipe = param[1],
+                InspectionDies = param[2],
+                InspectionColumns = param[3],
+                InspectionRows = param[4]
+            };
+
+            this.service.DBParamUpload(paramObj);
+        }
     }
 }

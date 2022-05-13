@@ -102,5 +102,18 @@ namespace ARMS
                 MessageBox.Show("SecsGem Error!!");
             }
         }
+
+        private void btn_dbUpload_Click(object sender, EventArgs e)
+        {
+            string[] param = new string[]
+            {
+                tb_specClusterRecipe.Text,
+                tb_specFrontsideRecipe.Text,
+                tb_specInspectionDies.Text,
+                tb_specInspectionColumns.Text,
+                tb_specInspectionRows.Text
+            };
+            secsGemPresenter.DbParamUpload(param);
+        }
     }
 }
