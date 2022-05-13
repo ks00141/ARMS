@@ -19,5 +19,6 @@ namespace ARMS.Model
         public string Date { get; set; }
         public string Port { get; set; }
         public string LotId { get;set; }
+        public string Result { get; set; }
     }
 }

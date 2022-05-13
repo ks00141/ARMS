@@ -26,7 +26,7 @@ namespace ARMS.Presenter
 
         public void RunRecipeParamPrint(object sender, RunRecipeParam e)
         {
-            view.RunRecipeParam = new string[]
+            view.RunRecipeParams = new string[]
             {
                 e.Date,
                 e.Port,
@@ -35,7 +35,8 @@ namespace ARMS.Presenter
                 e.FrontsideRecipe,
                 e.InspectionDies,
                 e.InspectionColumns,
-                e.InspectionRows
+                e.InspectionRows,
+                e.Result
             };
         }
 
@@ -69,9 +70,9 @@ namespace ARMS.Presenter
             this.service.ParamUploadRequest(ppid.Replace('/', '\\'));
         }
 
-        public void DBParamUpload()
+        public void ParamUpload(string ppid)
         {
-
+            this.service.ParamUploadRequest(ppid.Replace('/', '\\'));
         }
     }
 }

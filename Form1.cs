@@ -25,7 +25,7 @@ namespace ARMS
             }
         }
 
-        public string[] RunRecipeParam 
+        public string[] RunRecipeParams
         {
             get
             {
@@ -34,7 +34,8 @@ namespace ARMS
 
             set
             {
-                lv_history.Items.Add(new ListViewItem(value));
+                ListViewItem lvi = new ListViewItem(value);
+                listView1.Items.Add(lvi);
             }
 
         }
@@ -72,19 +73,34 @@ namespace ARMS
             secsGemPresenter.ParamUploadRequest(Ppid[0]);
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void SecsGemParamPrint(object sender, string[] param)
         {
-
+            tb_specClusterRecipe.Text = param[0];
+            tb_specFrontsideRecipe.Text = param[1];
+            tb_specInspectionDies.Text = param[2];
+            tb_specInspectionColumns.Text = param[3];
+            tb_specInspectionRows.Text = param[4];
         }
 
         private void SpecParamPrint(object sender, string[] param)
         {
+            tb_toolClusterRecipe.Text = param[0];
+            tb_toolFrontsideRecipe.Text = param[1];
+            tb_toolInspectionDies.Text = param[2];
+            tb_toolInspectionColumns.Text = param[3];
+            tb_toolInspectionRows.Text = param[4];
+        }
 
+        private void btn_paramUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                secsGemPresenter.ParamUpload(this.Ppid[0]);
+            }catch(Exception ex)
+            {
+                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", ex);
+                MessageBox.Show("SecsGem Error!!");
+            }
         }
     }
 }

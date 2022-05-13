@@ -67,7 +67,7 @@ namespace ARMS.Repository
             {
                 Port = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<string>(),
                 LotId = pMsg.Message.SecsItem.Items[1].Items[0].Items[1].GetValue<string>(),
-                Date = DateTime.Now.Date.ToString("yyyy-MM-dd HH-mm-ss")
+                Date = DateTime.Now.Date.ToString("MM-dd HH-mm-ss")
             };
 
         }
@@ -99,15 +99,46 @@ namespace ARMS.Repository
             return param;
         }
 
+        public RecipeParam GetSecsGemParamForUpload()
+        {
+            RecipeParam param = new RecipeParam();
+            Item items = pMsg.Message.SecsItem.Items[1].Items[0].Items[3];
+            param.ClusterRecipe = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>();
+            foreach (var item in items.Items)
+            {
+                if (item.Items[0] == "Frontside\\RecipeName")
+                {
+                    param.FrontsideRecipe = item.Items[1].Items[0].GetValue<string>();
+                }
+                if (item.Items[0] == "Frontside\\TestableDies")
+                {
+                    param.InspectionDies = item.Items[1].Items[0].GetValue<string>();
+                }
+                if (item.Items[0] == "Frontside\\ColumnNumber")
+                {
+                    param.InspectionColumns = item.Items[1].Items[0].GetValue<string>();
+                }
+                if (item.Items[0] == "Frontside\\RowNumber")
+                {
+                    param.InspectionRows = item.Items[1].Items[0].GetValue<string>();
+                }
+            }
+            return param;
+        }
+
         public RecipeParam GetSpecParam()
         {
-            RecipeParam param = specParamRepository.GetRecipeParam(pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>());
+            RecipeParam param = specParamRepository.GetRecipeParam(pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>());
             return param;
         }
 
         public RecipeParam[] GetParams()
         {
             return new RecipeParam[] { this.GetSecsGemParam(), this.GetSpecParam() };
+        }
+        public RecipeParam[] GetParamsForUpload()
+        {
+            return new RecipeParam[] { this.GetSecsGemParamForUpload(), this.GetSpecParam() };
         }
     }
 }

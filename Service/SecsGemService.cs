@@ -75,7 +75,6 @@ namespace ARMS.Service
                             {
                                 RecipeParam r = paraCheckRepository.GetSecsGemParam();
                                 RunRecipeParam runInfo = paraCheckRepository.GetRunInfo(r);
-                                RecipeParamCheckEvent?.Invoke(this, runInfo);
                                 pMsg.ReplyAsync(paraCheckRepository.S2F42());
                                 try
                                 {
@@ -84,15 +83,22 @@ namespace ARMS.Service
                                     if (FLAG == 0)
                                     {
                                         driver.SendAsync(paraCheckRepository.S6F11Succ());
+                                        runInfo.Result = "PASS";
                                     }
                                     else
                                     {
                                         driver.SendAsync(paraCheckRepository.S6F11Fail());
+                                        runInfo.Result = "NG";
                                     }
                                 }
                                 catch
                                 {
                                     driver.SendAsync(paraCheckRepository.S6F11Fail());
+                                    runInfo.Result = "NG";
+                                }
+                                finally
+                                {
+                                    RecipeParamCheckEvent?.Invoke(this, runInfo);
                                 }
                                 
                             }
@@ -100,7 +106,7 @@ namespace ARMS.Service
                             {
                                 ParaUploadRepository paraUploadRepository = new ParaUploadRepository(pMsg);
                                 pMsg.ReplyAsync(paraUploadRepository.S2F42());
-                                RecipeParamUploadEvent?.Invoke(this, paraCheckRepository.GetParams());
+                                RecipeParamUploadEvent?.Invoke(this, paraCheckRepository.GetParamsForUpload());
                             }
                             break;
                     }

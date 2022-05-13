@@ -2,7 +2,6 @@
 {
     public interface IRecipeParamUPloadView
     {
-        string[] RunRecipeParam { get; set; }
-
+        string[] RunRecipeParams { get; set; }
     }
 }
