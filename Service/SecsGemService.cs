@@ -16,7 +16,8 @@ namespace ARMS.Service
     {
         readonly SecsGem driver;
 
-        public event EventHandler<RecipeParam> RecipeParamUploadEvent;
+        public event EventHandler<RecipeParam[]> RecipeParamUploadEvent;
+        public event EventHandler<RunRecipeParam> RecipeParamCheckEvent;
         private static readonly ILog log = LogManager.GetLogger("ARMS/SecsGem Service");
 
         public SecsGemService()
@@ -69,10 +70,12 @@ namespace ARMS.Service
                         case 41:
                             string RCMD = pMsg.Message.SecsItem.Items[0].GetValue<string>();
                             log.Info($"RMCD : {RCMD}");
-
+                            ParaCheckRepository paraCheckRepository = new ParaCheckRepository(pMsg);
                             if(RCMD == "RECIPE_PARA_CHECK")
                             {
-                                ParaCheckRepository paraCheckRepository = new ParaCheckRepository(pMsg);
+                                RecipeParam r = paraCheckRepository.GetSecsGemParam();
+                                RunRecipeParam runInfo = paraCheckRepository.GetRunInfo(r);
+                                RecipeParamCheckEvent?.Invoke(this, runInfo);
                                 pMsg.ReplyAsync(paraCheckRepository.S2F42());
                                 try
                                 {
@@ -97,7 +100,7 @@ namespace ARMS.Service
                             {
                                 ParaUploadRepository paraUploadRepository = new ParaUploadRepository(pMsg);
                                 pMsg.ReplyAsync(paraUploadRepository.S2F42());
-                                RecipeParamUploadEvent?.Invoke(this, paraUploadRepository.GetRecipeParam());
+                                RecipeParamUploadEvent?.Invoke(this, paraCheckRepository.GetParams());
                             }
                             break;
                     }
@@ -128,6 +131,11 @@ namespace ARMS.Service
                             )
                         )
                     );
+        }
+
+        public void DBParamUpload(RecipeParam param)
+        {
+            new ParaUploadDbRepository().DBParamUpload(param);
         }
     }
 }

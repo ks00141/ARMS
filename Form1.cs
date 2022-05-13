@@ -21,26 +21,31 @@ namespace ARMS
             }
             set
             {
-                /*var list = new List<string>();
-                list.AddRange(new string[] { "" });
-                list.AddRange(value);
-                string[] arr = list.ToArray();
-                lv_ppidList.Items.Add(new ListViewItem(arr));
-                lv_ppidList.CheckBoxes = true;*/
                 lv_ppidList.Items.Add(new ListViewItem(value));
             }
         }
 
-        public string ClusterRecipe { get => throw new NotImplementedException(); set => Console.WriteLine(value); }
-        public string FrontsideRecipe { get => throw new NotImplementedException(); set => Console.WriteLine(value); }
-        public string InspectionDies { get => throw new NotImplementedException(); set => Console.WriteLine(value); }
-        public string InspectionColumns { get => throw new NotImplementedException(); set => Console.WriteLine(value); }
-        public string InspectionRows { get => throw new NotImplementedException(); set => Console.WriteLine(value); }
+        public string[] RunRecipeParam 
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                lv_history.Items.Add(new ListViewItem(value));
+            }
+
+        }
+
 
         public Form1()
         {
             InitializeComponent();
             this.secsGemPresenter = new SecsGemPresenter(this);
+            secsGemPresenter.SecsGemParamUpload += SecsGemParamPrint;
+            secsGemPresenter.SpecParamUpload += SpecParamPrint;
             log.Info("");
             log.Info("ARMS Start");
             log.Info("Version - 0.1.0");
@@ -65,6 +70,21 @@ namespace ARMS
         private void lv_ppidList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             secsGemPresenter.ParamUploadRequest(Ppid[0]);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void SecsGemParamPrint(object sender, string[] param)
+        {
+
+        }
+
+        private void SpecParamPrint(object sender, string[] param)
+        {
+
         }
     }
 }

@@ -60,6 +60,18 @@ namespace ARMS.Repository
             return s6f11.Message;
         }
 
+        public RunRecipeParam GetRunInfo(RecipeParam param)
+        {
+
+            return new RunRecipeParam(param)
+            {
+                Port = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<string>(),
+                LotId = pMsg.Message.SecsItem.Items[1].Items[0].Items[1].GetValue<string>(),
+                Date = DateTime.Now.Date.ToString("yyyy-MM-dd HH-mm-ss")
+            };
+
+        }
+
         public RecipeParam GetSecsGemParam()
         {
             RecipeParam param = new RecipeParam();

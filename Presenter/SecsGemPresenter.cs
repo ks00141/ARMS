@@ -13,21 +13,50 @@ namespace ARMS.Presenter
 
         readonly SecsGemService service;
         IRecipeParamUPloadView view;
+        public event EventHandler<string[]> SpecParamUpload;
+        public event EventHandler<string[]> SecsGemParamUpload;
 
         public SecsGemPresenter(IRecipeParamUPloadView view)
         {
             this.service = new SecsGemService();
             this.service.RecipeParamUploadEvent += RecipeParamUpload;
+            this.service.RecipeParamCheckEvent += RunRecipeParamPrint;
             this.view = view;
         }
 
-        private void RecipeParamUpload(object sender, RecipeParam e)
+        public void RunRecipeParamPrint(object sender, RunRecipeParam e)
         {
-            view.ClusterRecipe = e.ClusterRecipe;
-            view.FrontsideRecipe = e.FrontsideRecipe;
-            view.InspectionDies = e.InspectionDies;
-            view.InspectionColumns = e.InspectionColumns;
-            view.InspectionRows = e.InspectionRows;
+            view.RunRecipeParam = new string[]
+            {
+                e.Date,
+                e.Port,
+                e.LotId,
+                e.ClusterRecipe,
+                e.FrontsideRecipe,
+                e.InspectionDies,
+                e.InspectionColumns,
+                e.InspectionRows
+            };
+        }
+
+        public void RecipeParamUpload(object sender, RecipeParam[] paramArray)
+        {
+            SecsGemParamUpload?.Invoke(this, new string[]
+            {
+                paramArray[0].ClusterRecipe,
+                paramArray[0].FrontsideRecipe,
+                paramArray[0].InspectionDies,
+                paramArray[0].InspectionColumns,
+                paramArray[0].InspectionRows
+            });
+            SpecParamUpload?.Invoke(this, new string[]
+            {
+                paramArray[1].ClusterRecipe,
+                paramArray[1].FrontsideRecipe,
+                paramArray[1].InspectionDies,
+                paramArray[1].InspectionColumns,
+                paramArray[1].InspectionRows
+            });
         }
 
         public void SecsGemStart()
@@ -38,6 +67,11 @@ namespace ARMS.Presenter
         public void ParamUploadRequest(string ppid)
         {
             this.service.ParamUploadRequest(ppid.Replace('/', '\\'));
+        }
+
+        public void DBParamUpload()
+        {
+
         }
     }
 }
