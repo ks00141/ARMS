@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ARMS.Model;
-using Secs4Net;
 using MySql.Data.MySqlClient;
 
 namespace ARMS.Repository
