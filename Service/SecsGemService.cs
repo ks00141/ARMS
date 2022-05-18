@@ -108,7 +108,7 @@ namespace ARMS.Service
                             {
                                 ParaUploadRepository paraUploadRepository = new ParaUploadRepository(pMsg);
                                 pMsg.ReplyAsync(paraUploadRepository.S2F42());
-                                RecipeParamUploadEvent?.Invoke(this, paraCheckRepository.GetParamsForUpload());
+                                RecipeParamUploadEvent?.Invoke(this, paraUploadRepository.GetParamsForUpload());
                             }
                             break;
                     }

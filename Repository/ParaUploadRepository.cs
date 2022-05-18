@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ARMS.Model;
 using Secs4Net;
 using MySql.Data.MySqlClient;
+using ARMS.Repository;
 
 namespace ARMS.Repository
 {
@@ -13,11 +14,13 @@ namespace ARMS.Repository
     {
         readonly RecipeParam param;
         readonly PrimaryMessageWrapper pMsg;
+        SpecParamRepository specParamRepository;
 
         public ParaUploadRepository(PrimaryMessageWrapper pMsg)
         {
             param = new RecipeParam();
             this.pMsg = pMsg;
+            this.specParamRepository = new SpecParamRepository();
         }
 
         public RecipeParam GetRecipeParam()
@@ -53,6 +56,17 @@ namespace ARMS.Repository
             };
 
             return s2f42.Message;
+        }
+
+        public RecipeParam GetSpecParam()
+        {
+            RecipeParam param = specParamRepository.GetRecipeParam(pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>());
+            return param;
+        }
+
+        public RecipeParam[] GetParamsForUpload()
+        {
+            return new RecipeParam[] { this.GetRecipeParam(), this.GetSpecParam() };
         }
     }
 }
