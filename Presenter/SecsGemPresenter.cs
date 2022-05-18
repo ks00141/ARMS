@@ -42,7 +42,7 @@ namespace ARMS.Presenter
 
         public void RecipeParamUpload(object sender, RecipeParam[] paramArray)
         {
-            SecsGemParamUpload?.Invoke(this, new string[]
+            /*SecsGemParamUpload?.Invoke(this, new string[]
             {
                 paramArray[0].ClusterRecipe,
                 paramArray[0].FrontsideRecipe,
@@ -57,7 +57,18 @@ namespace ARMS.Presenter
                 paramArray[1].InspectionDies,
                 paramArray[1].InspectionColumns,
                 paramArray[1].InspectionRows
-            });
+            });*/
+
+            view.ToolClusterRecipe = paramArray[0].ClusterRecipe;
+            view.ToolFrontsideRecipe = paramArray[0].FrontsideRecipe;
+            view.ToolInspectionDies = paramArray[0].InspectionDies;
+            view.ToolInspectionColumns = paramArray[0].InspectionColumns;
+            view.ToolInspectionRows = paramArray[0].InspectionRows;
+            view.SpecClusterRecipe = paramArray[1].ClusterRecipe;
+            view.SpecFrontsideRecipe = paramArray[1].FrontsideRecipe;
+            view.SpecInspectionDies = paramArray[1].InspectionDies;
+            view.SpecInspectionColumns = paramArray[1].InspectionColumns;
+            view.SpecInspectionRows = paramArray[1].InspectionRows;
         }
 
         public void SecsGemStart()
