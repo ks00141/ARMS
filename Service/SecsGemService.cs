@@ -60,7 +60,7 @@ namespace ARMS.Service
                     {
                         case 13:
                             pMsg.ReplyAsync(new ECRRepository().S1F14());
-                            log.Info("Secs/Gem S1F13 -> S1F14 Message Reply")
+                            log.Info("Secs/Gem S1F13 -> S1F14 Message Reply");
                             break;
                     }
                     break;
