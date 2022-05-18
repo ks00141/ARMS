@@ -42,14 +42,14 @@ namespace ARMS
 
         public string SpecClusterRecipe { set => tb_specClusterRecipe.Text = value; }
         public string SpecFrontsideRecipe { set => tb_specFrontsideRecipe.Text = value; }
-        public string SpecInspectionDies { set => throw new NotImplementedException(); }
-        public string SpecInspectionColumns { set => throw new NotImplementedException(); }
-        public string SpecInspectionRows { set => throw new NotImplementedException(); }
-        public string ToolClusterRecipe { set => throw new NotImplementedException(); }
-        public string ToolFrontsideRecipe { set => throw new NotImplementedException(); }
-        public string ToolInspectionDies { set => throw new NotImplementedException(); }
-        public string ToolInspectionColumns { set => throw new NotImplementedException(); }
-        public string ToolInspectionRows { set => throw new NotImplementedException(); }
+        public string SpecInspectionDies { set => tb_specInspectionDies.Text = value; }
+        public string SpecInspectionColumns { set => tb_specInspectionColumns.Text = value; }
+        public string SpecInspectionRows { set => tb_specInspectionRows.Text = value; }
+        public string ToolClusterRecipe { set => tb_toolClusterRecipe.Text = value; }
+        public string ToolFrontsideRecipe { set => tb_toolFrontsideRecipe.Text = value; }
+        public string ToolInspectionDies { set => tb_toolInspectionDies.Text = value; }
+        public string ToolInspectionColumns { set => tb_toolInspectionColumns.Text = value; }
+        public string ToolInspectionRows { set => tb_toolInspectionRows.Text = value; }
 
         public Form1()
         {
