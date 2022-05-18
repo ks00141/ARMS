@@ -128,7 +128,7 @@ namespace ARMS.Repository
 
         public RecipeParam GetSpecParam()
         {
-            RecipeParam param = specParamRepository.GetRecipeParam(pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<String>());
+            RecipeParam param = specParamRepository.GetRecipeParam(pMsg.Message.SecsItem.Items[1].Items[0].Items[2].GetValue<String>());
             return param;
         }
 
