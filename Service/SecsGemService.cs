@@ -60,6 +60,7 @@ namespace ARMS.Service
                     {
                         case 13:
                             pMsg.ReplyAsync(new ECRRepository().S1F14());
+                            log.Info("Secs/Gem S1F13 -> S1F14 Message Reply")
                             break;
                     }
                     break;
@@ -80,6 +81,7 @@ namespace ARMS.Service
                                 {
                                     byte FLAG = new EntityCompare(paraCheckRepository.GetParams())
                                     .compare();
+                                    log.Info($"Compare Result{FLAG}");
                                     if (FLAG == 0)
                                     {
                                         driver.SendAsync(paraCheckRepository.S6F11Succ());
