@@ -12,6 +12,7 @@ namespace ARMS
     {
         SecsGemPresenter secsGemPresenter;
         private static readonly ILog log = LogManager.GetLogger("ARMS/GUI");
+        delegate void SetTbSpecClusterRecipe(string _arg);
 
         public string[] Ppid
         {
@@ -40,16 +41,94 @@ namespace ARMS
 
         }
 
-        public string SpecClusterRecipe { set => tb_specClusterRecipe.Text = value; }
-        public string SpecFrontsideRecipe { set => tb_specFrontsideRecipe.Text = value; }
-        public string SpecInspectionDies { set => tb_specInspectionDies.Text = value; }
-        public string SpecInspectionColumns { set => tb_specInspectionColumns.Text = value; }
-        public string SpecInspectionRows { set => tb_specInspectionRows.Text = value; }
-        public string ToolClusterRecipe { set => tb_toolClusterRecipe.Text = value; }
-        public string ToolFrontsideRecipe { set => tb_toolFrontsideRecipe.Text = value; }
-        public string ToolInspectionDies { set => tb_toolInspectionDies.Text = value; }
-        public string ToolInspectionColumns { set => tb_toolInspectionColumns.Text = value; }
-        public string ToolInspectionRows { set => tb_toolInspectionRows.Text = value; }
+        public string SpecClusterRecipe
+        {
+            set
+            {
+                if (tb_specClusterRecipe.InvokeRequired)
+                {
+
+                }
+                string _str = value;
+                tb_specClusterRecipe.Text = _str;
+            }
+        }
+        public string SpecFrontsideRecipe
+        {
+            set
+            {
+                string _str = value;
+                tb_specFrontsideRecipe.Text = _str;
+            }
+        }
+        public string SpecInspectionDies
+        {
+            set
+            {
+                string _str = value;
+                tb_specInspectionDies.Text = _str;
+            }
+        }
+        public string SpecInspectionColumns
+        {
+            set
+            {
+                string _str = value;
+                tb_specInspectionColumns.Text = _str;
+            }
+        }
+        public string SpecInspectionRows
+        {
+            set
+            {
+                string _str = value;
+                tb_specInspectionRows.Text = _str;
+            }
+        }
+        public string ToolClusterRecipe
+        {
+            set
+            {
+                if (tb_toolClusterRecipe.InvokeRequired)
+                {
+
+                }
+                string _str = value;
+                tb_toolClusterRecipe.Text = _str;
+            }
+        }
+        public string ToolFrontsideRecipe
+        {
+            set
+            {
+                string _str = value;
+                tb_toolFrontsideRecipe.Text = _str;
+            }
+        }
+        public string ToolInspectionDies
+        {
+            set
+            {
+                string _str = value;
+                tb_toolInspectionDies.Text = _str;
+            }
+        }
+        public string ToolInspectionColumns
+        {
+            set
+            {
+                string _str = value;
+                tb_toolInspectionColumns.Text = _str;
+            }
+        }
+        public string ToolInspectionRows
+        {
+            set
+            {
+                string _str = value;
+                tb_toolInspectionRows.Text = _str;
+            }
+        }
 
         public Form1()
         {
