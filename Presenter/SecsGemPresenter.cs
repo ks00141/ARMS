@@ -26,18 +26,24 @@ namespace ARMS.Presenter
 
         public void RunRecipeParamPrint(object sender, RunRecipeParam e)
         {
-            view.RunRecipeParams = new string[]
+            try
             {
-                e.Date,
-                e.Port,
-                e.LotId,
-                e.ClusterRecipe,
-                e.FrontsideRecipe,
-                e.InspectionDies,
-                e.InspectionColumns,
-                e.InspectionRows,
-                e.Result
-            };
+                view.RunRecipeParams = new string[]
+                {
+                    e.Date,
+                    e.Port,
+                    e.LotId,
+                    e.ClusterRecipe,
+                    e.FrontsideRecipe,
+                    e.InspectionDies,
+                    e.InspectionColumns,
+                    e.InspectionRows,
+                    e.Result
+                };
+            }catch(Exception ee)
+            {
+                Console.WriteLine(ee.Message);
+            }
         }
 
         public void RecipeParamUpload(object sender, RecipeParam[] paramArray)
@@ -58,8 +64,14 @@ namespace ARMS.Presenter
                 paramArray[1].InspectionColumns,
                 paramArray[1].InspectionRows
             });*/
+            try
+            {
 
-            view.ToolClusterRecipe = paramArray[0].ClusterRecipe;
+                view.ToolClusterRecipe = paramArray[0].ClusterRecipe;
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
             view.ToolFrontsideRecipe = paramArray[0].FrontsideRecipe;
             view.ToolInspectionDies = paramArray[0].InspectionDies;
             view.ToolInspectionColumns = paramArray[0].InspectionColumns;

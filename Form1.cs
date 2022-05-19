@@ -45,56 +45,42 @@ namespace ARMS
         {
             set
             {
-                if (tb_specClusterRecipe.InvokeRequired)
-                {
-
-                }
-                string _str = value;
-                tb_specClusterRecipe.Text = _str;
+                tb_specClusterRecipe.AppendText(value.Clone().ToString());
             }
         }
         public string SpecFrontsideRecipe
         {
             set
             {
-                string _str = value;
-                tb_specFrontsideRecipe.Text = _str;
+                tb_specFrontsideRecipe.AppendText(value);
             }
         }
         public string SpecInspectionDies
         {
             set
             {
-                string _str = value;
-                tb_specInspectionDies.Text = _str;
+                tb_specInspectionDies.AppendText(value);
             }
         }
         public string SpecInspectionColumns
         {
             set
             {
-                string _str = value;
-                tb_specInspectionColumns.Text = _str;
+                tb_specInspectionColumns.AppendText(value);
             }
         }
         public string SpecInspectionRows
         {
             set
             {
-                string _str = value;
-                tb_specInspectionRows.Text = _str;
+                tb_specInspectionRows.AppendText(value);
             }
         }
         public string ToolClusterRecipe
         {
             set
             {
-                if (tb_toolClusterRecipe.InvokeRequired)
-                {
-
-                }
-                string _str = value;
-                tb_toolClusterRecipe.Text = _str;
+                tb_toolClusterRecipe.AppendText(value);
             }
         }
         public string ToolFrontsideRecipe
@@ -102,7 +88,7 @@ namespace ARMS
             set
             {
                 string _str = value;
-                tb_toolFrontsideRecipe.Text = _str;
+                tb_toolFrontsideRecipe.AppendText(value);
             }
         }
         public string ToolInspectionDies
@@ -110,7 +96,7 @@ namespace ARMS
             set
             {
                 string _str = value;
-                tb_toolInspectionDies.Text = _str;
+                tb_toolInspectionDies.AppendText(value);
             }
         }
         public string ToolInspectionColumns
@@ -118,7 +104,7 @@ namespace ARMS
             set
             {
                 string _str = value;
-                tb_toolInspectionColumns.Text = _str;
+                tb_toolInspectionColumns.AppendText(value);
             }
         }
         public string ToolInspectionRows
@@ -126,7 +112,7 @@ namespace ARMS
             set
             {
                 string _str = value;
-                tb_toolInspectionRows.Text = _str;
+                tb_toolInspectionRows.AppendText(value);
             }
         }
 
