@@ -12,7 +12,7 @@ namespace ARMS
     {
         SecsGemPresenter secsGemPresenter;
         private static readonly ILog log = LogManager.GetLogger("ARMS/GUI");
-        delegate void SetTbSpecClusterRecipe(string _arg);
+        delegate void SetString(string _arg);
 
         public string[] Ppid
         {
@@ -45,50 +45,74 @@ namespace ARMS
         {
             set
             {
-                tb_specClusterRecipe.AppendText(value.Clone().ToString());
+                if (tb_specClusterRecipe.InvokeRequired)
+                {
+                    var d = new SetString((string _str) => tb_specClusterRecipe.Text = _str);
+                    Invoke(d, new object[] { value }) ;
+                }
+                else
+                {
+                    tb_specClusterRecipe.Text = value;
+
+                }
             }
         }
         public string SpecFrontsideRecipe
         {
             set
             {
-                tb_specFrontsideRecipe.AppendText(value);
+                tb_specFrontsideRecipe.Text = value;
             }
         }
         public string SpecInspectionDies
         {
             set
             {
-                tb_specInspectionDies.AppendText(value);
+                tb_specInspectionDies.Text = value;
             }
         }
         public string SpecInspectionColumns
         {
             set
             {
-                tb_specInspectionColumns.AppendText(value);
+                tb_specInspectionColumns.Text = value;
             }
         }
         public string SpecInspectionRows
         {
             set
             {
-                tb_specInspectionRows.AppendText(value);
+                tb_specInspectionRows.Text = value;
             }
         }
         public string ToolClusterRecipe
         {
             set
             {
-                tb_toolClusterRecipe.AppendText(value);
+                if (tb_toolClusterRecipe.InvokeRequired)
+                {
+                    var d = new SetString((string _str) => tb_toolClusterRecipe.Text = _str);
+                    Invoke(d, new object[] { value });
+                }
+                else
+                {
+                tb_toolClusterRecipe.Text = value;
+                }
             }
         }
         public string ToolFrontsideRecipe
         {
             set
             {
-                string _str = value;
-                tb_toolFrontsideRecipe.AppendText(value);
+                if (tb_toolFrontsideRecipe.InvokeRequired)
+                {
+                    var d = new SetString((string _str) => tb_toolFrontsideRecipe.Text = _str);
+                    Invoke(d, new object[] { value });
+                }
+                else
+                {
+                    tb_toolFrontsideRecipe.Text = value;
+                }
             }
         }
         public string ToolInspectionDies
@@ -96,7 +120,7 @@ namespace ARMS
             set
             {
                 string _str = value;
-                tb_toolInspectionDies.AppendText(value);
+                tb_toolInspectionDies.Text = value;
             }
         }
         public string ToolInspectionColumns
@@ -104,7 +128,7 @@ namespace ARMS
             set
             {
                 string _str = value;
-                tb_toolInspectionColumns.AppendText(value);
+                tb_toolInspectionColumns.Text = value;
             }
         }
         public string ToolInspectionRows
@@ -112,7 +136,7 @@ namespace ARMS
             set
             {
                 string _str = value;
-                tb_toolInspectionRows.AppendText(value);
+                tb_toolInspectionRows.Text = value;
             }
         }
 

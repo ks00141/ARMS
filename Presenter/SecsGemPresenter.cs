@@ -64,14 +64,7 @@ namespace ARMS.Presenter
                 paramArray[1].InspectionColumns,
                 paramArray[1].InspectionRows
             });*/
-            try
-            {
-
-                view.ToolClusterRecipe = paramArray[0].ClusterRecipe;
-            }catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            view.ToolClusterRecipe = paramArray[0].ClusterRecipe;
             view.ToolFrontsideRecipe = paramArray[0].FrontsideRecipe;
             view.ToolInspectionDies = paramArray[0].InspectionDies;
             view.ToolInspectionColumns = paramArray[0].InspectionColumns;
