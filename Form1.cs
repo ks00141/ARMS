@@ -13,6 +13,7 @@ namespace ARMS
         SecsGemPresenter secsGemPresenter;
         private static readonly ILog log = LogManager.GetLogger("ARMS/GUI");
         delegate void SetString(string _arg);
+        delegate ListViewItem SetListView(string[] _argv);
 
         public string[] Ppid
         {
@@ -22,10 +23,16 @@ namespace ARMS
             }
             set
             {
-                lv_ppidList.Items.Add(new ListViewItem(value));
+                if (lv_ppidList.InvokeRequired)
+                {
+                    Invoke(new SetListView((string[] _argv) => lv_ppidList.Items.Add(new ListViewItem(value))), new object[] { value });
+                }
+                else
+                {
+                    lv_ppidList.Items.Add(new ListViewItem(value));
+                }
             }
         }
-
         public string[] RunRecipeParams
         {
             get
@@ -35,12 +42,18 @@ namespace ARMS
 
             set
             {
-                ListViewItem lvi = new ListViewItem(value);
-                listView1.Items.Add(lvi);
+                if (listView1.InvokeRequired)
+                {
+                    Invoke(new SetListView((string[] _argv) => listView1.Items.Add(new ListViewItem(value))), new object[] { value });
+                }
+                else
+                {
+                    ListViewItem lvi = new ListViewItem(value);
+                    listView1.Items.Add(lvi);
+                }
             }
 
         }
-
         public string SpecClusterRecipe
         {
             set
@@ -61,28 +74,56 @@ namespace ARMS
         {
             set
             {
-                tb_specFrontsideRecipe.Text = value;
+                if (tb_specFrontsideRecipe.InvokeRequired)
+                {
+                    Invoke(new SetString((string _str) => tb_specFrontsideRecipe.Text = _str), new object[] { value });
+                }
+                else
+                {
+                    tb_specFrontsideRecipe.Text = value;
+                }
             }
         }
         public string SpecInspectionDies
         {
             set
             {
-                tb_specInspectionDies.Text = value;
+                if (tb_specInspectionDies.InvokeRequired)
+                {
+                    Invoke(new SetString((string _str) => tb_specInspectionDies.Text = _str), new object[] { value });
+                }
+                else
+                {
+                    tb_specInspectionDies.Text = value;
+                }
             }
         }
         public string SpecInspectionColumns
         {
             set
             {
-                tb_specInspectionColumns.Text = value;
+                if (tb_specInspectionColumns.InvokeRequired)
+                {
+                    Invoke(new SetString((string _str) => tb_specInspectionColumns.Text = _str), new object[] { value });
+                }
+                else
+                {
+                    tb_specInspectionColumns.Text = value;
+                }
             }
         }
         public string SpecInspectionRows
         {
             set
-            {
-                tb_specInspectionRows.Text = value;
+            {                
+                if (tb_specInspectionRows.InvokeRequired)
+                {
+                    Invoke(new SetString((string _str) => tb_specInspectionRows.Text = _str), new object[] { value });
+                }
+                else
+                {
+                    tb_specInspectionRows.Text = value;
+                }
             }
         }
         public string ToolClusterRecipe
@@ -91,12 +132,11 @@ namespace ARMS
             {
                 if (tb_toolClusterRecipe.InvokeRequired)
                 {
-                    var d = new SetString((string _str) => tb_toolClusterRecipe.Text = _str);
-                    Invoke(d, new object[] { value });
+                    Invoke(new SetString((string _str) => tb_toolClusterRecipe.Text = _str), new object[] { value });
                 }
                 else
                 {
-                tb_toolClusterRecipe.Text = value;
+                    tb_toolClusterRecipe.Text = value;
                 }
             }
         }
@@ -106,8 +146,7 @@ namespace ARMS
             {
                 if (tb_toolFrontsideRecipe.InvokeRequired)
                 {
-                    var d = new SetString((string _str) => tb_toolFrontsideRecipe.Text = _str);
-                    Invoke(d, new object[] { value });
+                    Invoke(new SetString((string _str) => tb_toolFrontsideRecipe.Text = _str), new object[] { value });
                 }
                 else
                 {
@@ -119,24 +158,42 @@ namespace ARMS
         {
             set
             {
-                string _str = value;
-                tb_toolInspectionDies.Text = value;
+                if (tb_toolInspectionDies.InvokeRequired)
+                {
+                    Invoke(new SetString((string _str) => tb_toolInspectionDies.Text = _str), new object[] { value });
+                }
+                else
+                {
+                    tb_toolInspectionDies.Text = value;
+                }
             }
         }
         public string ToolInspectionColumns
         {
             set
             {
-                string _str = value;
-                tb_toolInspectionColumns.Text = value;
+                if (tb_toolInspectionColumns.InvokeRequired)
+                {
+                    Invoke(new SetString((string _str) => tb_toolInspectionColumns.Text = _str), new object[] { value });
+                }
+                else
+                {
+                    tb_toolInspectionColumns.Text = value;
+                }
             }
         }
         public string ToolInspectionRows
         {
             set
             {
-                string _str = value;
-                tb_toolInspectionRows.Text = value;
+                if (tb_toolInspectionRows.InvokeRequired)
+                {
+                    Invoke(new SetString((string _str) => tb_toolInspectionRows.Text = _str), new object[] { value });
+                }
+                else
+                {
+                    tb_toolInspectionRows.Text = value;
+                }
             }
         }
 
