@@ -13,8 +13,6 @@ namespace ARMS.Presenter
 
         readonly SecsGemService service;
         IRecipeParamUPloadView view;
-        public event EventHandler<string[]> SpecParamUpload;
-        public event EventHandler<string[]> SecsGemParamUpload;
 
         public SecsGemPresenter(IRecipeParamUPloadView view)
         {
@@ -48,22 +46,6 @@ namespace ARMS.Presenter
 
         public void RecipeParamUpload(object sender, RecipeParam[] paramArray)
         {
-            /*SecsGemParamUpload?.Invoke(this, new string[]
-            {
-                paramArray[0].ClusterRecipe,
-                paramArray[0].FrontsideRecipe,
-                paramArray[0].InspectionDies,
-                paramArray[0].InspectionColumns,
-                paramArray[0].InspectionRows
-            });
-            SpecParamUpload?.Invoke(this, new string[]
-            {
-                paramArray[1].ClusterRecipe,
-                paramArray[1].FrontsideRecipe,
-                paramArray[1].InspectionDies,
-                paramArray[1].InspectionColumns,
-                paramArray[1].InspectionRows
-            });*/
             view.ToolClusterRecipe = paramArray[0].ClusterRecipe;
             view.ToolFrontsideRecipe = paramArray[0].FrontsideRecipe;
             view.ToolInspectionDies = paramArray[0].InspectionDies;

@@ -31,6 +31,10 @@ namespace ARMS
                 {
                     lv_ppidList.Items.Add(new ListViewItem(value));
                 }
+                foreach(var str in value)
+                {
+                    log.Info($"PPID Set Info : {str}");
+                }
             }
         }
         public string[] RunRecipeParams
@@ -51,6 +55,10 @@ namespace ARMS
                     ListViewItem lvi = new ListViewItem(value);
                     listView1.Items.Add(lvi);
                 }
+                foreach(var str in value)
+                {
+                    log.Info($"Run Recipe Info : {str}");
+                }
             }
 
         }
@@ -68,6 +76,7 @@ namespace ARMS
                     tb_specClusterRecipe.Text = value;
 
                 }
+                log.Info($"Spec Cluster Reicpe : {value}");
             }
         }
         public string SpecFrontsideRecipe
@@ -82,6 +91,7 @@ namespace ARMS
                 {
                     tb_specFrontsideRecipe.Text = value;
                 }
+                log.Info($"Spec Frontside Recipe : {value}");
             }
         }
         public string SpecInspectionDies
@@ -96,6 +106,7 @@ namespace ARMS
                 {
                     tb_specInspectionDies.Text = value;
                 }
+                log.Info($"Spec Inspection Dies : {value}");
             }
         }
         public string SpecInspectionColumns
@@ -110,6 +121,7 @@ namespace ARMS
                 {
                     tb_specInspectionColumns.Text = value;
                 }
+                log.Info($"Spec Inspection Columns : {value}");
             }
         }
         public string SpecInspectionRows
@@ -124,6 +136,7 @@ namespace ARMS
                 {
                     tb_specInspectionRows.Text = value;
                 }
+                log.Info($"Spec Inspection Rows : {value}");
             }
         }
         public string ToolClusterRecipe
@@ -138,6 +151,7 @@ namespace ARMS
                 {
                     tb_toolClusterRecipe.Text = value;
                 }
+                log.Info($"Tool Cluster Recipe : {value}");
             }
         }
         public string ToolFrontsideRecipe
@@ -152,6 +166,7 @@ namespace ARMS
                 {
                     tb_toolFrontsideRecipe.Text = value;
                 }
+                log.Info($"Tool Frontside Recipe : {value}");
             }
         }
         public string ToolInspectionDies
@@ -166,6 +181,7 @@ namespace ARMS
                 {
                     tb_toolInspectionDies.Text = value;
                 }
+                log.Info($"Tool Inspection Dies : {value}");
             }
         }
         public string ToolInspectionColumns
@@ -180,6 +196,7 @@ namespace ARMS
                 {
                     tb_toolInspectionColumns.Text = value;
                 }
+                log.Info($"Tool Inspection Columns : {value}");
             }
         }
         public string ToolInspectionRows
@@ -194,6 +211,7 @@ namespace ARMS
                 {
                     tb_toolInspectionRows.Text = value;
                 }
+                log.Info($"Tool Inspection Rows : {value}");
             }
         }
 
@@ -201,8 +219,6 @@ namespace ARMS
         {
             InitializeComponent();
             this.secsGemPresenter = new SecsGemPresenter(this);
-            secsGemPresenter.SecsGemParamUpload += SecsGemParamPrint;
-            secsGemPresenter.SpecParamUpload += SpecParamPrint;
             log.Info("");
             log.Info("ARMS Start");
             log.Info("Version - 0.1.0");
@@ -221,6 +237,7 @@ namespace ARMS
         private void button2_Click(object sender, EventArgs e)
         {
             lv_ppidList.Items.Clear();
+            log.Info("PPID List Load");
             new PpidPresenter(this).PrintAllPpid();
         }
 
@@ -229,28 +246,11 @@ namespace ARMS
             secsGemPresenter.ParamUploadRequest(Ppid[0]);
         }
 
-        private void SecsGemParamPrint(object sender, string[] param)
-        {
-            tb_specClusterRecipe.Text = param[0];
-            tb_specFrontsideRecipe.Text = param[1];
-            tb_specInspectionDies.Text = param[2];
-            tb_specInspectionColumns.Text = param[3];
-            tb_specInspectionRows.Text = param[4];
-        }
-
-        private void SpecParamPrint(object sender, string[] param)
-        {
-            tb_toolClusterRecipe.Text = param[0];
-            tb_toolFrontsideRecipe.Text = param[1];
-            tb_toolInspectionDies.Text = param[2];
-            tb_toolInspectionColumns.Text = param[3];
-            tb_toolInspectionRows.Text = param[4];
-        }
-
         private void btn_paramUpdate_Click(object sender, EventArgs e)
         {
             try
             {
+                log.Info($"Recipe Parameter Upload - {Ppid[0]}");
                 secsGemPresenter.ParamUpload(this.Ppid[0]);
             }catch(Exception ex)
             {
