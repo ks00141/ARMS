@@ -104,16 +104,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\PpidSerachController.cs" />
-    <Compile Include="Controller\S1F13Controller.cs" />
-    <Compile Include="Controller\S1F3Controller.cs" />
-    <Compile Include="Controller\S2F41Controller.cs" />
-    <Compile Include="Controller\SearchController.cs" />
-    <Compile Include="Controller\SecsGemController.cs" />
-    <Compile Include="Dao\JobDAO.cs" />
-    <Compile Include="Dao\SecsGemDao.cs" />
-    <Compile Include="Dao\SpecDAO.cs" />
-    <Compile Include="Dao\SpecDbDao.cs" />
     <Compile Include="Model\IS1F14.cs" />
     <Compile Include="Model\IS2F42.cs" />
     <Compile Include="Model\IS6F11.cs" />
@@ -136,7 +126,6 @@
     <Compile Include="Repository\SpecParamRepository.cs" />
     <Compile Include="Service\PpidService.cs" />
     <Compile Include="Service\SecsGemService.cs" />
-    <Compile Include="View\FunctionView.cs" />
     <Compile Include="DBConnectorFactory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

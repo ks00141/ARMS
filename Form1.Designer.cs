@@ -136,17 +136,17 @@ namespace ARMS
             // columnHeader1
             // 
             this.columnHeader1.Text = "Date";
-            this.columnHeader1.Width = 136;
+            this.columnHeader1.Width = 116;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Port";
-            this.columnHeader2.Width = 52;
+            this.columnHeader2.Text = "Lot ID";
+            this.columnHeader2.Width = 126;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Lot ID";
-            this.columnHeader3.Width = 107;
+            this.columnHeader3.Text = "Port";
+            this.columnHeader3.Width = 50;
             // 
             // columnHeader4
             // 
@@ -156,15 +156,17 @@ namespace ARMS
             // columnHeader5
             // 
             this.columnHeader5.Text = "Frontside Recipe";
-            this.columnHeader5.Width = 417;
+            this.columnHeader5.Width = 390;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Dies";
+            this.columnHeader6.Width = 66;
             // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "Columns";
+            this.columnHeader7.Width = 77;
             // 
             // columnHeader8
             // 
@@ -307,11 +309,10 @@ namespace ARMS
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.ColumnCount = 4;
+            this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 202F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 217F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
             this.tableLayoutPanel6.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label3, 2, 0);
@@ -350,7 +351,7 @@ namespace ARMS
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 104);
+            this.label1.Size = new System.Drawing.Size(85, 104);
             this.label1.TabIndex = 0;
             this.label1.Text = "Itmes";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -360,9 +361,9 @@ namespace ARMS
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(92, 0);
+            this.label2.Location = new System.Drawing.Point(94, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(196, 104);
+            this.label2.Size = new System.Drawing.Size(211, 104);
             this.label2.TabIndex = 1;
             this.label2.Text = "Spec";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -372,9 +373,9 @@ namespace ARMS
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(294, 0);
+            this.label3.Location = new System.Drawing.Point(311, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 104);
+            this.label3.Size = new System.Drawing.Size(204, 104);
             this.label3.TabIndex = 2;
             this.label3.Text = "Tool";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -386,7 +387,7 @@ namespace ARMS
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 104);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 82);
+            this.label5.Size = new System.Drawing.Size(85, 82);
             this.label5.TabIndex = 4;
             this.label5.Text = "Cluster Recipe";
             // 
@@ -397,7 +398,7 @@ namespace ARMS
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(3, 186);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 60);
+            this.label6.Size = new System.Drawing.Size(85, 60);
             this.label6.TabIndex = 5;
             this.label6.Text = "Frontside Recipe";
             // 
@@ -408,7 +409,7 @@ namespace ARMS
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(3, 246);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 59);
+            this.label7.Size = new System.Drawing.Size(85, 59);
             this.label7.TabIndex = 6;
             this.label7.Text = "Inspection Dies";
             // 
@@ -419,7 +420,7 @@ namespace ARMS
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 305);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 60);
+            this.label8.Size = new System.Drawing.Size(85, 60);
             this.label8.TabIndex = 7;
             this.label8.Text = "Inspection Columns";
             // 
@@ -430,7 +431,7 @@ namespace ARMS
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(3, 365);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 69);
+            this.label9.Size = new System.Drawing.Size(85, 69);
             this.label9.TabIndex = 8;
             this.label9.Text = "Inspection Rows";
             // 
@@ -440,10 +441,10 @@ namespace ARMS
             this.tb_specClusterRecipe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_specClusterRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_specClusterRecipe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_specClusterRecipe.Location = new System.Drawing.Point(92, 107);
+            this.tb_specClusterRecipe.Location = new System.Drawing.Point(94, 107);
             this.tb_specClusterRecipe.Multiline = true;
             this.tb_specClusterRecipe.Name = "tb_specClusterRecipe";
-            this.tb_specClusterRecipe.Size = new System.Drawing.Size(196, 76);
+            this.tb_specClusterRecipe.Size = new System.Drawing.Size(211, 76);
             this.tb_specClusterRecipe.TabIndex = 9;
             // 
             // tb_toolClusterRecipe
@@ -452,10 +453,10 @@ namespace ARMS
             this.tb_toolClusterRecipe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_toolClusterRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_toolClusterRecipe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_toolClusterRecipe.Location = new System.Drawing.Point(294, 107);
+            this.tb_toolClusterRecipe.Location = new System.Drawing.Point(311, 107);
             this.tb_toolClusterRecipe.Multiline = true;
             this.tb_toolClusterRecipe.Name = "tb_toolClusterRecipe";
-            this.tb_toolClusterRecipe.Size = new System.Drawing.Size(169, 76);
+            this.tb_toolClusterRecipe.Size = new System.Drawing.Size(204, 76);
             this.tb_toolClusterRecipe.TabIndex = 10;
             // 
             // tb_specFrontsideRecipe
@@ -464,10 +465,10 @@ namespace ARMS
             this.tb_specFrontsideRecipe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_specFrontsideRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_specFrontsideRecipe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_specFrontsideRecipe.Location = new System.Drawing.Point(92, 189);
+            this.tb_specFrontsideRecipe.Location = new System.Drawing.Point(94, 189);
             this.tb_specFrontsideRecipe.Multiline = true;
             this.tb_specFrontsideRecipe.Name = "tb_specFrontsideRecipe";
-            this.tb_specFrontsideRecipe.Size = new System.Drawing.Size(196, 54);
+            this.tb_specFrontsideRecipe.Size = new System.Drawing.Size(211, 54);
             this.tb_specFrontsideRecipe.TabIndex = 11;
             // 
             // tb_toolFrontsideRecipe
@@ -476,10 +477,10 @@ namespace ARMS
             this.tb_toolFrontsideRecipe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_toolFrontsideRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_toolFrontsideRecipe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_toolFrontsideRecipe.Location = new System.Drawing.Point(294, 189);
+            this.tb_toolFrontsideRecipe.Location = new System.Drawing.Point(311, 189);
             this.tb_toolFrontsideRecipe.Multiline = true;
             this.tb_toolFrontsideRecipe.Name = "tb_toolFrontsideRecipe";
-            this.tb_toolFrontsideRecipe.Size = new System.Drawing.Size(169, 54);
+            this.tb_toolFrontsideRecipe.Size = new System.Drawing.Size(204, 54);
             this.tb_toolFrontsideRecipe.TabIndex = 12;
             // 
             // tb_specInspectionDies
@@ -488,10 +489,10 @@ namespace ARMS
             this.tb_specInspectionDies.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_specInspectionDies.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_specInspectionDies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_specInspectionDies.Location = new System.Drawing.Point(92, 249);
+            this.tb_specInspectionDies.Location = new System.Drawing.Point(94, 249);
             this.tb_specInspectionDies.Multiline = true;
             this.tb_specInspectionDies.Name = "tb_specInspectionDies";
-            this.tb_specInspectionDies.Size = new System.Drawing.Size(196, 53);
+            this.tb_specInspectionDies.Size = new System.Drawing.Size(211, 53);
             this.tb_specInspectionDies.TabIndex = 13;
             // 
             // tb_toolInspectionDies
@@ -500,10 +501,10 @@ namespace ARMS
             this.tb_toolInspectionDies.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_toolInspectionDies.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_toolInspectionDies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_toolInspectionDies.Location = new System.Drawing.Point(294, 249);
+            this.tb_toolInspectionDies.Location = new System.Drawing.Point(311, 249);
             this.tb_toolInspectionDies.Multiline = true;
             this.tb_toolInspectionDies.Name = "tb_toolInspectionDies";
-            this.tb_toolInspectionDies.Size = new System.Drawing.Size(169, 53);
+            this.tb_toolInspectionDies.Size = new System.Drawing.Size(204, 53);
             this.tb_toolInspectionDies.TabIndex = 14;
             // 
             // tb_specInspectionColumns
@@ -512,10 +513,10 @@ namespace ARMS
             this.tb_specInspectionColumns.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_specInspectionColumns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_specInspectionColumns.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_specInspectionColumns.Location = new System.Drawing.Point(92, 308);
+            this.tb_specInspectionColumns.Location = new System.Drawing.Point(94, 308);
             this.tb_specInspectionColumns.Multiline = true;
             this.tb_specInspectionColumns.Name = "tb_specInspectionColumns";
-            this.tb_specInspectionColumns.Size = new System.Drawing.Size(196, 54);
+            this.tb_specInspectionColumns.Size = new System.Drawing.Size(211, 54);
             this.tb_specInspectionColumns.TabIndex = 15;
             // 
             // tb_toolInspectionColumns
@@ -524,10 +525,10 @@ namespace ARMS
             this.tb_toolInspectionColumns.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_toolInspectionColumns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_toolInspectionColumns.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_toolInspectionColumns.Location = new System.Drawing.Point(294, 308);
+            this.tb_toolInspectionColumns.Location = new System.Drawing.Point(311, 308);
             this.tb_toolInspectionColumns.Multiline = true;
             this.tb_toolInspectionColumns.Name = "tb_toolInspectionColumns";
-            this.tb_toolInspectionColumns.Size = new System.Drawing.Size(169, 54);
+            this.tb_toolInspectionColumns.Size = new System.Drawing.Size(204, 54);
             this.tb_toolInspectionColumns.TabIndex = 16;
             // 
             // tb_specInspectionRows
@@ -536,10 +537,10 @@ namespace ARMS
             this.tb_specInspectionRows.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_specInspectionRows.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_specInspectionRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_specInspectionRows.Location = new System.Drawing.Point(92, 368);
+            this.tb_specInspectionRows.Location = new System.Drawing.Point(94, 368);
             this.tb_specInspectionRows.Multiline = true;
             this.tb_specInspectionRows.Name = "tb_specInspectionRows";
-            this.tb_specInspectionRows.Size = new System.Drawing.Size(196, 63);
+            this.tb_specInspectionRows.Size = new System.Drawing.Size(211, 63);
             this.tb_specInspectionRows.TabIndex = 17;
             // 
             // tb_toolInspectionRows
@@ -548,10 +549,10 @@ namespace ARMS
             this.tb_toolInspectionRows.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_toolInspectionRows.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_toolInspectionRows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_toolInspectionRows.Location = new System.Drawing.Point(294, 368);
+            this.tb_toolInspectionRows.Location = new System.Drawing.Point(311, 368);
             this.tb_toolInspectionRows.Multiline = true;
             this.tb_toolInspectionRows.Name = "tb_toolInspectionRows";
-            this.tb_toolInspectionRows.Size = new System.Drawing.Size(169, 63);
+            this.tb_toolInspectionRows.Size = new System.Drawing.Size(204, 63);
             this.tb_toolInspectionRows.TabIndex = 18;
             // 
             // btn_dbUpload

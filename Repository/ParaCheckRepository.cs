@@ -10,7 +10,6 @@ namespace ARMS.Repository
 {
     public class ParaCheckRepository
     {
-        public event EventHandler<string> SecsGemParamParsingHandler;
         PrimaryMessageWrapper pMsg;
         SpecParamRepository specParamRepository;
 
@@ -67,7 +66,7 @@ namespace ARMS.Repository
             {
                 Port = pMsg.Message.SecsItem.Items[1].Items[0].Items[0].GetValue<string>(),
                 LotId = pMsg.Message.SecsItem.Items[1].Items[0].Items[1].GetValue<string>(),
-                Date = DateTime.Now.Date.ToString("MM-dd HH-mm-ss")
+                Date = DateTime.Now.ToString("MM-dd HH:mm:ss")
             };
 
         }

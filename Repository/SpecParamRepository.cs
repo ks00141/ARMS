@@ -57,7 +57,7 @@ namespace ARMS.Repository
                     }
 
                 }
-                catch (Exception e)
+                catch
                 {
                     conn.Close();
                     return new Model.RecipeParam();
