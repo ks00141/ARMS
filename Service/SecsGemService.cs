@@ -25,13 +25,15 @@ namespace ARMS.Service
             try
             {
                 driver = new SecsGem(false, IPAddress.Any, 5000);
-                log.Info("SECS/GEM Driver is initialized");
+                log.Info("SecsGem Driver is initialized");
                 log.Info($"Port : {5000}");
-                LogPresenter.SetLogString("Start SeceGem Service");
+                LogPresenter.SetLogString("SecsGem Service Ready");
                 driver.PrimaryMessageReceived += MsgReceived;
             }
             catch(Exception e)
             {
+                LogPresenter.SetLogString("SecsGem Service Not Ready");
+                LogPresenter.SetLogString(e.Message);
                 log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
             }
         }
@@ -41,11 +43,14 @@ namespace ARMS.Service
             try
             {
                 driver.Start();
-                log.Info("SECS/GEM Driver Start");
+                log.Info("SecsGem Driver Start");
+                LogPresenter.SetLogString("SecsGem Driver Ready");
             }
             catch (Exception e)
             {
                 log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
+                LogPresenter.SetLogString("SecsGem Driver Not Ready");
+                LogPresenter.SetLogString(e.Message);
             }
         }
 
@@ -53,7 +58,8 @@ namespace ARMS.Service
         {
             int F = pMsg.Message.F;
             int S = pMsg.Message.S;
-            log.Info($"SECS/GEM Message received, S{S} F{F}");
+            log.Info($"SecsGem message received, S{S} F{F}");
+            LogPresenter.SetLogString($"SecsGem message received, S{S} F{F}");
 
             switch (S)
             {
@@ -62,7 +68,8 @@ namespace ARMS.Service
                     {
                         case 13:
                             pMsg.ReplyAsync(new ECRRepository().S1F14());
-                            log.Info("Secs/Gem S1F13 -> S1F14 Message Reply");
+                            log.Info("SecsGem message reply, S1 F14");
+                            LogPresenter.SetLogString("SecsGem message reply, S1 F14");
                             break;
                     }
                     break;
@@ -72,13 +79,22 @@ namespace ARMS.Service
                     {
                         case 41:
                             string RCMD = pMsg.Message.SecsItem.Items[0].GetValue<string>();
-                            log.Info($"RMCD : {RCMD}");
+                            log.Info($"S2 F41 message RMCD : {RCMD}");
+                            LogPresenter.SetLogString($"S2 F41 message RMCD : {RCMD}");
                             ParaCheckRepository paraCheckRepository = new ParaCheckRepository(pMsg);
                             if(RCMD == "RECIPE_PARA_CHECK")
                             {
                                 RecipeParam r = paraCheckRepository.GetSecsGemParam();
                                 RunRecipeParam runInfo = paraCheckRepository.GetRunInfo(r);
                                 pMsg.ReplyAsync(paraCheckRepository.S2F42());
+                                LogPresenter.SetLogString("SecsGem message reply S2 F42");
+                                LogPresenter.SetLogString($"Lot ID : {runInfo.LotId}");
+                                LogPresenter.SetLogString($"Port Number : {runInfo.Port}");
+                                LogPresenter.SetLogString($"Cluster Recipe : {runInfo.ClusterRecipe}");
+                                LogPresenter.SetLogString($"Frontside Recipe : {runInfo.FrontsideRecipe}");
+                                LogPresenter.SetLogString($"Inspection Dies : {runInfo.InspectionDies}");
+                                LogPresenter.SetLogString($"Inspection Columns : {runInfo.InspectionColumns}");
+                                LogPresenter.SetLogString($"Inspection Rows : {runInfo.InspectionRows}");
                                 try
                                 {
                                     byte FLAG = new EntityCompare(paraCheckRepository.GetParams())
@@ -86,19 +102,37 @@ namespace ARMS.Service
                                     log.Info($"Compare Result{FLAG}");
                                     if (FLAG == 0)
                                     {
-                                        driver.SendAsync(paraCheckRepository.S6F11Succ());
+                                        var t = driver.SendAsync(paraCheckRepository.S6F11Succ());
+                                        t.Wait();
                                         runInfo.Result = "PASS";
+                                        if (t.IsCompleted)
+                                        {
+                                            LogPresenter.SetLogString("SecsGem message send S6 F11 - Valid Recipe");
+                                            LogPresenter.SetLogString("SecsGem message received S6 F12");
+                                        }
                                     }
                                     else
                                     {
-                                        driver.SendAsync(paraCheckRepository.S6F11Fail());
+                                        var t = driver.SendAsync(paraCheckRepository.S6F11Fail());
+                                        t.Wait();
                                         runInfo.Result = "NG";
+                                        if (t.IsCompleted)
+                                        {
+                                            LogPresenter.SetLogString("SecsGem message send S6 F11 - Invalid Recipe");
+                                            LogPresenter.SetLogString("SecsGem message received S6 F12");
+                                        }
                                     }
                                 }
                                 catch
                                 {
-                                    driver.SendAsync(paraCheckRepository.S6F11Fail());
+                                    var t = driver.SendAsync(paraCheckRepository.S6F11Fail());
+                                    t.Wait();
                                     runInfo.Result = "NG";
+                                    if (t.IsCompleted)
+                                    {
+                                        LogPresenter.SetLogString("SecsGem message send S6 F11 - Compare error");
+                                        LogPresenter.SetLogString("SecsGem message received S6 F12");
+                                    }
                                 }
                                 finally
                                 {
@@ -118,6 +152,16 @@ namespace ARMS.Service
                                     Console.WriteLine(e.Message);
                                 }
                             }
+                            break;
+                    }
+                    break;
+
+                case 6:
+                    switch (F)
+                    {
+                        case 12:
+                            log.Info("SecsGem message received S6 F12");
+                            LogPresenter.SetLogString("SecsGem message received S6 F12");
                             break;
                     }
                     break;
