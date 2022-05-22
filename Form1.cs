@@ -8,12 +8,13 @@ using System.Windows.Forms;
 
 namespace ARMS
 {
-    public partial class Form1 : Form, IPpidListView, IRecipeParamUPloadView
+    public partial class Form1 : Form, IPpidListView, IRecipeParamUPloadView, IFormLogView
     {
         SecsGemPresenter secsGemPresenter;
         private static readonly ILog log = LogManager.GetLogger("ARMS/GUI");
         delegate void SetString(string _arg);
         delegate ListViewItem SetListView(string[] _argv);
+        delegate ListViewItem SetLog(string[] log);
 
         public string[] Ppid
         {
@@ -215,9 +216,25 @@ namespace ARMS
             }
         }
 
+        public string[] LogStream
+        {
+            set
+            {
+                if (lv_log.InvokeRequired)
+                {
+                    Invoke(new SetLog((string[] _str) => lv_log.Items.Add(new ListViewItem(_str))), new object[]{ value });
+                }
+                else
+                {
+                    lv_log.Items.Add(new ListViewItem(value));
+                }
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
+            LogPresenter.SetViewForm(this);
             this.secsGemPresenter = new SecsGemPresenter(this);
             log.Info("");
             log.Info("ARMS Start");

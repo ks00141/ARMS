@@ -27,6 +27,7 @@ namespace ARMS.Service
                 driver = new SecsGem(false, IPAddress.Any, 5000);
                 log.Info("SECS/GEM Driver is initialized");
                 log.Info($"Port : {5000}");
+                LogPresenter.SetLogString("Start SeceGem Service");
                 driver.PrimaryMessageReceived += MsgReceived;
             }
             catch(Exception e)

@@ -115,7 +115,9 @@
     <Compile Include="Model\S1F14.cs" />
     <Compile Include="Model\S2F42.cs" />
     <Compile Include="Model\S6F11.cs" />
+    <Compile Include="Common\LogPresenter.cs" />
     <Compile Include="Repository\ParaUploadDbRepository.cs" />
+    <Compile Include="View\IFormLogView.cs" />
     <Compile Include="View\IRecipeParamUPloadView.cs" />
     <Compile Include="Presenter\PpidPresenter.cs" />
     <Compile Include="Presenter\SecsGemPresenter.cs" />
