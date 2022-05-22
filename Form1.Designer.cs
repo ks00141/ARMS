@@ -31,7 +31,23 @@ namespace ARMS
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_paramUpdate = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lv_log = new System.Windows.Forms.ListView();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
@@ -40,6 +56,7 @@ namespace ARMS
             this.lv_ppidList = new System.Windows.Forms.ListView();
             this.Device = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PPID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btn_paramUpdate = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,34 +78,17 @@ namespace ARMS
             this.tb_specInspectionRows = new System.Windows.Forms.TextBox();
             this.tb_toolInspectionRows = new System.Windows.Forms.TextBox();
             this.btn_dbUpload = new System.Windows.Forms.Button();
-            this.lv_log = new System.Windows.Forms.ListView();
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -119,16 +119,151 @@ namespace ARMS
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1258, 670);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
-            // btn_paramUpdate
+            // tabControl1
             // 
-            this.btn_paramUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_paramUpdate.Location = new System.Drawing.Point(627, 3);
-            this.btn_paramUpdate.Name = "btn_paramUpdate";
-            this.btn_paramUpdate.Size = new System.Drawing.Size(25, 619);
-            this.btn_paramUpdate.TabIndex = 0;
-            this.btn_paramUpdate.Text = ">";
-            this.btn_paramUpdate.UseVisualStyleBackColor = true;
-            this.btn_paramUpdate.Click += new System.EventHandler(this.btn_paramUpdate_Click);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1252, 664);
+            this.tabControl1.TabIndex = 4;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.listView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1244, 631);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Job History";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(3, 3);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(1238, 625);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Date";
+            this.columnHeader1.Width = 116;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Port";
+            this.columnHeader2.Width = 67;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Lot ID";
+            this.columnHeader3.Width = 98;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Cluster Recipe";
+            this.columnHeader4.Width = 296;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Frontside Recipe";
+            this.columnHeader5.Width = 390;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Dies";
+            this.columnHeader6.Width = 66;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Columns";
+            this.columnHeader7.Width = 77;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Rows";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Result";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.lv_log);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1244, 631);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Log";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lv_log
+            // 
+            this.lv_log.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader10});
+            this.lv_log.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_log.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lv_log.HideSelection = false;
+            this.lv_log.Location = new System.Drawing.Point(3, 3);
+            this.lv_log.Name = "lv_log";
+            this.lv_log.Size = new System.Drawing.Size(1238, 625);
+            this.lv_log.TabIndex = 3;
+            this.lv_log.UseCompatibleStateImageBehavior = false;
+            this.lv_log.View = System.Windows.Forms.View.List;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Width = 1000;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tableLayoutPanel8);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1244, 631);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Recipe Info";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 95.26717F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.732824F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 582F));
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel5, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btn_paramUpdate, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel7, 2, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1238, 625);
+            this.tableLayoutPanel8.TabIndex = 0;
             // 
             // tableLayoutPanel5
             // 
@@ -217,6 +352,17 @@ namespace ARMS
             // 
             this.PPID.Text = "PPID";
             this.PPID.Width = 393;
+            // 
+            // btn_paramUpdate
+            // 
+            this.btn_paramUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_paramUpdate.Location = new System.Drawing.Point(627, 3);
+            this.btn_paramUpdate.Name = "btn_paramUpdate";
+            this.btn_paramUpdate.Size = new System.Drawing.Size(25, 619);
+            this.btn_paramUpdate.TabIndex = 0;
+            this.btn_paramUpdate.Text = ">";
+            this.btn_paramUpdate.UseVisualStyleBackColor = true;
+            this.btn_paramUpdate.Click += new System.EventHandler(this.btn_paramUpdate_Click);
             // 
             // tableLayoutPanel7
             // 
@@ -493,152 +639,6 @@ namespace ARMS
             this.btn_dbUpload.UseVisualStyleBackColor = true;
             this.btn_dbUpload.Click += new System.EventHandler(this.btn_dbUpload_Click);
             // 
-            // lv_log
-            // 
-            this.lv_log.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader10});
-            this.lv_log.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lv_log.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lv_log.HideSelection = false;
-            this.lv_log.Location = new System.Drawing.Point(3, 3);
-            this.lv_log.Name = "lv_log";
-            this.lv_log.Size = new System.Drawing.Size(1238, 625);
-            this.lv_log.TabIndex = 3;
-            this.lv_log.UseCompatibleStateImageBehavior = false;
-            this.lv_log.View = System.Windows.Forms.View.List;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Width = 1000;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1252, 664);
-            this.tabControl1.TabIndex = 4;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.listView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1244, 631);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Job History";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1238, 625);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Date";
-            this.columnHeader1.Width = 116;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Lot ID";
-            this.columnHeader2.Width = 126;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Port";
-            this.columnHeader3.Width = 50;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Cluster Recipe";
-            this.columnHeader4.Width = 296;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Frontside Recipe";
-            this.columnHeader5.Width = 390;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Dies";
-            this.columnHeader6.Width = 66;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Columns";
-            this.columnHeader7.Width = 77;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Rows";
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Result";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.lv_log);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1244, 631);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Log";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.tableLayoutPanel8);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1244, 631);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Recipe Info";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 3;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 95.26717F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.732824F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 582F));
-            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel5, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.btn_paramUpdate, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel7, 2, 0);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1238, 625);
-            this.tableLayoutPanel8.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -652,17 +652,17 @@ namespace ARMS
             this.Text = "ARMS";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tableLayoutPanel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
