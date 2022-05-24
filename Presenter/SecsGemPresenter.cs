@@ -29,8 +29,8 @@ namespace ARMS.Presenter
                 view.RunRecipeParams = new string[]
                 {
                     e.Date,
-                    e.Port,
                     e.LotId,
+                    e.Port,
                     e.ClusterRecipe,
                     e.FrontsideRecipe,
                     e.InspectionDies,
