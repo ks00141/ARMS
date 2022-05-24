@@ -14,44 +14,36 @@ namespace ARMS.Service
 {
     public class SecsGemService
     {
-        readonly SecsGem driver;
-
+        SecsGem driver;
+        int port;
         public event EventHandler<RecipeParam[]> RecipeParamUploadEvent;
         public event EventHandler<RunRecipeParam> RecipeParamCheckEvent;
         private static readonly ILog log = LogManager.GetLogger("ARMS/SecsGem Service");
 
-        public SecsGemService()
+        public SecsGemService(int port)
         {
-            try
-            {
-                driver = new SecsGem(false, IPAddress.Any, 5000);
-                log.Info("SecsGem Driver is initialized");
-                log.Info($"Port : {5000}");
-                LogPresenter.SetLogString("SecsGem Service Ready");
-                driver.PrimaryMessageReceived += MsgReceived;
-            }
-            catch(Exception e)
-            {
-                LogPresenter.SetLogString("SecsGem Service Not Ready");
-                LogPresenter.SetLogString(e.Message);
-                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
-            }
+            this.port = port;
         }
 
         public void SecsGemStart()
         {
             try
             {
+                driver = new SecsGem(false, IPAddress.Any, port);
+                driver.PrimaryMessageReceived += MsgReceived;
                 driver.Start();
                 log.Info("SecsGem Driver Start");
-                LogPresenter.SetLogString("SecsGem Driver Ready");
+                log.Info($"Port : {port}");
+                LogPresenter.SetLogString("SecsGem Service Start");
+                LogPresenter.SetLogString($"Port : {port}");
             }
             catch (Exception e)
             {
-                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
-                LogPresenter.SetLogString("SecsGem Driver Not Ready");
+                LogPresenter.SetLogString("SecsGem Service Can't Start");
                 LogPresenter.SetLogString(e.Message);
+                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
             }
+          
         }
 
         public void MsgReceived(object sender, PrimaryMessageWrapper pMsg)
@@ -166,6 +158,12 @@ namespace ARMS.Service
                     }
                     break;
             }
+        }
+
+        internal void SecsGemStop()
+        {
+            log.Info("SecsGem Driver Stop");
+            driver.Dispose();
         }
 
         public void ParamUploadRequest(string ppid)

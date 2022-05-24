@@ -104,6 +104,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\PortManager.cs" />
     <Compile Include="Model\IS1F14.cs" />
     <Compile Include="Model\IS2F42.cs" />
     <Compile Include="Model\IS6F11.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Common\LogPresenter.cs" />
     <Compile Include="Repository\ParaUploadDbRepository.cs" />
     <Compile Include="View\IFormLogView.cs" />
+    <Compile Include="View\IPortManager.cs" />
     <Compile Include="View\IRecipeParamUPloadView.cs" />
     <Compile Include="Presenter\PpidPresenter.cs" />
     <Compile Include="Presenter\SecsGemPresenter.cs" />

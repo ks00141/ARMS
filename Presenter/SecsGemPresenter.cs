@@ -10,15 +10,15 @@ using ARMS.View;
 namespace ARMS.Presenter
 {
     class SecsGemPresenter {
-
-        readonly SecsGemService service;
+        
+        bool status = false;
+        int port;
+        SecsGemService service;
         IRecipeParamUPloadView view;
 
         public SecsGemPresenter(IRecipeParamUPloadView view)
         {
-            this.service = new SecsGemService();
-            this.service.RecipeParamUploadEvent += RecipeParamUpload;
-            this.service.RecipeParamCheckEvent += RunRecipeParamPrint;
+            
             this.view = view;
         }
 
@@ -60,7 +60,20 @@ namespace ARMS.Presenter
 
         public void SecsGemStart()
         {
-            service.SecsGemStart();
+            if (!status)
+            {
+                port = Int32.Parse(PortManager.Port);
+                this.service = new SecsGemService(port);
+                this.service.RecipeParamUploadEvent += RecipeParamUpload;
+                this.service.RecipeParamCheckEvent += RunRecipeParamPrint;
+                service.SecsGemStart();
+                status = true;
+            }
+            else
+            {
+                LogPresenter.SetLogString($"SecsGem Service is already starting on {port} port.");
+                return;
+            }
         }
 
         public void ParamUploadRequest(string ppid)
@@ -85,6 +98,13 @@ namespace ARMS.Presenter
             };
 
             this.service.DBParamUpload(paramObj);
+        }
+
+        internal void SecsGemStop()
+        {
+            service.SecsGemStop();
+            status = false;
+            LogPresenter.SetLogString($"SecsGem Service stop (port : {port}).");
         }
     }
 }

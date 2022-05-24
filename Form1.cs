@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ARMS
 {
-    public partial class Form1 : Form, IPpidListView, IRecipeParamUPloadView, IFormLogView
+    public partial class Form1 : Form, IPpidListView, IRecipeParamUPloadView, IFormLogView, IPortManager
     {
         SecsGemPresenter secsGemPresenter;
         private static readonly ILog log = LogManager.GetLogger("ARMS/GUI");
@@ -231,25 +231,29 @@ namespace ARMS
             }
         }
 
+        public string PORT
+        {
+            get
+            {
+                return cb_portList.SelectedItem.ToString();
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
             LogPresenter.SetViewForm(this);
+            PortManager.SetPortViewForm(this);
             this.secsGemPresenter = new SecsGemPresenter(this);
             log.Info("");
             log.Info("ARMS Start");
             log.Info("Version - 0.1.0");
             log.Info("");
             log.Info("GUI INIT");
-            try
-            {
-                secsGemPresenter.SecsGemStart();
-            }
-            catch (Exception e)
-            {
-                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", e);
-            }
+            lv_log.HeaderStyle = ColumnHeaderStyle.None;
         }
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -287,6 +291,31 @@ namespace ARMS
                 tb_specInspectionRows.Text
             };
             secsGemPresenter.DbParamUpload(param);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                secsGemPresenter.SecsGemStart();
+            }
+            catch (Exception ex)
+            {
+                log.Error($"An exception occurred from {MethodBase.GetCurrentMethod().Name}", ex);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            secsGemPresenter.SecsGemStop();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            cb_portList.Items.Add("5000");
+            cb_portList.Items.Add("5001");
+            cb_portList.Items.Add("5002");
+            cb_portList.Items.Add("5003");
         }
     }
 }
