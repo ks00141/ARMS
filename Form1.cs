@@ -251,9 +251,20 @@ namespace ARMS
             log.Info("");
             log.Info("GUI INIT");
             lv_log.HeaderStyle = ColumnHeaderStyle.None;
+            lv_ppidList.Items.Add(new ListViewItem(new string[] { "1", "일" }));
+            lv_ppidList.Items.Add(new ListViewItem(new string[] { "2", "이" }));
+            lv_ppidList.Items.Add(new ListViewItem(new string[] { "3", "삼" }));
+            tb_device.TextChanged += new EventHandler(DeviceTextChanged);
         }
 
-
+        private void DeviceTextChanged(object sender, EventArgs e)
+        {
+            ListViewItem foundItem = lv_ppidList.FindItemWithText(tb_device.Text, false, 0, true);
+            if (foundItem != null)
+            {
+                lv_ppidList.TopItem = foundItem;
+            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {

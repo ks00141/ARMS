@@ -50,9 +50,8 @@ namespace ARMS
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btn_load = new System.Windows.Forms.Button();
+            this.tb_device = new System.Windows.Forms.TextBox();
             this.lv_ppidList = new System.Windows.Forms.ListView();
             this.Device = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PPID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -298,13 +297,11 @@ namespace ARMS
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.43516F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.42651F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.28242F));
-            this.tableLayoutPanel2.Controls.Add(this.button2, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBox1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tb_device, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_load, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -313,34 +310,24 @@ namespace ARMS
             this.tableLayoutPanel2.Size = new System.Drawing.Size(618, 31);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // button2
+            // btn_load
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(520, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 25);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "All";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_load.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_load.Location = new System.Drawing.Point(499, 3);
+            this.btn_load.Name = "btn_load";
+            this.btn_load.Size = new System.Drawing.Size(116, 25);
+            this.btn_load.TabIndex = 2;
+            this.btn_load.Text = "Load";
+            this.btn_load.UseVisualStyleBackColor = true;
+            this.btn_load.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // tb_device
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(419, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 25);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(410, 26);
-            this.textBox1.TabIndex = 0;
+            this.tb_device.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_device.Location = new System.Drawing.Point(3, 3);
+            this.tb_device.Name = "tb_device";
+            this.tb_device.Size = new System.Drawing.Size(490, 26);
+            this.tb_device.TabIndex = 0;
             // 
             // lv_ppidList
             // 
@@ -353,6 +340,7 @@ namespace ARMS
             this.lv_ppidList.Location = new System.Drawing.Point(3, 40);
             this.lv_ppidList.Name = "lv_ppidList";
             this.lv_ppidList.Size = new System.Drawing.Size(618, 582);
+            this.lv_ppidList.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lv_ppidList.TabIndex = 0;
             this.lv_ppidList.UseCompatibleStateImageBehavior = false;
             this.lv_ppidList.View = System.Windows.Forms.View.Details;
@@ -691,7 +679,7 @@ namespace ARMS
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(3, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 38);
+            this.label4.Size = new System.Drawing.Size(159, 38);
             this.label4.TabIndex = 0;
             this.label4.Text = "EQ Num";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -702,7 +690,7 @@ namespace ARMS
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(3, 106);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(160, 271);
+            this.label10.Size = new System.Drawing.Size(159, 271);
             this.label10.TabIndex = 1;
             this.label10.Text = "Secs/Gem\r\nStatus";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -716,13 +704,13 @@ namespace ARMS
             this.tableLayoutPanel9.Controls.Add(this.button3, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.button4, 1, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(169, 109);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(168, 109);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 3;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1066, 265);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1067, 265);
             this.tableLayoutPanel9.TabIndex = 2;
             // 
             // button3
@@ -730,7 +718,7 @@ namespace ARMS
             this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button3.Location = new System.Drawing.Point(3, 117);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(230, 45);
+            this.button3.Size = new System.Drawing.Size(231, 45);
             this.button3.TabIndex = 0;
             this.button3.Text = "Start";
             this.button3.UseVisualStyleBackColor = true;
@@ -739,9 +727,9 @@ namespace ARMS
             // button4
             // 
             this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(239, 117);
+            this.button4.Location = new System.Drawing.Point(240, 117);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(230, 45);
+            this.button4.Size = new System.Drawing.Size(231, 45);
             this.button4.TabIndex = 1;
             this.button4.Text = "Stop";
             this.button4.UseVisualStyleBackColor = true;
@@ -754,11 +742,11 @@ namespace ARMS
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
             this.tableLayoutPanel10.Controls.Add(this.cb_portList, 0, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(169, 71);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(168, 71);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(1066, 32);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(1067, 32);
             this.tableLayoutPanel10.TabIndex = 3;
             // 
             // cb_portList
@@ -767,7 +755,7 @@ namespace ARMS
             this.cb_portList.FormattingEnabled = true;
             this.cb_portList.Location = new System.Drawing.Point(3, 3);
             this.cb_portList.Name = "cb_portList";
-            this.cb_portList.Size = new System.Drawing.Size(467, 28);
+            this.cb_portList.Size = new System.Drawing.Size(468, 28);
             this.cb_portList.TabIndex = 0;
             // 
             // Form1
@@ -808,10 +796,9 @@ namespace ARMS
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_device;
         private System.Windows.Forms.ListView lv_ppidList;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_load;
         private System.Windows.Forms.ColumnHeader Device;
         private System.Windows.Forms.ColumnHeader PPID;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
