@@ -50,8 +50,8 @@ namespace ARMS
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_load = new System.Windows.Forms.Button();
             this.tb_device = new System.Windows.Forms.TextBox();
+            this.btn_load = new System.Windows.Forms.Button();
             this.lv_ppidList = new System.Windows.Forms.ListView();
             this.Device = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PPID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -310,6 +310,14 @@ namespace ARMS
             this.tableLayoutPanel2.Size = new System.Drawing.Size(618, 31);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
+            // tb_device
+            // 
+            this.tb_device.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_device.Location = new System.Drawing.Point(3, 3);
+            this.tb_device.Name = "tb_device";
+            this.tb_device.Size = new System.Drawing.Size(490, 26);
+            this.tb_device.TabIndex = 0;
+            // 
             // btn_load
             // 
             this.btn_load.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -320,14 +328,6 @@ namespace ARMS
             this.btn_load.Text = "Load";
             this.btn_load.UseVisualStyleBackColor = true;
             this.btn_load.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // tb_device
-            // 
-            this.tb_device.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_device.Location = new System.Drawing.Point(3, 3);
-            this.tb_device.Name = "tb_device";
-            this.tb_device.Size = new System.Drawing.Size(490, 26);
-            this.tb_device.TabIndex = 0;
             // 
             // lv_ppidList
             // 
